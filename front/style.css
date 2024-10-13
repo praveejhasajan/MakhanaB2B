@@ -1,0 +1,298 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 0.5em 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5em;
+}
+
+.navbar-container {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+.main-section {
+    padding: 1em;
+    width: 90%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.product-left,
+.product-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.product-left img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+.product-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cta {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta:hover {
+    background-color: #e0a800;
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.advantages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 0;
+    width: 90%;
+    margin: auto;
+}
+
+.advantages-left,
+.advantages-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.advantages-left ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.advantages-right img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+.reach {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 0;
+    width: 90%;
+    margin: auto;
+}
+
+.reach-left img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.reach-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.reviews {
+    padding: 2em 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+}
+
+.review {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    max-width: 22%;
+}
+
+.review img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: #ffc107;
+}
+
+footer {
+    background-color: #495057;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.footer-left h3,
+.footer-left p {
+    color: white;
+}
+
+.footer-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.contact-us {
+    background-color: #343a40;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.contact-us h3 {
+    margin-bottom: 15px;
+}
+
+.contact-us form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-us label {
+    margin: 10px 0 5px;
+    color: white;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-us button {
+    padding: 10px 20px;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-us button:hover {
+    background-color: #e0a800;
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .product {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar a {
+        padding: 10px;
+        border-bottom: 1px solid #495057;
+    }
+
+    .product {
+        flex-direction: column;
+    }
+
+    .advantages {
+        flex-direction: column;
+    }
+
+    .reach {
+        flex-direction: column;
+    }
+
+    .reviews-container {
+        flex-direction: column;
+    }
+
+    .review {
+        max-width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    .footer-left,
+    .footer-right {
+        flex: 1;
+        width: 100%;
+    }
+}
