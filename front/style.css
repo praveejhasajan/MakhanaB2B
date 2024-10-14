@@ -296,3 +296,69 @@ footer {
         width: 100%;
     }
 }
+/* Existing styles */
+
+.contact-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.close-btn {
+    align-self: flex-end;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar a {
+        padding: 10px;
+        border-bottom: 1px solid #495057;
+    }
+
+    .product {
+        flex-direction: column;
+    }
+
+    .advantages {
+        flex-direction: column;
+    }
+
+    .reach {
+        flex-direction: column;
+    }
+
+    .reviews-container {
+        flex-direction: column;
+    }
+
+    .review {
+        max-width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    .footer-left,
+    .footer-right {
+        flex: 1;
+        width: 100%;
+    }
+}

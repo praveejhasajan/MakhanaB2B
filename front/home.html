@@ -110,7 +110,7 @@
         </div>
         <div class="contact-us">
             <h3>Contact Us</h3>
-            <form>
+            <form action="http://localhost:5000/contact/add" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="email">Email:</label>
@@ -118,12 +118,30 @@
                 <label for="query">Query:</label>
                 <textarea id="query" name="query" rows="4" required></textarea><br>
                 <button type="submit">Submit</button>
-            </form>
+              </form>
+              
         </div>
     </div>
     <p>&copy; 2024 Makhana Suppliers Pvt. Ltd. All rights reserved.</p>
 </footer>
+<!-- Contact Us Popup -->
+<div id="contactPopup" class="contact-popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h3>Contact Us</h3>
+        <form id="popupContactForm">
+            <label for="popupName">Name:</label>
+            <input type="text" id="popupName" name="name" required><br>
+            <label for="popupEmail">Email:</label>
+            <input type="email" id="popupEmail" name="email" required><br>
+            <label for="popupQuery">Query:</label>
+            <textarea id="popupQuery" name="query" rows="4" required></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 
-<script src="js/scripts.js"></script>
+
+<script src="/front/scripts.js"></script>
 </body>
 </html>
