@@ -20,15 +20,21 @@ ctaButtons.forEach(button => {
         button.style.transform = 'scale(1)';
     });
 });
+
+let popupClosed = false;
 window.addEventListener('scroll', function() {
     const contactPopup = document.getElementById('contactPopup');
-    if (window.scrollY > window.innerHeight / 2) {
+    if (window.scrollY > window.innerHeight / 2 && !popupClosed) {
         contactPopup.style.display = 'block';
     }
 });
 
 function closePopup() {
     document.getElementById('contactPopup').style.display = 'none';
+    popupClosed = true;
+    setTimeout(() => {
+        popupClosed = false;
+    }, 300000); // Reappear after 5 minutes (300000 milliseconds)
 }
 
 document.getElementById('popupContactForm').addEventListener('submit', function(event) {
