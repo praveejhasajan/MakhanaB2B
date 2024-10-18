@@ -457,3 +457,14 @@ footer {
         font-size: 1em;
     }
 }
+/* whatsapp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.whatsapp-button img {
+    width: 60px;
+    height: 60px;
+}
