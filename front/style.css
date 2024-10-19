@@ -223,6 +223,28 @@ body {
 }
 
 
+.logo {
+    /* Align the logo container to the left */
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center;         /* Vertically center the logo */
+    margin: 20px;                /* Add space around the logo */
+}
+
+.logo img {
+    /* Control the size of the logo */
+    max-width: 100%;          /* Make sure the logo doesn't overflow */
+    height: auto;             /* Maintain the logo's aspect ratio */
+    width: 200px;             /* Set a fixed width, adjust as needed */
+    object-fit: contain;      /* Ensure the image scales properly */
+}
+
+/* Optional: Add a background color or other styles to the logo container */
+.logo {
+    background-color: #f9f9f9; /* Example light background */
+    padding: 10px;             /* Space around the logo */
+    border-radius: 10px;       /* Rounded corners for the logo container */
+}
 
 
 .reviews {
