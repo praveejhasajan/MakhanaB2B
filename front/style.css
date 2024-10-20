@@ -11,7 +11,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #343a40;
+    background-color: #7c677f;
 }
 
 .toggle-btn {
@@ -29,7 +29,7 @@ body {
 }
 
 .navbar a {
-    color: white;
+    color: #7c677f;
     text-decoration: none;
     padding: 10px 20px;
 }
@@ -57,8 +57,13 @@ body {
 
     .navbar a {
         padding: 10px;
-        border-bottom: 1px solid #495057;
+        border-bottom: 1px solid #7c677f;
     }
+    .navbar a:hover {
+        background-color: #495057;
+        border-radius: 5px;
+    }
+    
 }
 
 
@@ -239,6 +244,69 @@ body {
     .reach-left,
     .reach-right {
         width: 100%;
+    }
+}
+/* General styles for navbar */
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.navbar-container a {
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+/* Button styling */
+.toggle-btn {
+    display: none; /* Initially hidden */
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Hover effects */
+.navbar-container a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    /* Show the button for mobile view */
+    .toggle-btn {
+        display: block;
+    }
+
+    /* Initially hide the navbar */
+    .navbar-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: #333;
+    }
+
+    /* Display navbar links in column format */
+    .navbar-container a {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #444;
     }
 }
 
