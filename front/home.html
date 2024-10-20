@@ -12,15 +12,28 @@
         </a>
 <header>
     <nav class="navbar">
-        <div class="logo">LOGO</div>
+        <div class="logo">
+            <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
+        </div>
         <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
-        <div class="navbar-container">
+        <div class="navbar-container" id="navbar">
             <a href="#home">Home</a>
             <a href="#product">Product</a>
             <a href="#buynow">Buy Now</a>
             <a href="#contact">Contact Us</a>
             <a href="#blogs">Blogs</a>
         </div>
+    
+        <script>
+            function toggleNavbar() {
+                var navbar = document.getElementById("navbar");
+                if (navbar.style.display === "block") {
+                    navbar.style.display = "none";
+                } else {
+                    navbar.style.display = "block";
+                }
+            }
+        </script>
     </nav>
 </header>
 
@@ -177,5 +190,14 @@
 
 
 <script src="scripts.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVRX031YKP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QVRX031YKP');
+</script>
 </body>
 </html>
