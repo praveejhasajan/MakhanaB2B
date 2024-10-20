@@ -4,12 +4,23 @@ body {
     padding: 0;
     background-color:  #8076a3;
 }
+/* Navbar and Toggle Button Styles */
+/* Navbar and Toggle Button Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px; /* Increase padding for more height */
-    background-color: #7c677f;
+    padding: 20px;
+    background-color: #343a40;
+}
+
+.toggle-btn {
+    display: none;
+    font-size: 1.5em;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .navbar-container {
@@ -28,10 +39,20 @@ body {
     border-radius: 5px;
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
+    .toggle-btn {
+        display: block;
+    }
+
     .navbar-container {
+        display: none;
         flex-direction: column;
         gap: 10px;
+    }
+
+    .navbar-container.active {
+        display: flex;
     }
 
     .navbar a {
@@ -39,7 +60,6 @@ body {
         border-bottom: 1px solid #495057;
     }
 }
-
 
 
 /* Main Section Styles */
