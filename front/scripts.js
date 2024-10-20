@@ -60,3 +60,9 @@ document.getElementById('popupContactForm').addEventListener('submit', function(
     })
     .catch(error => console.error('Error:', error));
 });
+// navbar
+function toggleNavbar() {
+    const navbarContainer = document.querySelector('.navbar-container');
+    navbarContainer.classList.toggle('active');
+}
+
