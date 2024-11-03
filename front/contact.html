@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/front/style.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" id="logo"/>
+        </div>
+        <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
+        <div class="navbar-container" id="navbar">
+            <a href="./home.html">Home</a>
+            <a href="./home.html#product">Product</a>
+            <a href="blogs.html">Blogs</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="contact-form-section">
+        <h1>Contact Us</h1>
+        <form id="contactForm">
+            <label for="name">Name:<span class="required">*</span></label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="mobile">Mobile Number:<span class="required">*</span></label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required><br>
+
+            <label for="cin">CIN:</label>
+            <input type="text" id="cin" name="cin"><br>
+
+            <label for="email">Email:<span class="required">*</span></label>
+            <input type="email" id="email" name="email" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</main>
+
+<script src="./scripts.js"></script>
+
+</body>
+</html>
