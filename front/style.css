@@ -73,9 +73,10 @@ html {
 
 /* Main Section Styles */
 .main-section {
+    padding: 2em;
     width: 100%;
-
-    margin-top: 50px; /* Add margin-top to prevent overlap */
+    margin: auto;
+    margin-top: 100px; /* Add margin-top to prevent overlap */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -829,21 +830,3 @@ footer {
      .contact-form-section h1 { text-align: center; color: #333; margin-bottom: 20px; }
      .contact-form-section form { display: flex; flex-direction: column; width: 100%; }
      .contact-form-section label { margin-bottom: 5px; color: #555; } .contact-form-section .required { color: red; margin-left: 5px; } .contact-form-section input, .contact-form-section textarea { padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 18px; width: calc(100% - 30px); /* Ensure inputs span the full width with padding */ } .contact-form-section button { padding: 15px; background-color: #28a745; color: white; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background-color 0.3s; } .contact-form-section button:hover { background-color: #218838; } /* Media queries */ @media (max-width: 768px) { .toggle-btn { display: block; } .navbar-container { right: -250px; /* Ensure initial hidden position */ } }
-     /* Moving Alert */
-     .moving-alert {
-        width: 100%;
-        background-color: #FF921C;
-        color: #333;
-       
-        text-align: center;
-        font-size: 18px;
-        position: absolute;
-       
-        left: 0;
-        animation: move 15s linear infinite;
-    }
-
-    @keyframes move {
-        0% { left: 100%; }
-        100% { left: -100%; }
-    }
