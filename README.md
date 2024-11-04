@@ -1,17 +1,16 @@
 Makhana B2B Portal (Demo)
-Welcome to the demo version of the Makhana B2B Portal! This repository showcases a prototype of a business-to-business (B2B) platform dedicated to the export and bulk sale of Makhana. The demo version provides insight into how the full platform will operate, with features for exploring products and submitting inquiries.
+Welcome to the demo version of the Makhana B2B Portal! This repository showcases a prototype of a business-to-business (B2B) platform dedicated to the export and bulk sale of Makhana. The demo version provides insight into how the full platform will operate, featuring capabilities for exploring products and submitting inquiries.
 
 Project Overview
-The Makhana B2B Portal demo offers a preview of a scalable and responsive platform for Makhana distributors, importers, and wholesale buyers. It includes essential features to facilitate B2B transactions.
+The Makhana B2B Portal demo offers a preview of a scalable and responsive platform for Makhana distributors, importers, and wholesale buyers. It includes essential features to facilitate B2B transactions effectively.
 
 Key Features
 Home Page: A professional overview of the Makhana business, designed to engage potential buyers.
-Product Catalog: Displays a sample catalog of Makhana products for bulk purchase.
+Product Catalog: Displays a sample catalog of Makhana products available for bulk purchase.
 Inquiry Form: A contact form for potential clients to submit order-related inquiries.
 Responsive Design: Fully optimized for both desktop and mobile devices.
 Live Demo
-Explore the demo version of the Makhana B2B portal here:
-Demo Website
+Explore the demo version of the Makhana B2B portal here: Demo Website <!-- Link to demo website -->
 
 Folder Structure
 bash
@@ -54,10 +53,26 @@ Contributing
 Contributions are welcome! Please follow the standard process:
 
 Fork the repository.
-Create a new branch (git checkout -b feature-branch).
+
+Create a new branch:
+
+bash
+Copy code
+git checkout -b feature-branch
 Make your changes.
-Commit the changes (git commit -m 'Add new feature').
-Push to the branch (git push origin feature-branch).
+
+Commit the changes:
+
+bash
+Copy code
+git commit -m 'Add new feature'
+Push to the branch:
+
+bash
+Copy code
+git push origin feature-branch
 Open a pull request.
+
 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
