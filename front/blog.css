@@ -1,3 +1,28 @@
+.logo {
+    /* Align the logo container to the left */
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center;         /* Vertically center the logo */
+    margin: 20px;                /* Add space around the logo */
+}
+
+.logo img {
+    /* Control the size of the logo */
+    max-width: 100%;          /* Make sure the logo doesn't overflow */
+    height: auto;             /* Maintain the logo's aspect ratio */
+    width: 200px;             /* Set a fixed width, adjust as needed */
+    object-fit: contain;      /* Ensure the image scales properly */
+}
+
+/* Optional: Add a background color or other styles to the logo container */
+.logo {
+    background-color: #f9f9f9; /* Example light background */
+    padding: 10px;             /* Space around the logo */
+    border-radius: 10px;       /* Rounded corners for the logo container */
+}
+
+
+
 /* General Styling */
 * {
     margin: 0;
@@ -359,4 +384,103 @@ footer {
     .blogs-listing-banner {
         margin-right: 0; /* Remove margin for mobile */
     }
+}
+/* Blog Section */
+.blog-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.blog-post {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.blog-image img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.blog-content h3 {
+    color: #333;
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.blog-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.blog-conclusion h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.blog-conclusion p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: #f4f4f4;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-container h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #F6F5F2;
+}
+
+.footer-container p, .footer-container ul, .footer-container a {
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+    color: #F6F5F2;
+    text-decoration: underline;
 }
