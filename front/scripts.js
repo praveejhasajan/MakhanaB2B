@@ -66,3 +66,13 @@ function toggleNavbar() {
     navbarContainer.classList.toggle('active');
 }
 
+
+    function showPopup() {
+        var popup = document.getElementById("contactPopup");
+        popup.style.display = "block";
+    }
+
+    function closePopup() {
+        var popup = document.getElementById("contactPopup");
+        popup.style.display = "none";
+    }
