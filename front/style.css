@@ -678,6 +678,55 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.table-container {
+    max-width: 800px; /* Sets a maximum width for the table */
+    margin: 0 auto; /* Centers the table on the page */
+    padding: 10px;
+}
+
+.enhanced-table {
+    width: 100%; /* Makes the table take up 100% of the container width */
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.enhanced-table thead {
+    background-color: #FF921C;
+    color: #ffffff;
+}
+
+.enhanced-table th, .enhanced-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* Allows text to wrap within each cell */
+}
+
+.enhanced-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.enhanced-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.enhanced-table td:last-child {
+    font-weight: bold;
+    color: #333;
+}
+
+.enhanced-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+@media (max-width: 600px) {
+    .enhanced-table, .enhanced-table th, .enhanced-table td {
+        font-size: 14px; /* Reduces font size on smaller screens */
+    }
+}
 
 /* landig page */
 /* Existing styles */
@@ -724,14 +773,68 @@ footer {
     .advantages {
         flex-direction: column;
     }
-
     .reach {
-        flex-direction: column;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        margin: 20px 0;
     }
-
-    .reviews-container {
-        flex-direction: column;
+    
+    .reach-left {
+        flex: 1;
+        text-align: center;
     }
+    
+    .reach-left .map {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px; /* Optional: adds rounded corners */
+    }
+    
+    .reach-right {
+        flex: 2;
+        padding-left: 20px;
+    }
+    
+    .reach-right h2 {
+        font-size: 24px; /* Adjust font size as needed */
+        margin-bottom: 10px;
+    }
+    
+    .info-box {
+        border: 1px solid #ccc; /* Light gray border */
+        padding: 15px; /* Space inside the box */
+        background-color: #f9f9f9; /* Light background color for the box */
+        border-radius: 8px; /* Rounded corners */
+        margin-top: 10px; /* Space above the box */
+    }
+    
+    .info-box p {
+        font-size: 16px; /* Adjust font size as needed */
+        line-height: 1.5; /* Improve readability */
+        color: #333; /* Text color */
+    }
+    .hidden-keywords {
+        display: none; /* This will hide the keywords from view */
+    }
+        
+    
+    .map {
+        width: 100%; /* Ensure the image is responsive */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 10px; /* Optional: add rounded corners to the image */
+    }
+    
+    h2 {
+        color: #333; /* Dark color for the heading */
+        margin-bottom: 10px; /* Space below the heading */
+    }
+    
+    p {
+        color: #555; /* Lighter color for the paragraph text */
+        line-height: 1.6; /* Improve readability with line height */
+    }
+    
 
     .review {
         max-width: 100%;
