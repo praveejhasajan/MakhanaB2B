@@ -6,24 +6,6 @@
     <title>Tasty Makhana Export</title>
     <meta name="keywords" content="Makhana act as an anti-oxidants, Very light and easy to digest, They are traditionally an Indian product. All Makhana flavours are also GLUTEN and MSG FREEMakhana, healthy snacks, Indian food, organic Makhana, premium quality, international distribution, Indian market, global reach">
     <link rel="stylesheet" href="/front/style.css">
-    <!-- <style>
-        .moving-alert {
-            width: 100%;
-            background-color: #FF921C;
-            color: #333;
-            text-align: center;
-            font-size: 18px;
-            position: absolute;
-            left: 0;
-            animation: move 15s linear infinite;
-        }
-        
-        @keyframes move {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-        body {
-        padding-top: 40px;
-    } -->
     <style>
     .moving-alert {
         width: 100%;
@@ -77,26 +59,27 @@
             <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
         </div>
         <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
-        <div class="navbar-container" id="navbar">
+        <div class="navbar-container" id="navbarContainer">
             <a href="#home">Home</a>
             <a href="#product">Product</a>
             <a href="javascript:void(0);" onclick="showPopup()">Buy Now</a>
             <a href="#contact">Contact Us</a>
-            <a href="./blog.html">Blogs</a>
+            <a href="./blog">Blogs</a>
         </div>
-    
-        <script>
-            function toggleNavbar() {
-                var navbar = document.getElementById("navbar");
-                if (navbar.style.display === "block") {
-                    navbar.style.display = "none";
-                } else {
-                    navbar.style.display = "block";
-                }
-            }
-        </script>
     </nav>
+
+    <script>
+        function toggleNavbar() {
+            var navbarContainer = document.getElementById("navbarContainer");
+            if (navbarContainer.style.display === "block") {
+                navbarContainer.style.display = "none";
+            } else {
+                navbarContainer.style.display = "block";
+            }
+        }
+    </script>
 </header>
+
 
 <div class="moving-alert">
     <span>Website is under development. For any queries or orders, please use our chatbot Makhanaginie.</span>
