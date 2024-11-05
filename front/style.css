@@ -1,9 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+   
+
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color:  #D0B8A8;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 html {
     scroll-behavior: smooth;
@@ -29,7 +35,7 @@ html {
 
 .navbar-container {
     display: flex;
-    gap: 20px;
+    /* gap: 20px; */
 }
 
 .navbar a {
@@ -73,44 +79,42 @@ html {
 
 /* Main Section Styles */
 .main-section {
-    padding: 2em;
     width: 100%;
-    margin: auto;
-    margin-top: 100px; /* Add margin-top to prevent overlap */
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  #F8EDE3;
+    background-color: #F8EDE3;
 }
 
 .product {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; 
+    gap: 20px;
+    width: 90%; 
 }
 
 .product-left {
     max-width: 50%;
-    
+    display: flex;
 }
 
 .product-left img {
     max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    
+    height: 90%;
+    box-shadow: 0 2px 10px rgba(104, 103, 103, 2);
 }
 
 .product-right {
     flex: 1;
     width: 50%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: center;
-    padding: 20px;
+    padding-left: 5px;
+    box-shadow: 0 2px 5px rgba(104, 103, 103, 2);
 }
 
 .product-right h1 {
@@ -120,7 +124,6 @@ html {
 
 .product-right p {
     font-size: 1.2em;
-    margin-bottom: 1.5em;
     line-height: 1.5;
     width: 90%;
 }
@@ -156,7 +159,25 @@ html {
     .product-left {
         max-width: 100%;
     }
+
+    .product-right {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .product-right h1 {
+        font-size: 2em;
+    }
+
+    .product-right p {
+        font-size: 1em;
+    }
+
+    .cta {
+        width: 80%;
+    }
 }
+
 
 .advantages {
     background-color: #F8EDE3; /* Light background for contrast */
@@ -245,9 +266,9 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%; /* Increased width */
-    height: 100vh; /* Ensuring full viewport height */
-    background-color:  #D0B8A8;
+    width: 95%;
+    height: 100vh;
+    background-color: #D0B8A8;
     margin: 5%;
 }
 
@@ -260,21 +281,21 @@ ul {
 }
 
 .reach-left {
-    width: 70%; /* Image now takes up 70% of the area */
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .reach-left img {
-    width: 90%; /* Increased width to make image look even bigger */
+    width: 90%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .reach-right {
-    width: 30%; /* Text now takes up 30% of the area */
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -293,14 +314,35 @@ ul {
 /* Responsive design */
 @media (max-width: 768px) {
     .reach {
+        width: 90%;
         flex-direction: column;
+        height: auto; /* Adjust height for small screens */
+        overflow: hidden; /* Prevent overflow */
     }
 
     .reach-left,
     .reach-right {
         width: 100%;
     }
+
+    .reach-left {
+        order: 2; /* Move .reach-left to the bottom */
+    }
+
+    .reach-right {
+        order: 1; /* Move .reach-right to the top */
+        padding: 0 10px; /* Add some padding for better spacing */
+    }
+
+    .reach-right h2 {
+        font-size: 1.8em;
+    }
+
+    .reach-right p {
+        font-size: 1em;
+    }
 }
+
 /* General styles for navbar */
 .navbar-container {
     display: flex;
@@ -682,6 +724,7 @@ footer {
     max-width: 800px; /* Sets a maximum width for the table */
     margin: 0 auto; /* Centers the table on the page */
     padding: 10px;
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
 }
 
 .enhanced-table {
@@ -723,10 +766,19 @@ footer {
 }
 
 @media (max-width: 600px) {
+    .table-container {
+        padding: 5px; /* Reduces padding on smaller screens */
+    }
+    
     .enhanced-table, .enhanced-table th, .enhanced-table td {
         font-size: 14px; /* Reduces font size on smaller screens */
     }
+
+    .enhanced-table th, .enhanced-table td {
+        padding: 8px; /* Reduces padding inside cells on smaller screens */
+    }
 }
+
 
 /* landig page */
 /* Existing styles */
