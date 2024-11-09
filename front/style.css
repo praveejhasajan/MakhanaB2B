@@ -79,6 +79,7 @@ html {
 
 
 /* Main Section Styles */
+/* Base CSS */
 .main-section {
     width: 100%;
     min-height: 100vh;
@@ -91,29 +92,28 @@ html {
 .product {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     gap: 20px;
-    width: 90%; 
+    width: 90%;
+    height: 100%;
 }
 
-.product-left {
-    max-width: 50%;
+.product-left, .product-right {
+    flex: 1;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-left img {
-    max-width: 100%;
-    height: 90%;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
     box-shadow: 0 2px 10px rgba(104, 103, 103, 2);
 }
 
 .product-right {
-    flex: 1;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
     padding-left: 5px;
     padding-bottom: 3%;
     box-shadow: 0 2px 5px rgba(104, 103, 103, 2);
@@ -157,14 +157,15 @@ html {
 
     .product {
         flex-direction: column;
+        height: auto;
     }
 
-    .product-left {
-        max-width: 100%;
+    .product-left, .product-right {
+        width: 100%;
+        height: auto;
     }
 
     .product-right {
-        width: 100%;
         padding: 0 10px;
     }
 
@@ -174,12 +175,26 @@ html {
 
     .product-right p {
         font-size: 1em;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Show only 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: max-height 0.3s ease;
+        max-height: 4.5em; /* Adjust based on line height */
+    }
+
+    .product-right p.expanded {
+        -webkit-line-clamp: unset; /* Remove the clamp */
+        max-height: none;
     }
 
     .cta {
         width: 80%;
     }
 }
+
+
 
 
 .advantages {
