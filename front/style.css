@@ -17,10 +17,10 @@ html {
 
 /* Navbar and Toggle Button Styles */
 .navbar {
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
     background-color: #DFD3C3;
 }
 
@@ -34,6 +34,7 @@ html {
 }
 
 .navbar-container {
+    top: 0;
     display: flex;
     /* gap: 20px; */
 }
@@ -1006,5 +1007,5 @@ footer {
     .navbar-container a:hover {
         background-color: rgba(255, 146, 28, 0.8); /* Semi-transparent orange on hover */
     }
-
+    
     
