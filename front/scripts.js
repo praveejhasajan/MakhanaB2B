@@ -76,3 +76,13 @@ function toggleNavbar() {
         var popup = document.getElementById("contactPopup");
         popup.style.display = "none";
     }
+    // product
+    
+document.addEventListener("DOMContentLoaded", function() {
+    const description = document.querySelector(".product-right p");
+    description.addEventListener("click", function() {
+        description.classList.toggle("expanded");
+    });
+});
+
+
