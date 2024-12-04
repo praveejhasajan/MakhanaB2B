@@ -7,28 +7,35 @@
     <meta name="keywords" content="Makhana act as an anti-oxidants, Very light and easy to digest, They are traditionally an Indian product. All Makhana flavours are also GLUTEN and MSG FREEMakhana, healthy snacks, Indian food, organic Makhana, premium quality, international distribution, Indian market, global reach">
     <link rel="stylesheet" href="/front/style.css">
     <style>
-    .moving-alert {
-        width: 100%;
-        background-color: #FF921C;
-        color: #333;
-        text-align: center;
-        font-size: 18px;
-        white-space: nowrap;
-        overflow: hidden;
-        z-index: 1000;
-        padding: 10px 0;
-    }
+   .moving-alert {
+    width: 100%;
+    background-color: #FF921C; /* Original color retained */
+    color: #333; /* Original text color retained */
+    text-align: center;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 1000;
+    padding: 10px 0;
+}
 
-    .moving-alert span {
-        display: inline-block;
-        padding-left: 100%; /* Creates the gap for smooth continuous scrolling */
-        animation: move 15s linear infinite;
-    }
+.moving-alert span {
+    display: inline-block;
+    padding-left: 100%; /* Creates the gap for smooth continuous scrolling */
+    animation: move 15s linear infinite;
+    will-change: transform;
+}
 
-    @keyframes move {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-    }
+/* Pause the animation on hover */
+.moving-alert:hover span {
+    animation-play-state: paused;
+}
+
+@keyframes move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
 
     /* Optional: Adding padding to the body to avoid overlap with fixed alert */
     body {
@@ -73,8 +80,14 @@
 </header>
 
 <div class="moving-alert">
-    <span>Website is under development. For any queries or orders, please use our chatbot Makhanaginie.</span>
+    <span>
+        Our website is under development. For queries or orders, please reach out via WhatsApp: 
+        <a href="https://wa.me/919591533598" target="_blank">+91-9591533598</a>, or email us at 
+        <a href="mailto:info@makhanabazar.com">info@makhanabazar.com</a>. 
+        We are dedicated to fulfilling your orders and primarily focus on B2B services.
+    </span>
 </div>
+
 
 <main class="main-section">
     <section class="product" id="home">
