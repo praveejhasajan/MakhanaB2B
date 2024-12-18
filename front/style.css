@@ -8,7 +8,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color:  #D0B8A8;
+    background-color:  #F8EDE3;
     /* overflow-x: hidden; */
 }
 html {
@@ -40,7 +40,7 @@ html {
 }
 
 .navbar a {
-    color: #D0B8A8;
+    color: #F8EDE3;
     text-decoration: none;
     padding: 10px 20px;
 }
@@ -286,7 +286,7 @@ ul {
     align-items: center;
     width: 95%;
     height: 100vh;
-    background-color: #D0B8A8;
+    background-color: #F8EDE3;
     margin: 5%;
 }
 
@@ -452,7 +452,7 @@ ul {
 
 .reviews {
     padding: 2em 0;
-    background-color:  #D0B8A8;
+    background-color:  #F8EDE3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -947,7 +947,7 @@ footer {
 .product-category {
     text-align: center;
     padding: 2em 0;
-    background-color: #D0B8A8 ;
+    background-color: #F8EDE3 ;
 }
 
 .product-category h2 {
@@ -1032,7 +1032,7 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #D0B8A8;
+        background-color: #DFD3C3;
         padding: 20px 0;
     }
     #gallery-section h1 {
