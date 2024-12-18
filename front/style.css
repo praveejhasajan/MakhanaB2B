@@ -194,45 +194,53 @@ html {
     }
 }
 
-
-
-
+/* Main Advantages Section */
 .advantages {
     background-color: #F8EDE3; /* Light background for contrast */
     padding: 40px 20px; /* Add padding for spacing */
 }
 
+/* Container for Text and Image */
 .advantages-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap; /* Enable wrapping for responsiveness */
+    align-items: center; /* Vertically align content */
+    justify-content: space-between; /* Spread items evenly */
     max-width: 1200px; /* Limit max width for larger screens */
-    margin: auto; /* Center the section */
+    margin: 0 auto; /* Center the section horizontally */
+    gap: 20px; /* Add consistent spacing between elements */
 }
 
+/* Left Section: Text Content */
 .advantages-left {
-    flex: 1 1 300px; /* Flexible width */
+    flex: 1 1 45%; /* Take up 45% of the width */
     padding: 20px; /* Padding for inner spacing */
     text-align: left; /* Align text to the left */
-    background-color: #F8EDE3; /* White background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #FFFFFF; /* White background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
     margin: 10px; /* Margin for spacing */
+    line-height: 1.6; /* Better readability */
 }
 
+/* Right Section: Image */
 .advantages-right {
-    flex: 1 1 400px; /* Flexible width */
+    flex: 1 1 45%; /* Take up 45% of the width */
     display: flex; /* Center the image */
     justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    padding: 10px; /* Add padding around the image */
+    margin: 10px; /* Margin for spacing */
 }
 
 .advantages-right img {
     max-width: 100%; /* Responsive image */
-    border-radius: 8px; /* Rounded corners for the image */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Typography */
 h2 {
     font-size: 1.8rem; /* Heading size */
     color: #333; /* Dark text color */
@@ -248,9 +256,15 @@ p {
 ul {
     list-style-type: disc; /* Bullet points for list */
     padding-left: 20px; /* Indent list */
+    margin-bottom: 20px; /* Add spacing below list */
     color: #333; /* Dark text color */
 }
 
+ul li {
+    margin-bottom: 10px; /* Add space between list items */
+}
+
+/* Call-to-Action Button */
 .cta {
     display: inline-block; /* Block element for button */
     padding: 12px 30px; /* Padding for button */
@@ -260,8 +274,14 @@ ul {
     font-weight: bold; /* Bold text */
     text-decoration: none; /* Remove underline */
     margin-top: 15px; /* Space above button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
+.cta:hover {
+    background-color: #d15f17; /* Darker shade on hover */
+}
+
+/* Responsive Design: Medium Screens */
 @media (max-width: 768px) {
     .advantages-container {
         flex-direction: column; /* Stack on small screens */
@@ -270,13 +290,30 @@ ul {
 
     .advantages-left,
     .advantages-right {
-        max-width: 100%; /* Full width on small screens */
+        flex: 1 1 100%; /* Full width on small screens */
     }
 
     .advantages-right {
         margin-top: 20px; /* Space above image on small screens */
     }
 }
+
+/* Responsive Design: Small Screens */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem; /* Smaller heading size on mobile */
+    }
+
+    p, ul {
+        font-size: 0.9rem; /* Smaller text for better fit */
+    }
+
+    .cta {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+        font-size: 0.9rem; /* Adjust button font size */
+    }
+}
+
 
 /* Reach Section Styles */
 
