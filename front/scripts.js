@@ -84,5 +84,110 @@ document.addEventListener("DOMContentLoaded", function() {
         description.classList.toggle("expanded");
     });
 });
+async function calculateDeliveryCharge(pincode, weight) {
+    const response = await fetch(`/calculate-delivery?pincode=${pincode}&weight=${weight}`);
+    const { deliveryCharge } = await response.json();
+    document.getElementById('deliveryCharge').textContent = deliveryCharge;
+}
+
+// Trigger when pincode or weight changes
+document.getElementById('customerPincode').addEventListener('input', (e) => {
+    const weight = 1; // Example weight (1kg); replace with actual product weight
+    calculateDeliveryCharge(e.target.value, weight);
+});
+// Mock delivery charges based on regions and weights
+const deliveryRates = [
+    { zone: 'local', pincodeStart: 110000, pincodeEnd: 119999, ratePerKg: 50 },
+    { zone: 'state', pincodeStart: 120000, pincodeEnd: 129999, ratePerKg: 100 },
+    { zone: 'interstate', pincodeStart: 130000, pincodeEnd: 199999, ratePerKg: 150 },
+];
+
+// Function to calculate delivery charge
+function getDeliveryCharge(pincode, weight) {
+    const rate = deliveryRates.find(
+        (zone) => pincode >= zone.pincodeStart && pincode <= zone.pincodeEnd
+    );
+    return rate ? rate.ratePerKg * weight : 200; // Default charge if no match
+}
+
+// API endpoint
+app.get('/calculate-delivery', (req, res) => {
+    const { pincode, weight } = req.query;
+    const deliveryCharge = getDeliveryCharge(parseInt(pincode), parseFloat(weight));
+    res.json({ deliveryCharge });
+});
+
+ // Open Purchase Modal
+function openPurchaseModal() {
+    document.getElementById('purchaseModal').style.display = 'flex';
+}
+
+// Close Purchase Modal
+function closePurchaseModal() {
+    document.getElementById('purchaseModal').style.display = 'none';
+}
+
+// Open Another Modal (example)
+function openModal() {
+    document.getElementById('myModal').style.display = 'flex';
+}
+
+// Close Example Modal
+function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+}
+
+// Handle Purchase Form Submission
+document.getElementById('purchaseForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const productName = document.getElementById('productName').value;
+    const productPrice = document.getElementById('productPrice').value;
+    const customerName = document.getElementById('customerName').value;
+    const customerPhone = document.getElementById('customerPhone').value;
+    const customerAddress = document.getElementById('customerAddress').value;
+    const customerPincode = document.getElementById('customerPincode').value;
+
+    // Here you would send the data to the server or process it
+    console.log('Purchase Details:', {
+        productName,
+        productPrice,
+        customerName,
+        customerPhone,
+        customerAddress,
+        customerPincode
+    });
+
+    // Close the modal after purchase submission
+    closePurchaseModal();
+});
+function validateForm() {
+    // Validate Mobile Number (10 digits)
+    const phone = document.getElementById('customerPhone').value;
+    const phonePattern = /^\d{10}$/;
+    if (!phonePattern.test(phone)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return false;
+    }
+
+    // Validate Pin Code (6 digits)
+    const pincode = document.getElementById('customerPincode').value;
+    const pincodePattern = /^\d{6}$/;
+    if (!pincodePattern.test(pincode)) {
+        alert("Please enter a valid 6-digit pincode.");
+        return false;
+    }
+
+    // Validate Email
+    const email = document.getElementById('customerEmail').value;
+    if (!email) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    return true;
+}
+
+
 
 

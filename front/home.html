@@ -157,43 +157,92 @@
     </div>
 </section>
 
-<!-- product -->
-<section class="product-category"id="product">
+<!-- Product Section -->
+<section class="product-category" id="product">
     <h2>Product Categories</h2>
     <div class="category-container">
+        <!-- Hand Picked -->
         <div class="category-card">
-            <img src="/front/image/Makhana11.jpg" alt="Category Image">
-            <p>
-                <p>Hand Picked</p>
-                <p>14mm and above in diameter</p>
-                <span>This is the largest and most premium grade, often used for high-end products due to its visual appeal and crunchiness.</span>
-                <p>1600</p>
-            </p>
+            <img src="/front/image/Makhana11.jpg" alt="Hand Picked">
+            <h3>Hand Picked</h3>
+            <p>14mm and above in diameter</p>
+            <span>This is the largest and most premium grade, often used for high-end products due to its visual appeal and crunchiness.</span>
+            <p><strong>Price: ₹1600/kg</strong></p>
+            <button class="buy-now" onclick="openPurchaseModal('Hand Picked', 1600)">Buy Now</button>
         </div>
+        
+        <!-- Large -->
         <div class="category-card">
-            <img src="/front/image/Lotus-Seed-Makhana-1.webp" alt="Category Image">
-            <p> <p>Large</p>
-                <p>Around 12mm to 14mm</p>
-                <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
-                <p>1300</p>
-            </p>
+            <img src="/front/image/Lotus-Seed-Makhana-1.webp" alt="Large">
+            <h3>Large</h3>
+            <p>Around 12mm to 14mm</p>
+            <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
+            <p><strong>Price: ₹1300/kg</strong></p>
+            <button class="buy-now" onclick="openPurchaseModal('Large', 1300)">Buy Now</button>
         </div>
+        
+        <!-- Regular -->
         <div class="category-card">
-            <img src="/front/image/bbb-6.jpg" alt="Category Image">
-            <p> <p>Regular</p>
-                <p>Around 10mm to 12mm</p>
-                <span>Popular for a variety of uses, such as cooking and making flavored snacks.</span>
-                <p>1100</p></p>
+            <img src="/front/image/bbb-6.jpg" alt="Regular">
+            <h3>Regular</h3>
+            <p>Around 10mm to 12mm</p>
+            <span>Popular for a variety of uses, such as cooking and making flavored snacks.</span>
+            <p><strong>Price: ₹1100/kg</strong></p>
+            <button class="buy-now" onclick="openPurchaseModal('Regular', 1100)">Buy Now</button>
         </div>
+        
+        <!-- Powder -->
         <div class="category-card">
-            <img src="/front/image/Makhana11.jpg" alt="Category Image">
-            <p><p>Powder/Powder Material</p>
-                <p>Below 10mm</p>
-                <span>Often used as an ingredient in other products or for grinding into powder for health supplements and recipes.</span>
-                <td>-</td></p>
+            <img src="/front/image/Makhana11.jpg" alt="Powder Material">
+            <h3>Powder/Powder Material</h3>
+            <p>Below 10mm</p>
+            <span>Often used as an ingredient in other products or for grinding into powder for health supplements and recipes.</span>
+            <p><strong>Price: ₹900/kg</strong></p>
+            <button class="buy-now" onclick="openPurchaseModal('Powder', 900)">Buy Now</button>
         </div>
     </div>
 </section>
+
+<!-- Modal for Purchase -->
+<div id="purchaseModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closePurchaseModal()">&times;</span>
+        <h3>Complete Your Purchase</h3>
+        <form id="purchaseForm">
+            <input type="hidden" id="productName" name="productName" />
+            <input type="hidden" id="productPrice" name="productPrice" />
+            
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" name="customerName" required />
+            
+            <label for="customerPhone">Phone:</label>
+            <input type="tel" id="customerPhone" name="customerPhone" required />
+            
+            <label for="customerAddress">Address:</label>
+            <textarea id="customerAddress" name="customerAddress" required></textarea>
+            
+            <label for="customerPincode">Pin Code:</label>
+            <input type="text" id="customerPincode" name="customerPincode" required />
+
+            <p>Delivery Charges: ₹<span id="deliveryCharge">0</span></p>
+
+            <button type="submit">Confirm Purchase</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal for Other Content (example modal) -->
+<div id="myModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Modal Title</h2>
+        <p>Some vibrant and colorful content goes here.</p>
+        <button onclick="purchaseProduct()">Buy Now</button>
+    </div>
+</div>
+
+
 <!-- <div class="table-container">
     <table class="enhanced-table">
         <thead>
