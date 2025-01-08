@@ -1,3 +1,5 @@
+![alt text](image.png)
+
 Makhana B2B Portal (Demo)
 Welcome to the demo version of the Makhana B2B Portal! This repository showcases a prototype of a business-to-business (B2B) platform dedicated to the export and bulk sale of Makhana. The demo version provides insight into how the full platform will operate, featuring capabilities for exploring products and submitting inquiries.
 
