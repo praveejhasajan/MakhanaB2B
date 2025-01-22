@@ -1287,28 +1287,36 @@ footer {
     }
 }
 
-.category-card .buy-now {
+/* General Styles for Buy Now Button */
+.buy-now {
     display: inline-block;
     background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
+    color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 12px 20px; /* Spacing */
+    padding: 12px 24px; /* Adjust padding */
     text-align: center;
-    text-decoration: none; /* No underline */
-    border-radius: 8px; /* Rounded corners */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow */
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
 }
 
-.category-card .buy-now:hover {
+.buy-now:hover {
     background-color: #45a049; /* Darker green on hover */
-    transform: translateY(-3px); /* Lift effect on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increased shadow */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
-.category-card .buy-now:active {
-    transform: translateY(0); /* Remove lift on click */
+.buy-now:active {
+    transform: translateY(0); /* Reset lift on click */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
+
+.buy-now:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.6); /* Focus outline */
+}
+
+
 
