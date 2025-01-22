@@ -1287,4 +1287,28 @@ footer {
     }
 }
 
+.category-card .buy-now {
+    display: inline-block;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px; /* Spacing */
+    text-align: center;
+    text-decoration: none; /* No underline */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow */
+}
+
+.category-card .buy-now:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increased shadow */
+}
+
+.category-card .buy-now:active {
+    transform: translateY(0); /* Remove lift on click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
 
