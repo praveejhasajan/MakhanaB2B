@@ -217,6 +217,73 @@
     </div>
 </section>
 
+
+<div class="containerCalculator">
+    <div class="container">
+        <div class="form-group">
+            <label for="quantity">Quantity (kg):</label>
+            <select id="quantity">
+                <option value="100">100 kg</option>
+                <option value="200">200 kg</option>
+                <option value="300">300 kg</option>
+                <option value="400">400 kg</option>
+                <option value="500">500 kg</option>
+                <option value="600">600 kg</option>
+                <option value="700">700 kg</option>
+                <option value="800">800 kg</option>
+                <option value="900">900 kg</option>
+                <option value="1000">1000 kg</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="country">Select Country:</label>
+            <select id="country" onchange="updateCurrency()">
+                <option value="AUD" data-rate="0.018">Australia (AUD)</option>
+                <option value="USD" data-rate="0.012">USA (USD)</option>
+                <option value="EUR" data-rate="0.011">Europe (EUR)</option>
+                <option value="SGD" data-rate="0.016">Singapore (SGD)</option>
+                <option value="NZD" data-rate="0.017">New Zealand (NZD)</option>
+                <option value="HKD" data-rate="0.094">Hong Kong (HKD)</option>
+                <option value="CHF" data-rate="0.011">Switzerland (CHF)</option>
+                <option value="JPY" data-rate="1.3">Japan (JPY)</option>
+                <option value="CAD" data-rate="0.016">Canada (CAD)</option>
+                <option value="GBP" data-rate="0.009">United Kingdom (GBP)</option>
+                <option value="AED" data-rate="0.044">UAE (AED)</option>
+                <option value="MYR" data-rate="0.055">Malaysia (MYR)</option>
+                <option value="ZAR" data-rate="0.22">South Africa (ZAR)</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="incoterm">Select Incoterm:</label>
+            <select id="incoterm">
+                <option value="21.6">EXW - Ex Works</option>
+                <option value="22.68">FCA - Free Carrier</option>
+                <option value="23.76">FAS - Free Alongside Ship</option>
+                <option value="23.76">FOB - Free On Board</option>
+                <option value="30.24">CFR - Cost & Freight</option>
+                <option value="30.89">CIF - Cost, Insurance & Freight</option>
+                <option value="31.32">CPT - Carriage Paid To</option>
+                <option value="31.97">CIP - Carriage & Insurance Paid</option>
+                <option value="33.05">DPU - Delivered at Place Unloaded</option>
+                <option value="35.21">DAP - Delivered at Place</option>
+                <option value="38.45">DDP - Delivered Duty Paid</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <button onclick="calculatePrice()">Calculate</button>
+        </div>
+    </div>
+        
+    <div class="result-box" id="resultBox" style="display: none;">
+        <h3>Total Price:</h3>
+        <p><strong><span id="totalPrice">0</span> <span id="currency">AUD</span></strong></p>
+        <p id="incotermExplanation"></p>
+    </div>
+</div>
+
 <!-- Modal for Purchase -->
 <div id="purchaseModal" class="modal" style="display: none; z-index: 100; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">
     <div class="modal-content">
@@ -342,7 +409,6 @@
         <div class="contact-details">
             <h3>Contact Us</h3>
             <p><strong>Company Name:</strong> Krishipurna organic pvt ltd</p>
-            <p><strong>Contact Person:</strong> Praveen Kumar Jha</p>
             <p><strong>Mobile:</strong> <a href="tel:+919591533598">+91-9591533598</a></p>
             <p><strong>Email:</strong> <a href="mailto:info@makhanabazar.com">info@makhanabazar.com</a></p>
             <p><strong>Address:</strong> Dwarka, Delhi, India</p>

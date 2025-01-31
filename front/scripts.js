@@ -189,5 +189,35 @@ function validateForm() {
 }
 
 
+function updateCurrency() {
+    let countrySelect = document.getElementById("country");
+    let currency = countrySelect.options[countrySelect.selectedIndex].value;
+    document.getElementById("currency").innerText = currency;
+}
 
+function calculatePrice() {
+    let quantity = document.getElementById("quantity").value;
+    let incotermSelect = document.getElementById("incoterm");
+    let incotermRate = incotermSelect.value;
+    let incotermText = incotermSelect.options[incotermSelect.selectedIndex].text;
+    let countrySelect = document.getElementById("country");
+    let exchangeRate = countrySelect.options[countrySelect.selectedIndex].getAttribute("data-rate");
+   let totalPrice = (quantity * parseFloat(incotermRate)) * parseFloat(exchangeRate);
+
+
+    
+    document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
+    document.getElementById("resultBox").style.display = "block";
+    
+    let explanation = "";
+    switch (incotermText.split(" - ")[0]) {
+        case "EXW": explanation = "Ex Works (EXW) means the buyer takes full responsibility for transport and costs after pickup."; break;
+        case "FCA": explanation = "Free Carrier (FCA) means the seller delivers to the agreed carrier location, and the buyer covers further transport."; break;
+        case "FOB": explanation = "Free On Board (FOB) means the seller handles delivery to the ship, while the buyer covers ocean freight and beyond."; break;
+        case "CIF": explanation = "Cost, Insurance & Freight (CIF) includes cost, main transport, and insurance by the seller."; break;
+        case "DDP": explanation = "Delivered Duty Paid (DDP) means the seller covers all costs, duties, and delivers directly to the buyer."; break;
+        default: explanation = "The selected Incoterm determines which party covers transportation, insurance, and duties."; break;
+    }
+    document.getElementById("incotermExplanation").innerText = explanation;
+}
 

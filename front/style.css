@@ -5,10 +5,11 @@
 
 }
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Heebo", sans-serif;;
     margin: 0;
     padding: 0;
     background-color:  #F8EDE3;
+    -webkit-text-size-adjust: 100%;
     /* overflow-x: hidden; */
 }
 html {
@@ -1315,8 +1316,57 @@ footer {
     }
 }
 
-/* General Styles for Buy Now Button */
+/* Container for the calculator */
+.containerCalculator {
+    margin: auto;
+    /* padding: 20px; */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px;
+    visibility: visible;
+    animation-delay: 0.1s;
+    animation-name: fadeIn;
+    width: 100%;
+    padding-right: var(--bs-gutter-x, .75rem);
+    padding-left: var(--bs-gutter-x, .75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
 
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 30%; /* Keep space for each selection field */
+}
+select, input, button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #e8f5e9;
+    border-left: 5px solid #4caf50;
+    text-align: left;
+}
+.result-box strong {
+    color: #388e3c;
+}
 
 
 
