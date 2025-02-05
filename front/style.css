@@ -1369,4 +1369,17 @@ select, input, button {
 }
 
 
+#foxnut {
+    width: 50px; /* Ensure it matches the JS ball size */
+    height: 50px; /* Ensure it matches the JS ball size */
+    /* background-color: #ff9900; */
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    background-image: url('/front/image/onemakhana.png');
+    background-size: 100% 100%; /* Stretch image to fit the ball */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 

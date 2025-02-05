@@ -1,5 +1,47 @@
-// JavaScript file to add interactive behavior
-console.log("Welcome to SnackPro!");
+const foxnut = document.getElementById('foxnut');
+let x = 0;
+let y = 0;
+let dx = 3;
+let dy = 3;
+let maxX = window.innerWidth - 50;
+let maxY = window.innerHeight - 50;
+
+function animate() {
+    // Update position
+    x += dx;
+    y += dy;
+    
+    // Wall collision detection
+    if (x >= maxX || x <= 0) {
+        dx = -dx * 0.95; // Reverse direction and lose some energy
+        x = x <= 0 ? 0 : maxX;
+    }
+    
+    if (y >= maxY || y <= 0) {
+        dy = -dy * 0.95; // Reverse direction and lose some energy
+        y = y <= 0 ? 0 : maxY;
+    }
+    
+    // Apply gravity
+    dy += 0.2;
+    
+    // Update position
+    foxnut.style.left = x + 'px';
+    foxnut.style.top = y + 'px';
+    
+    requestAnimationFrame(animate);
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    maxX = window.innerWidth - 50;
+    maxY = window.innerHeight - 50;
+});
+
+// Start animation
+
+    animate();
+
 
 function toggleText() {
     const text = document.getElementById("toggleText");
@@ -220,4 +262,7 @@ function calculatePrice() {
     }
     document.getElementById("incotermExplanation").innerText = explanation;
 }
+
+
+
 
