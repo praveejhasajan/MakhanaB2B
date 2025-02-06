@@ -1,4 +1,3 @@
-{
 const foxnut = document.getElementById('foxnut');
 let x = 0;
 let y = 0;
@@ -39,16 +38,10 @@ function animate() {
     foxnut.style.left = x + 'px';
     foxnut.style.top = y + 'px';
 }
-    dy += 0.2;
-
-    // Update position
-    foxnut.style.left = x + 'px';
-    foxnut.style.top = y + 'px';
-
 
 // Start animation
 animate();
-}
+
 
 
 function toggleText() {
