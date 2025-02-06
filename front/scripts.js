@@ -1,3 +1,4 @@
+{
 const foxnut = document.getElementById('foxnut');
 let x = 0;
 let y = 0;
@@ -47,11 +48,7 @@ function animate() {
 
 // Start animation
 animate();
-
-
-// Start animation
-
-    animate();
+}
 
 
 function toggleText() {
