@@ -7,6 +7,8 @@ let maxX = window.innerWidth - 50;
 let maxY = window.innerHeight - 50;
 
 function animate() {
+    requestAnimationFrame(animate);
+    
     // Update position
     x += dx;
     y += dy;
@@ -14,29 +16,38 @@ function animate() {
     // Wall collision detection
     if (x >= maxX || x <= 0) {
         dx = -dx * 0.95; // Reverse direction and lose some energy
+        if (Math.abs(dx) < 0.5) dx = dx < 0 ? -0.5 : 0.5; // Set minimum threshold for dx
         x = x <= 0 ? 0 : maxX;
     }
     
     if (y >= maxY || y <= 0) {
         dy = -dy * 0.95; // Reverse direction and lose some energy
+        if (Math.abs(dy) < 0.5) dy = dy < 0 ? -0.5 : 0.5; // Set minimum threshold for dy
         y = y <= 0 ? 0 : maxY;
     }
     
     // Apply gravity
     dy += 0.2;
+    // Simulate terminal velocity
+    const terminalVelocity = 10;
+    if (dy > terminalVelocity) {
+        dy = terminalVelocity;
+    }
     
     // Update position
     foxnut.style.left = x + 'px';
     foxnut.style.top = y + 'px';
-    
-    requestAnimationFrame(animate);
 }
+    dy += 0.2;
 
-// Handle window resize
-window.addEventListener('resize', () => {
-    maxX = window.innerWidth - 50;
-    maxY = window.innerHeight - 50;
-});
+    // Update position
+    foxnut.style.left = x + 'px';
+    foxnut.style.top = y + 'px';
+
+
+// Start animation
+animate();
+
 
 // Start animation
 
