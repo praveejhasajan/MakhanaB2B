@@ -1406,7 +1406,7 @@ select, input, button {
     border-radius: 50%;
     position: absolute;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    background-image: url('/front/image/onemakhana.png');
+    background-image: url('https://www.makhanabazar.com/front/image/onemakhana.png');
     background-size: 100% 100%; /* Stretch image to fit the ball */
     background-position: center;
     background-repeat: no-repeat;
