@@ -450,7 +450,7 @@ ul li {
 /* Button styling */
 .toggle-btn {
     display: none; /* Initially hidden */
-    background-color: #DFD3C3;
+    /* background-color: #DFD3C3; */
     color: white;
     padding: 10px;
     border: none;
@@ -1043,7 +1043,7 @@ footer {
 
 .category-card img {
     max-width: 100%;
-    height: auto;
+    height: 400px;
     margin-bottom: 10px;
 }
 
@@ -1412,4 +1412,11 @@ select, input, button {
     background-repeat: no-repeat;
 }
 
-
+.foxnut {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url('https://www.makhanabazar.com/front/image/onemakhana.png') no-repeat center/cover;
+    border-radius: 50%;
+    opacity: 0.9;
+}

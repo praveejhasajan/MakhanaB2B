@@ -43,7 +43,6 @@
 
 </style>
 
-
          
 </head>
 <body>
@@ -56,9 +55,11 @@
 
 <header>
     <nav class="navbar" id="navbar">
-        <div class="logo">
+        <a href="https://www.makhanabazar.com" class="logo">
             <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
-        </div>
+        </a>
+        
+        
         <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
         <div class="navbar-container" id="navbarContainer">
             <a href="#home">Home</a>
@@ -164,6 +165,19 @@
 <section class="product-category" id="product">
     <h2>Product Categories</h2>
     <div class="category-container">
+
+        <!-- Sample Booking -->
+<div class="category-card">
+    <img src="/front/image/MakhanaInHand.jpeg" alt="Samples">
+    <h3>Samples</h3>
+    <span>This is the largest and most premium grade, often used for high-end products due to its visual appeal and crunchiness.</span>
+    <p><strong>Price: ₹2,000/kg</strong></p>
+    <p><strong>*Exclusive of GST</strong></p>
+    <p><strong>Available Package Sizes: 250GM, 500GM, 1KG</strong></p>
+    <a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Hand%20Picked%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
+       target="_blank" class="buy-now">Buy Now</a>
+</div>
+
 <!-- Hand Picked -->
 <div class="category-card">
     <img src="/front/image/MakhanaInHand.jpeg" alt="Hand Picked">
@@ -215,6 +229,43 @@
     <a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Kheer/Powder%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
        target="_blank" class="buy-now">Buy Now</a>
 </div>
+<!-- Peri-Peri -->
+<div class="category-card">
+    <img src="/front/image/MakhanaSuta.jpeg" alt="Peri-Peri">
+    <h3>Peri-Peri</h3>
+    <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
+    <p><strong>Price: ₹1,450/kg</strong></p>
+    <p><strong>*Exclusive of GST</strong></p>
+    <p><strong>Available Package Sizes: 250GM, 500GM, 1KG</strong></p>
+    <a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Large%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
+       target="_blank" class="buy-now">Buy Now</a>
+</div>
+
+<!-- cream & Onion -->
+<div class="category-card">
+    <img src="/front/image/MakhanaSuta.jpeg" alt="cream & Onion">
+    <h3>cream & Onion</h3>
+    <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
+    <p><strong>Price: ₹1,450/kg</strong></p>
+    <p><strong>*Exclusive of GST</strong></p>
+    <p><strong>Available Package Sizes: 250GM, 500GM, 1KG</strong></p>
+    <a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Large%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
+       target="_blank" class="buy-now">Buy Now</a>
+</div>
+
+<!-- Cheese -->
+<div class="category-card">
+    <img src="/front/image/MakhanaSuta.jpeg" alt="Cheese">
+    <h3>Cheese</h3>
+    <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
+    <p><strong>Price: ₹1,450/kg</strong></p>
+    <p><strong>*Exclusive of GST</strong></p>
+    <p><strong>Available Package Sizes: 250GM, 500GM, 1KG</strong></p>
+    <a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Large%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
+       target="_blank" class="buy-now">Buy Now</a>
+</div>
+
+
 
     </div>
 </section>
@@ -241,19 +292,19 @@
         <div class="form-group">
             <label for="country">Select Country:</label>
             <select id="country" onchange="updateCurrency()">
-                <option value="AUD" data-rate="0.018">Australia (AUD)</option>
-                <option value="USD" data-rate="0.012">USA (USD)</option>
-                <option value="EUR" data-rate="0.011">Europe (EUR)</option>
-                <option value="SGD" data-rate="0.016">Singapore (SGD)</option>
-                <option value="NZD" data-rate="0.017">New Zealand (NZD)</option>
-                <option value="HKD" data-rate="0.094">Hong Kong (HKD)</option>
-                <option value="CHF" data-rate="0.011">Switzerland (CHF)</option>
-                <option value="JPY" data-rate="1.3">Japan (JPY)</option>
-                <option value="CAD" data-rate="0.016">Canada (CAD)</option>
-                <option value="GBP" data-rate="0.009">United Kingdom (GBP)</option>
-                <option value="AED" data-rate="0.044">UAE (AED)</option>
-                <option value="MYR" data-rate="0.055">Malaysia (MYR)</option>
-                <option value="ZAR" data-rate="0.22">South Africa (ZAR)</option>
+                <option value="AUD" data-rate="0.02">Australia (AUD)</option>
+                <option value="USD" data-rate="0.015">USA (USD)</option>
+                <option value="EUR" data-rate="0.013">Europe (EUR)</option>
+                <option value="SGD" data-rate="0.02">Singapore (SGD)</option>
+                <option value="NZD" data-rate="0.02">New Zealand (NZD)</option>
+                <option value="HKD" data-rate="0.1">Hong Kong (HKD)</option>
+                <option value="CHF" data-rate="0.015">Switzerland (CHF)</option>
+                <option value="JPY" data-rate="1.5">Japan (JPY)</option>
+                <option value="CAD" data-rate="0.02">Canada (CAD)</option>
+                <option value="GBP" data-rate="0.01">United Kingdom (GBP)</option>
+                <option value="AED" data-rate="0.05">UAE (AED)</option>
+                <option value="MYR" data-rate="0.08">Malaysia (MYR)</option>
+                <option value="ZAR" data-rate="0.3">South Africa (ZAR)</option>
             </select>
         </div>
     

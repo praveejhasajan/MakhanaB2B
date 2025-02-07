@@ -1,8 +1,7 @@
 const foxnut = document.getElementById('foxnut');
-let x = 0;
-let y = 0;
-let dx = 3;
-let dy = 3;
+let x = 0, y = 0;
+let dx = 3, dy = 3;
+let angle = 0;
 let maxX = window.innerWidth - 50;
 let maxY = window.innerHeight - 50;
 
@@ -12,35 +11,87 @@ function animate() {
     // Update position
     x += dx;
     y += dy;
+    angle += 5; // Rotate element
     
     // Wall collision detection
     if (x >= maxX || x <= 0) {
-        dx = -dx * 0.95; // Reverse direction and lose some energy
-        if (Math.abs(dx) < 0.5) dx = dx < 0 ? -0.5 : 0.5; // Set minimum threshold for dx
+        dx = -dx * (0.9 + Math.random() * 0.1); // Reverse direction with random energy loss
         x = x <= 0 ? 0 : maxX;
+        bounceEffect();
     }
     
     if (y >= maxY || y <= 0) {
-        dy = -dy * 0.95; // Reverse direction and lose some energy
-        if (Math.abs(dy) < 0.5) dy = dy < 0 ? -0.5 : 0.5; // Set minimum threshold for dy
+        dy = -dy * (0.9 + Math.random() * 0.1); // Reverse direction with random energy loss
         y = y <= 0 ? 0 : maxY;
+        bounceEffect();
     }
     
     // Apply gravity
     dy += 0.2;
-    // Simulate terminal velocity
     const terminalVelocity = 10;
-    if (dy > terminalVelocity) {
-        dy = terminalVelocity;
-    }
-    
-    // Update position
+    if (dy > terminalVelocity) dy = terminalVelocity;
+
+    // Apply transformation
     foxnut.style.left = x + 'px';
     foxnut.style.top = y + 'px';
+    foxnut.style.transform = `rotate(${angle}deg) scale(1.1)`;
+    
+    // Apply shadow effect
+    let shadowX = dx * 2;
+    let shadowY = dy * 2;
+    foxnut.style.boxShadow = `${shadowX}px ${shadowY}px 10px rgba(0, 0, 0, 0.5)`;
+}
+
+// Bounce squish effect
+function bounceEffect() {
+    foxnut.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        foxnut.style.transform = 'scale(1)';
+    }, 100);
 }
 
 // Start animation
 animate();
+
+function createMakhana() {
+    const foxnut = document.createElement("div");
+    foxnut.classList.add("foxnut");
+
+    let startX = Math.random() * window.innerWidth;
+    let speed = Math.random() * 3 + 2; // Random falling speed
+    let rotation = Math.random() * 360; // Initial rotation
+    let size = Math.random() * 20 + 30; // Random size between 30-50px
+
+    foxnut.style.left = `${startX}px`;
+    foxnut.style.width = `${size}px`;
+    foxnut.style.height = `${size}px`;
+    foxnut.style.transform = `rotate(${rotation}deg)`;
+
+    document.body.appendChild(foxnut);
+
+    let yPos = -50;
+    function fall() {
+        yPos += speed;
+        rotation += 2; // Rotate while falling
+        foxnut.style.top = `${yPos}px`;
+        foxnut.style.transform = `rotate(${rotation}deg)`;
+
+        if (yPos < window.innerHeight) {
+            requestAnimationFrame(fall);
+        } else {
+            foxnut.remove(); // Remove after reaching the bottom
+        }
+    }
+    fall();
+}
+
+function makhanaRain() {
+    setInterval(() => {
+        createMakhana();
+    }, 200); // Generate new makhana every 200ms
+}
+
+makhanaRain();
 
 
 
