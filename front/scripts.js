@@ -290,21 +290,38 @@ function updateCurrency() {
 }
 
 function calculatePrice() {
-    let quantity = document.getElementById("quantity").value;
+    let quantity = parseFloat(document.getElementById("quantity").value);
     let incotermSelect = document.getElementById("incoterm");
-    let incotermRate = incotermSelect.value;
-    let incotermText = incotermSelect.options[incotermSelect.selectedIndex].text;
+    let incotermRate = parseFloat(incotermSelect.value);
     let countrySelect = document.getElementById("country");
-    let exchangeRate = countrySelect.options[countrySelect.selectedIndex].getAttribute("data-rate");
-   let totalPrice = (quantity * parseFloat(incotermRate)) * parseFloat(exchangeRate);
+    let exchangeRate = parseFloat(countrySelect.options[countrySelect.selectedIndex].getAttribute("data-rate"));
 
+    // Base price per kg in INR
+    let basePricePerKg = 1500;
 
-    
-    document.getElementById("totalPrice").innerText = totalPrice.toFixed(2);
+    // Ensure valid inputs
+    if (isNaN(quantity) || isNaN(incotermRate) || isNaN(exchangeRate)) {
+        alert("Please select valid inputs.");
+        return;
+    }
+
+    // Calculate total price in INR
+    let totalPriceINR = quantity * basePricePerKg * incotermRate;
+
+    // Convert to selected country's currency
+    let totalPriceForeign = totalPriceINR * exchangeRate;
+
+    // Get the selected country currency symbol
+    let currencySymbol = countrySelect.value;
+
+    // Display the result
+    document.getElementById("totalPrice").innerText = totalPriceForeign.toFixed(2) + " " + currencySymbol;
     document.getElementById("resultBox").style.display = "block";
-    
+
+    // Explanation for the Incoterm
+    let incotermText = incotermSelect.options[incotermSelect.selectedIndex].text.split(" - ")[0];
     let explanation = "";
-    switch (incotermText.split(" - ")[0]) {
+    switch (incotermText) {
         case "EXW": explanation = "Ex Works (EXW) means the buyer takes full responsibility for transport and costs after pickup."; break;
         case "FCA": explanation = "Free Carrier (FCA) means the seller delivers to the agreed carrier location, and the buyer covers further transport."; break;
         case "FOB": explanation = "Free On Board (FOB) means the seller handles delivery to the ship, while the buyer covers ocean freight and beyond."; break;
@@ -314,6 +331,7 @@ function calculatePrice() {
     }
     document.getElementById("incotermExplanation").innerText = explanation;
 }
+
 
 
 
