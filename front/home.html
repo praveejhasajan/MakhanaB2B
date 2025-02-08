@@ -7,6 +7,10 @@
     <meta name="keywords" content="Makhana act as an anti-oxidants, Very light and easy to digest, They are traditionally an Indian product. All Makhana flavours are also GLUTEN and MSG FREEMakhana, healthy snacks, Indian food, organic Makhana, premium quality, international distribution, Indian market, global reach">
     <link rel="stylesheet" href="/front/style.css">
     <style>
+        /* Optional: Adding padding to the body to avoid overlap with fixed alert */
+        body {
+            padding-top: 0px;
+        }
    .moving-alert {
     width: 100%;
     background-color: #FF921C; /* Original color retained */
@@ -16,7 +20,7 @@
     white-space: nowrap;
     overflow: hidden;
     z-index: 1000;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 .moving-alert span {
@@ -57,14 +61,13 @@
     <nav class="navbar" id="navbar">
         <a href="https://www.makhanabazar.com" class="logo">
             <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
-        </a>
-        
+        </a> 
         
         <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
         <div class="navbar-container" id="navbarContainer">
             <a href="#home">Home</a>
             <a href="#product">Product</a>
-            <a href="javascript:void(0);" onclick="showPopup()">Buy Now</a>
+            <a href="#IncotermCalculator" >Price Calculator</a>
             <a href="#contact">Contact Us</a>
             <a href="./blog">Blogs</a>
         </div>
@@ -264,78 +267,75 @@
     <a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Large%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
        target="_blank" class="buy-now">Buy Now</a>
 </div>
-
-
-
     </div>
 </section>
 
 
-<div class="containerCalculator">
-    <div class="container">
-        <div class="form-group">
-            <label for="quantity">Quantity (kg):</label>
-            <select id="quantity">
-                <option value="100">100 kg</option>
-                <option value="200">200 kg</option>
-                <option value="300">300 kg</option>
-                <option value="400">400 kg</option>
-                <option value="500">500 kg</option>
-                <option value="600">600 kg</option>
-                <option value="700">700 kg</option>
-                <option value="800">800 kg</option>
-                <option value="900">900 kg</option>
-                <option value="1000">1000 kg</option>
-            </select>
-        </div>
-    
-        <div class="form-group">
-            <label for="country">Select Country:</label>
-            <select id="country" onchange="updateCurrency()">
-                <option value="AUD" data-rate="0.02">Australia (AUD)</option>
-                <option value="USD" data-rate="0.015">USA (USD)</option>
-                <option value="EUR" data-rate="0.013">Europe (EUR)</option>
-                <option value="SGD" data-rate="0.02">Singapore (SGD)</option>
-                <option value="NZD" data-rate="0.02">New Zealand (NZD)</option>
-                <option value="HKD" data-rate="0.1">Hong Kong (HKD)</option>
-                <option value="CHF" data-rate="0.015">Switzerland (CHF)</option>
-                <option value="JPY" data-rate="1.5">Japan (JPY)</option>
-                <option value="CAD" data-rate="0.02">Canada (CAD)</option>
-                <option value="GBP" data-rate="0.01">United Kingdom (GBP)</option>
-                <option value="AED" data-rate="0.05">UAE (AED)</option>
-                <option value="MYR" data-rate="0.08">Malaysia (MYR)</option>
-                <option value="ZAR" data-rate="0.3">South Africa (ZAR)</option>
-            </select>
-        </div>
-    
-        <div class="form-group">
-            <label for="incoterm">Select Incoterm:</label>
-            <select id="incoterm">
-                <option value="21.6">EXW - Ex Works</option>
-                <option value="22.68">FCA - Free Carrier</option>
-                <option value="23.76">FAS - Free Alongside Ship</option>
-                <option value="23.76">FOB - Free On Board</option>
-                <option value="30.24">CFR - Cost & Freight</option>
-                <option value="30.89">CIF - Cost, Insurance & Freight</option>
-                <option value="31.32">CPT - Carriage Paid To</option>
-                <option value="31.97">CIP - Carriage & Insurance Paid</option>
-                <option value="33.05">DPU - Delivered at Place Unloaded</option>
-                <option value="35.21">DAP - Delivered at Place</option>
-                <option value="38.45">DDP - Delivered Duty Paid</option>
-            </select>
-        </div>
-    
-        <div class="form-group">
-            <button onclick="calculatePrice()">Calculate</button>
-        </div>
+<div class="containerCalculator" id="IncotermCalculator">
+    <h2 style="text-align:center;">Price Calculator</h2>
+
+    <div class="form-group">
+        <label for="quantity"><i class="fas fa-weight"></i> Quantity (kg):</label>
+        <select id="quantity">
+            <option value="100">100 kg</option>
+            <option value="200">200 kg</option>
+            <option value="300">300 kg</option>
+            <option value="400">400 kg</option>
+            <option value="500">500 kg</option>
+            <option value="600">600 kg</option>
+            <option value="700">700 kg</option>
+            <option value="800">800 kg</option>
+            <option value="900">900 kg</option>
+            <option value="1000">1000 kg</option>
+        </select>
     </div>
-        
-    <div class="result-box" id="resultBox" style="display: none;">
-        <h3>Total Price:</h3>
-        <p><strong><span id="totalPrice">0</span> <span id="currency">AUD</span></strong></p>
+
+    <div class="form-group">
+        <label for="country"><i class="fas fa-globe"></i> Select Country:</label>
+        <select id="country">
+            <option value="AUD" data-rate="0.02">Australia (AUD)</option>
+            <option value="USD" data-rate="0.015">USA (USD)</option>
+            <option value="EUR" data-rate="0.013">Europe (EUR)</option>
+            <option value="SGD" data-rate="0.02">Singapore (SGD)</option>
+            <option value="NZD" data-rate="0.02">New Zealand (NZD)</option>
+            <option value="HKD" data-rate="0.1">Hong Kong (HKD)</option>
+            <option value="CHF" data-rate="0.015">Switzerland (CHF)</option>
+            <option value="JPY" data-rate="1.5">Japan (JPY)</option>
+            <option value="CAD" data-rate="0.02">Canada (CAD)</option>
+            <option value="GBP" data-rate="0.01">United Kingdom (GBP)</option>
+            <option value="AED" data-rate="0.05">UAE (AED)</option>
+            <option value="MYR" data-rate="0.08">Malaysia (MYR)</option>
+            <option value="ZAR" data-rate="0.3">South Africa (ZAR)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="incoterm"><i class="fas fa-truck"></i> Select Incoterm:</label>
+        <select id="incoterm">
+            <option value="21.6">EXW - Ex Works</option>
+            <option value="22.68">FCA - Free Carrier</option>
+            <option value="23.76">FAS - Free Alongside Ship</option>
+            <option value="23.76">FOB - Free On Board</option>
+            <option value="30.24">CFR - Cost & Freight</option>
+            <option value="30.89">CIF - Cost, Insurance & Freight</option>
+            <option value="31.32">CPT - Carriage Paid To</option>
+            <option value="31.97">CIP - Carriage & Insurance Paid</option>
+            <option value="33.05">DPU - Delivered at Place Unloaded</option>
+            <option value="35.21">DAP - Delivered at Place</option>
+            <option value="38.45">DDP - Delivered Duty Paid</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button onclick="calculatePrice()">Calculate</button>
+    </div>
+
+    <div id="resultBox">
+        <h3>Total Price: <span id="totalPrice"></span></h3>
         <p id="incotermExplanation"></p>
     </div>
 </div>
+
 
 <!-- Modal for Purchase -->
 <div id="purchaseModal" class="modal" style="display: none; z-index: 100; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">

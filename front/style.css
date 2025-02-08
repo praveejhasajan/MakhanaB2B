@@ -20,13 +20,15 @@ html {
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(100, 61, 10, 0.95); /* Slight transparency */
-    background-image: url('/front/image/backrdoundtitle.jpg');
+    padding: 12px 5%; /* Responsive padding */
+    /* background-color: rgba(100, 61, 10, 0.95); Slight transparency */
+    /* background-image: url('/front/image/backrdoundtitle.jpg'); */
     background-size: cover;
     background-position: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -1345,28 +1347,44 @@ footer {
         font-size: 14px;
     }
 }
-
 /* Container for the calculator */
 .containerCalculator {
+    max-width: 500px; /* Ensures it doesn't stretch too wide on larger screens */
+    width: 100%;
     margin: auto;
-    /* padding: 20px; */
     border: 1px solid #ddd;
     border-radius: 10px;
     background: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 35px;
     visibility: visible;
-    animation-delay: 0.1s;
-    animation-name: fadeIn;
-    width: 100%;
+    animation: fadeIn 0.3s ease-in-out;
     padding-right: var(--bs-gutter-x, .75rem);
     padding-left: var(--bs-gutter-x, .75rem);
-    margin-right: auto;
-    margin-left: auto;
 }
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 600px) {
+    .containerCalculator {
+        padding: 25px;
+    }
+}
+
 
 .form-row {
     display: flex;
