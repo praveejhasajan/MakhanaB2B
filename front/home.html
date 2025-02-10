@@ -11,15 +11,17 @@
         body {
             padding-top: 0px;
         }
-   .moving-alert {
+        .moving-alert {
+    position: flex;
+    top: 100px; /* Adjust based on your navbar height */
     width: 100%;
     background-color: #FF921C; /* Original color retained */
-    color: #333; /* Original text color retained */
+    color: #333; /* Text color retained */
     text-align: center;
     font-size: 18px;
     white-space: nowrap;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 999; /* Slightly below navbar */
     padding: 10px;
 }
 
@@ -30,15 +32,21 @@
     will-change: transform;
 }
 
-/* Pause the animation on hover */
-.moving-alert:hover span {
-    animation-play-state: paused;
+/* Scrolling animation */
+@keyframes move {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
 }
 
-@keyframes move {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .moving-alert {
+        top: 50px; /* Adjust if navbar height is smaller on mobile */
+        font-size: 14px;
+        padding: 8px;
+    }
 }
+
 
 
     /* Optional: Adding padding to the body to avoid overlap with fixed alert */

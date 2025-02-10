@@ -27,7 +27,7 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 12px 5%; /* Responsive padding */
-    /* background-color: rgba(100, 61, 10, 0.95); Slight transparency */
+    background-color: rgb(235 226 214 / 62%); 
     /* background-image: url('/front/image/backrdoundtitle.jpg'); */
     background-size: cover;
     background-position: center;
