@@ -10,8 +10,8 @@
         /* Optional: Adding padding to the body to avoid overlap with fixed alert */
         .moving-alert {
     position: flex;
-    top: 100px; /* Adjust based on your navbar height */
-    width: 100%;
+    /* top: 100px; Adjust based on your navbar height */
+    /* width: 100%; */
     background-color: #FF921C; /* Original color retained */
     color: #333; /* Text color retained */
     text-align: center;
@@ -49,15 +49,18 @@
 <body>
 
 <!-- WhatsApp Button Code -->
-<a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." target="_blank" class="whatsapp-button">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
-  </a>
+
 
 <header>
+    <div class="notification-top">
+        <a   href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." target="_blank" class="whatsapp-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
+          </a>
+    </div>
     <nav class="navbar" id="navbar">
-        <a href="https://www.makhanabazar.com" class="logo">
-            <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
-        </a> 
+       <div class="nav-left"> <a href="https://www.makhanabazar.com" class="logo">
+        <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
+    </a> </div>
         
         <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
         <div class="navbar-container" id="navbarContainer">
@@ -110,7 +113,7 @@
     </section>
 </main>
 
-<div id="foxnut"></div>
+<!-- <div id="foxnut"></div> -->
 
 <section class="advantages">
     <div class="advantages-container">

@@ -18,21 +18,30 @@ html {
 
 /* Navbar and Toggle Button Styles */
 .navbar {
-    position: fixed;
-    top: 0;
+    position: relative;
+    /* top: 0; */
     left: 0;
-    height: 40px;
-    width: auto;
+    height: 70px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 5%; /* Responsive padding */
+    /* padding: 12px 5%; Responsive padding */
     background-color: rgb(235 226 214 / 62%); 
     /* background-image: url('/front/image/backrdoundtitle.jpg'); */
     background-size: cover;
     background-position: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+
+}
+.nav-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin-left: 30px;
+
 }
 
 /* Toggle Button */
@@ -56,6 +65,7 @@ html {
     display: flex;
     align-items: center;
     gap: 15px;
+    padding-right: 10px;
 }
 
 /* Navbar Links */
@@ -63,7 +73,7 @@ html {
     color: #6B4226; /* Rich brown color */
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
 }
@@ -490,7 +500,7 @@ ul li {
     /* Display navbar links in column format */
     .navbar-container a {
         text-align: left;
-        padding: 12px;
+        /* padding: 12px; */
         border-bottom: 1px solid #444;
     }
 }
@@ -501,7 +511,7 @@ ul li {
     display: flex;
     justify-content: flex-start; /* Align to the left */
     align-items: center;         /* Vertically center the logo */
-    margin: 20px;                /* Add space around the logo */
+    /* margin: 20px;                Add space around the logo */
 }
 
 .logo img {
@@ -515,8 +525,20 @@ ul li {
 /* Optional: Add a background color or other styles to the logo container */
 .logo {
     background-color: #f9f9f9; /* Example light background */
-    padding: 10px;             /* Space around the logo */
+    /* padding: 10px;             Space around the logo */
     border-radius: 10px;       /* Rounded corners for the logo container */
+}
+.notification-top{
+    position: fixed;
+    top: 0;
+    background-color: #FF921C;
+    color: white;
+    /* padding: 10px; */
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 90%;
+   
 }
 
 
@@ -1418,14 +1440,14 @@ select, input, button {
 
 
 #foxnut {
-    width: 50px; /* Ensure it matches the JS ball size */
-    height: 50px; /* Ensure it matches the JS ball size */
-    /* background-color: #ff9900; */
+    width: 50px; 
+    height: 50px; 
+ 
     border-radius: 50%;
     position: absolute;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
     background-image: url('https://www.makhanabazar.com/front/image/onemakhana.png');
-    background-size: 100% 100%; /* Stretch image to fit the ball */
+    background-size: 100% 100%; 
     background-position: center;
     background-repeat: no-repeat;
 }
