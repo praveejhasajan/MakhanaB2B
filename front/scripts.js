@@ -306,7 +306,7 @@ function calculatePrice() {
     }
 
     // Calculate total price in INR
-    let totalPriceINR = quantity * basePricePerKg * incotermRate;
+    let totalPriceINR = (quantity * basePricePerKg) + (basePricePerKg*incotermRate);
 
     // Convert to selected country's currency
     let totalPriceForeign = totalPriceINR * exchangeRate;
