@@ -58,30 +58,37 @@
           </a>
     </div>
     <nav class="navbar" id="navbar">
-       <div class="nav-left"> <a href="https://www.makhanabazar.com" class="logo">
-        <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
-    </a> </div>
-        
-        <button class="toggle-btn" onclick="toggleNavbar()">☰</button>
+        <div class="nav-left">
+            <a href="https://www.makhanabazar.com" class="logo">
+                <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
+            </a>
+        </div>
+        <input type="checkbox" id="check" />
+        <label for="check" class="checkbtn">☰</label>
         <div class="navbar-container" id="navbarContainer">
-            <a href="#home">Home</a>
-            <a href="#product">Product</a>
-            <a href="#IncotermCalculator" >Price Calculator</a>
-            <a href="#contact">Contact Us</a>
-            <a href="./blog">Blogs</a>
+            <a href="#home" onclick="closeNavbar()">Home</a>
+            <a href="#product" onclick="closeNavbar()">Product</a>
+            <a href="#IncotermCalculator" onclick="closeNavbar()">Price Calculator</a>
+            <a href="#contact" onclick="closeNavbar()">Contact Us</a>
+            <a href="./blog" onclick="closeNavbar()">Blogs</a>
         </div>
     </nav>
-
+    
+    
     <script>
-        function toggleNavbar() {
-            var navbarContainer = document.getElementById("navbarContainer");
-            if (navbarContainer.style.display === "block") {
-                navbarContainer.style.display = "none";
-            } else {
-                navbarContainer.style.display = "block";
-            }
-        }
+       function toggleNavbar() {
+    var navbarContainer = document.getElementById("navbarContainer");
+    navbarContainer.classList.toggle("active");
+    document.getElementById("check").checked = navbarContainer.classList.contains("active");
+}
+
+function closeNavbar() {
+    document.getElementById("check").checked = false;
+    document.getElementById("navbarContainer").classList.remove("active");
+}
+
     </script>
+    
 </header>
 
 <div class="moving-alert">
@@ -432,25 +439,25 @@
     <h2>Customer Reviews</h2>
     <div class="reviews-container">
         <div class="review">
-            <img src="https://via.placeholder.com/50" alt="Customer Image">
+            <img src="./image/gallery/customer-testimonials_9206-746.avif" class="customer-image" alt="Customer Image">
             <p>"Amazing taste."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>- Happy Customer</span>
         </div>
         <div class="review">
-            <img src="https://via.placeholder.com/50" alt="Customer Image">
+            <img src="./image/gallery/customer-testimonials_9206-746.avif" class="customer-image" alt="Customer Image">
             <p>"Excellent quality and fast shipping. Five stars!"</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>- Satisfied Buyer</span>
         </div>
         <div class="review">
-            <img src="https://via.placeholder.com/50" alt="Customer Image">
+            <img src="./image/gallery/customer-testimonials_9206-746.avif" class="customer-image" alt="Customer Image">
             <p>"Great value for the price. Will buy again."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>Repeat Customer</span>
         </div>
         <div class="review">
-            <img src="https://via.placeholder.com/50" alt="Customer Image">
+            <img src="./image/gallery/customer-testimonials_9206-746.avif" class="customer-image" alt="Customer Image">
             <p>"Amazing product! Totally worth it."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>- Delighted Customer</span>

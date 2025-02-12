@@ -1,8 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-   
-
 }
 body {
     font-family: "Heebo", sans-serif;;
@@ -17,47 +15,55 @@ html {
 }
 
 /* Navbar and Toggle Button Styles */
+
+
 .navbar {
     position: relative;
-    /* top: 0; */
     left: 0;
     height: 70px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding: 12px 5%; Responsive padding */
-    background-color: rgb(235 226 214 / 62%); 
-    /* background-image: url('/front/image/backrdoundtitle.jpg'); */
+    background-color: rgb(235 226 214 / 62%);
     background-size: cover;
     background-position: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-
 }
-.nav-left{
+
+.nav-left {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     margin-left: 30px;
+}
 
+.logo img {
+    height: 50px;
 }
 
 /* Toggle Button */
-.toggle-btn {
+.checkbtn {
     display: none;
     font-size: 1.8em;
-    color: #6B4226; /* Dark brown for contrast */
+    color: #6B4226;
     background: none;
     border: none;
     cursor: pointer;
     padding: 8px;
     transition: transform 0.3s ease-in-out;
+    position: absolute;
+    right: 20px;
 }
 
-.toggle-btn:hover {
+.checkbtn:hover {
     transform: scale(1.1);
+}
+
+#check {
+    display: none;
 }
 
 /* Navbar Container */
@@ -70,40 +76,46 @@ html {
 
 /* Navbar Links */
 .navbar a {
-    color: #6B4226; /* Rich brown color */
+    color: #6B4226;
     text-decoration: none;
     font-weight: bold;
-    /* padding: 10px 15px; */
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
 }
 
 .navbar a:hover {
-    background-color: rgba(223, 211, 195, 0.8); /* Light background */
-    color: #442C1D; /* Darker brown */
+    background-color: rgba(223, 211, 195, 0.8);
+    color: #442C1D;
     transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .toggle-btn {
+    .checkbtn {
         display: block;
     }
+.logo{
+    height: 50px;
 
+}
     .navbar-container {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+        position: fixed;
+        top: 0;
+        right: -70%;
+        height: 100vh;
+        width: 70%;
         background: rgba(223, 211, 195, 0.95);
-        padding: 10px 0;
+        padding: 20px;
         text-align: center;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        z-index: 999; /* Ensure it overlays the main screen */
     }
 
-    .navbar-container.active {
+    #check:checked ~ .navbar-container {
+        right: 0;
         display: flex;
     }
 
@@ -118,7 +130,6 @@ html {
         border-radius: 0;
     }
 }
-
 
 
 /* Main Section Styles */
@@ -141,16 +152,18 @@ html {
     height: 100%;
 }
 
-.product-left, .product-right {
+.product-left,.product-right {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 2%;
 }
 
 .product-left img {
     width: 100%;
+    border-radius: 2%;
     height: auto;
     max-height: 100%;
     box-shadow: 0 2px 10px rgba(104, 103, 103, 2);
@@ -251,7 +264,7 @@ html {
     justify-content: space-between; /* Spread items evenly */
     max-width: 1200px; /* Limit max width for larger screens */
     margin: 0 auto; /* Center the section horizontally */
-    gap: 20px; /* Add consistent spacing between elements */
+    gap: 10px; /* Add consistent spacing between elements */
 }
 
 /* Left Section: Text Content */
@@ -420,11 +433,12 @@ ul li {
 
     .reach-left,
     .reach-right {
-        width: 100%;
+        width: 90%;
     }
 
     .reach-left {
         order: 2; /* Move .reach-left to the bottom */
+        
     }
 
     .reach-right {
@@ -734,14 +748,23 @@ footer {
 
     .reviews-container {
         flex-direction: column;
+        width: 90%;
     }
 
     .review {
-        max-width: 100%;
+        max-width: 90%;
+    }
+    #gallery-section{
+
+        width: 95%;
+    }
+    #IncotermCalculator{
+        width: 95%;
     }
 
     footer {
         flex-direction: column;
+        width: 90%;
     }
 
     .footer-left,
@@ -1154,6 +1177,7 @@ footer {
     align-items: center;
     background-color: #DFD3C3;
     padding: 20px 0;
+    margin-top: 50px;
 }
 
 #gallery-section h1 {
@@ -1370,8 +1394,9 @@ footer {
     }
 }
 /* Container for the calculator */
+/* Default styles for small screens (mobile) */
 .containerCalculator {
-    max-width: 500px; /* Ensures it doesn't stretch too wide on larger screens */
+    max-width: 100%; /* Ensures it fits within the viewport */
     width: 100%;
     margin: auto;
     border: 1px solid #ddd;
@@ -1381,12 +1406,68 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 35px;
+    padding: 20px;
     visibility: visible;
     animation: fadeIn 0.3s ease-in-out;
-    padding-right: var(--bs-gutter-x, .75rem);
-    padding-left: var(--bs-gutter-x, .75rem);
+    overflow-x: hidden; /* Prevents overflow */
+    box-sizing: border-box; /* Ensures padding is included in the width calculation */
 }
+
+.containerCalculator h2 {
+    text-align: center;
+}
+
+.form-group {
+    width: 100%; /* Ensures form groups take up full width */
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block; /* Ensures labels are block elements */
+    margin-bottom: 5px;
+}
+
+.form-group select, 
+.form-group button {
+    width: 100%; /* Ensures select boxes and button take up full width */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Medium screens (tablets) */
+@media screen and (min-width: 768px) {
+    .containerCalculator {
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    .form-group select, 
+    .form-group button {
+        width: auto; /* Allows elements to take up their content's width */
+        max-width: 100%; /* Ensures they don't exceed container width */
+    }
+}
+
+/* Large screens (desktops) */
+@media screen and (min-width: 1024px) {
+    .containerCalculator {
+        max-width: 700px;
+        padding: 40px;
+    }
+}
+
+/* Extra large screens */
+@media screen and (min-width: 1200px) {
+    .containerCalculator {
+        max-width: 800px;
+        padding: 50px;
+    }
+}
+
+
+
 
 /* Fade-in animation */
 @keyframes fadeIn {
@@ -1459,4 +1540,10 @@ select, input, button {
     background: url('https://www.makhanabazar.com/front/image/onemakhana.png') no-repeat center/cover;
     border-radius: 50%;
     opacity: 0.9;
+}
+.customer-image {
+    width: 100px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    margin: 10px; /* Optional: Add some margin for spacing */
 }
