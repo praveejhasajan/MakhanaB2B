@@ -109,7 +109,7 @@ html {
         background: rgba(223, 211, 195, 0.95);
         padding: 20px;
         text-align: center;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
         transition: all 0.3s ease-in-out;
         z-index: 999; /* Ensure it overlays the main screen */
     }
@@ -270,7 +270,7 @@ html {
 /* Left Section: Text Content */
 .advantages-left {
     flex: 1 1 45%; /* Take up 45% of the width */
-    padding: 20px; /* Padding for inner spacing */
+    padding: 25px; /* Padding for inner spacing */
     text-align: left; /* Align text to the left */
     background-color: #FFFFFF; /* White background for contrast */
     border-radius: 10px; /* Rounded corners */
@@ -378,9 +378,9 @@ ul li {
     justify-content: space-between;
     align-items: center;
     width: 95%;
-    height: 100vh;
+    height: 80vh;
     background-color: #F8EDE3;
-    margin: 5%;
+    
 }
 
 .reach-left,
@@ -508,7 +508,7 @@ ul li {
         position: absolute;
         top: 50px;
         right: 0;
-        background-color: #333;
+        background-color: #e2ddc17a;
     }
 
     /* Display navbar links in column format */
@@ -580,6 +580,9 @@ ul li {
     text-align: center;
     flex: 1;
     max-width: 22%;
+}
+.review p{
+    color: white;
 }
 
 .review img {
@@ -853,64 +856,6 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.table-container {
-    max-width: 800px; /* Sets a maximum width for the table */
-    margin: 0 auto; /* Centers the table on the page */
-    padding: 10px;
-    overflow-x: auto; /* Enables horizontal scrolling if needed */
-}
-
-.enhanced-table {
-    width: 100%; /* Makes the table take up 100% of the container width */
-    border-collapse: collapse;
-    font-size: 16px;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
-
-.enhanced-table thead {
-    background-color: #FF921C;
-    color: #ffffff;
-}
-
-.enhanced-table th, .enhanced-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    word-wrap: break-word; /* Allows text to wrap within each cell */
-}
-
-.enhanced-table tbody tr:hover {
-    background-color: #f9f9f9;
-}
-
-.enhanced-table th {
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.enhanced-table td:last-child {
-    font-weight: bold;
-    color: #333;
-}
-
-.enhanced-table tbody tr:nth-child(even) {
-    background-color: #fafafa;
-}
-
-@media (max-width: 600px) {
-    .table-container {
-        padding: 5px; /* Reduces padding on smaller screens */
-    }
-    
-    .enhanced-table, .enhanced-table th, .enhanced-table td {
-        font-size: 14px; /* Reduces font size on smaller screens */
-    }
-
-    .enhanced-table th, .enhanced-table td {
-        padding: 8px; /* Reduces padding inside cells on smaller screens */
-    }
-}
 
 
 /* landig page */
@@ -1155,7 +1100,7 @@ footer {
       
       .navbar-container a {
         color: #FFFFFF; /* Text color */
-        background-color:  rgba(89, 49, 7, 0.8); /* Make background transparent */
+        background-color:  rgba(90, 169, 47, 0.8); /* Make background transparent */
         padding: 10px 15px;
         text-decoration: none;
         border-radius: 1px;
