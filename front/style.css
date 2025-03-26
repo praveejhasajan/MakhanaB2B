@@ -14,10 +14,10 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Navbar and Toggle Button Styles */
-* {
-    outline: 1px solid rgba(255, 0, 0, 0.3);  /* Temporarily outline all elements to check which one causes overflow */
-}
+/* Navbar and Toggle Button Styles . Outliner code for debug*/
+/* * {
+    outline: 1px solid rgba(255, 0, 0, 0.3); 
+} */
 
 
 .navbar {
