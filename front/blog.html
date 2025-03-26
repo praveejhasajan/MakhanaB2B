@@ -5,24 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Product Production</title>
     <link rel="stylesheet" href="/front/blog.css"> <!-- Ensure this path is correct -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Font Awesome for icons -->
+    <style>
+  
+     
+     .logo {
+    /* Align the logo container to the left */
+    display: flex;
+    height: 70px;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center;         /* Vertically center the logo */
+    /* margin: 20px;                Add space around the logo */
+}
+
+.logo-img {
+    
+    /* Control the size of the logo */
+    max-width: 100%;          /* Make sure the logo doesn't overflow */
+    height: auto;
+                 /* Maintain the logo's aspect ratio */
+    width: 200px;             /* Set a fixed width, adjust as needed */
+    object-fit: contain;      /* Ensure the image scales properly */
+}
+    </style>
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <div class="navbar-container" id="navbar">
-            <div class="logo">
-                <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
-            </div>
-            <a href="#home">Home</a>
-            <a href="#product">Product</a>
-            <a href="./contact.html">Buy Now</a>
-            <a href="./contact.html">Contact Us</a>
-            <a href="blog.html">Blogs</a>
+    <header>
+        <div class="notification-top">
+            <a   href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." target="_blank" class="whatsapp-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
+              </a>
         </div>
-    </nav>
-</header>
+        <nav class="navbar" id="navbar">
+            <div class="nav-left">
+                <a href="https://www.makhanabazar.com" class="logo">
+                    <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" class="logo-img"/>
+                </a>
+            </div>
+            <input type="checkbox" id="check" />
+            <label for="check" class="checkbtn">☰</label>
+            <div class="navbar-container" id="navbarContainer">
+                <a href="home.html" onclick="closeNavbar()">Home</a>
+                <a href="home.html#product" onclick="closeNavbar()">Product</a>
+                <a href="home.html#IncotermCalculator" onclick="closeNavbar()">Price Calculator</a>
+                <a href="#contact" onclick="closeNavbar()">Contact Us</a>
+                <a href="./blog.html" onclick="closeNavbar()" target="_blank">Blogs</a>
+            </div>
+        </nav>
+        
+        
+        <script>
+           function toggleNavbar() {
+        var navbarContainer = document.getElementById("navbarContainer");
+        navbarContainer.classList.toggle("active");
+        document.getElementById("check").checked = navbarContainer.classList.contains("active");
+    }
+    
+    function closeNavbar() {
+        document.getElementById("check").checked = false;
+        document.getElementById("navbarContainer").classList.remove("active");
+    }
+    
+        </script>
+        
+    </header>
 <main class="blog-section">
     <h2>Makhana Bazar Blog Dashboard</h2>
     
@@ -32,8 +80,8 @@
 <!-- Blog Post 1 -->
 <div class="blogs-listing-main clearfix">
     <div class="blogs-listing-banner">
-        <div class="blogs-listing-img">
-            <a href="/front/MakhanaBenefits.html">
+        <div class="blog-image img">
+            <a href="/front/MakhanaBenefits.html" target="_blank">
                 <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&dpr=1" alt="The Health Benefits of Makhana" title="The Health Benefits of Makhana">
             </a>
         </div>
@@ -65,9 +113,9 @@
         <!-- Blog Post 2 -->
         <div class="blogs-listing-main clearfix">
             <div class="blogs-listing-banner">
-                <div class="blogs-listing-img">
-                    <a href="https://www.example.com/blog-post2">
-                        <img src="https://via.placeholder.com/277x208" alt="Blog Post 2" title="Blog Post 2">
+                <div class="blog-image img">
+                    <a href="MakhanaBenefit.html" target="_blank">
+                        <img src="image/Benefit.png" alt="Blog Post 2" title="Blog Post 2">
                     </a>
                 </div>
             </div>
@@ -98,9 +146,9 @@
         <!-- Blog Post 3 -->
         <div class="blogs-listing-main clearfix">
             <div class="blogs-listing-banner">
-                <div class="blogs-listing-img">
-                    <a href="https://www.example.com/blog-post3">
-                        <img src="https://via.placeholder.com/277x208" alt="Blog Post 3" title="Blog Post 3">
+                <div class="blog-image img">
+                    <a href="MakhanaBenefits.html" target="_blank">
+                        <img src="image/mp4.JPG" alt="Blog Post 3" title="Blog Post 3">
                     </a>
                 </div>
             </div>
@@ -131,9 +179,9 @@
         <!-- Blog Post 4 -->
         <div class="blogs-listing-main clearfix">
             <div class="blogs-listing-banner">
-                <div class="blogs-listing-img">
-                    <a href="https://www.example.com/blog-post4">
-                        <img src="https://via.placeholder.com/277x208" alt="Blog Post 4" title="Blog Post 4">
+                <div class="blog-image img">
+                    <a href="MakhanaBoard.html"target="_blank">
+                        <img src="image/mp14.avif" alt="Blog Post 4" title="Blog Post 4">
                     </a>
                 </div>
             </div>
@@ -205,5 +253,6 @@
 </footer>
 
 <script src="js/blogscripts.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>

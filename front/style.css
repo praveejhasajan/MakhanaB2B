@@ -8,13 +8,16 @@ body {
     padding: 0;
     background-color:  #F8EDE3;
     -webkit-text-size-adjust: 100%;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 html {
     scroll-behavior: smooth;
 }
 
 /* Navbar and Toggle Button Styles */
+* {
+    outline: 1px solid rgba(255, 0, 0, 0.3);  /* Temporarily outline all elements to check which one causes overflow */
+}
 
 
 .navbar {
@@ -106,7 +109,7 @@ html {
         right: -70%;
         height: 100vh;
         width: 70%;
-        background: rgba(223, 211, 195, 0.95);
+        /* background: rgba(223, 211, 195, 0.95); */
         padding: 20px;
         text-align: center;
         /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
@@ -122,7 +125,7 @@ html {
     .navbar a {
         display: block;
         padding: 12px;
-        border-bottom: 1px solid #6B4226;
+        border-bottom: 60px solid #6B4226;
     }
 
     .navbar a:hover {
@@ -221,9 +224,7 @@ html {
         height: auto;
     }
 
-    .product-right {
-        padding: 0 10px;
-    }
+    
 
     .product-right h1 {
         font-size: 2em;
@@ -251,7 +252,11 @@ html {
 }
 
 /* Main Advantages Section */
+/* Advantages Section */
 .advantages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #F8EDE3; /* Light background for contrast */
     padding: 40px 20px; /* Add padding for spacing */
 }
@@ -259,34 +264,38 @@ html {
 /* Container for Text and Image */
 .advantages-container {
     display: flex;
-    flex-wrap: wrap; /* Enable wrapping for responsiveness */
+    flex-direction: row;
+    /* Enable wrapping for responsiveness */
     align-items: center; /* Vertically align content */
-    justify-content: space-between; /* Spread items evenly */
-    max-width: 1200px; /* Limit max width for larger screens */
-    margin: 0 auto; /* Center the section horizontally */
-    gap: 10px; /* Add consistent spacing between elements */
+    
+    justify-content: center;
+    
+    gap: 20px; /* Add consistent spacing between elements */
+    width: 100%;
 }
 
 /* Left Section: Text Content */
 .advantages-left {
-    flex: 1 1 45%; /* Take up 45% of the width */
-    padding: 25px; /* Padding for inner spacing */
+    
+   width: 45%; /* Half width for text */
     text-align: left; /* Align text to the left */
     background-color: #FFFFFF; /* White background for contrast */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    margin: 10px; /* Margin for spacing */
+    height: 100%;
     line-height: 1.6; /* Better readability */
+    padding-top: 5%; /* Add padding for spacing */
+    padding-bottom: 5%; /* Add padding for spacing */
 }
 
 /* Right Section: Image */
 .advantages-right {
-    flex: 1 1 45%; /* Take up 45% of the width */
+    width: 45%; /* Half width for image */
+    height: 50%;
     display: flex; /* Center the image */
     justify-content: center; /* Center image horizontally */
     align-items: center; /* Center image vertically */
-    padding: 10px; /* Add padding around the image */
-    margin: 10px; /* Margin for spacing */
+    
 }
 
 .advantages-right img {
@@ -294,7 +303,16 @@ html {
     height: auto; /* Maintain aspect ratio */
     border-radius: 10px; /* Rounded corners for the image */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    
 }
+
+/* Media Queries for Large Screens */
+@media (min-width: 1200px) {
+    .advantages-container {
+        flex-direction: row;
+    }
+}
+
 
 /* Typography */
 h2 {
@@ -340,6 +358,7 @@ ul li {
 /* Responsive Design: Medium Screens */
 @media (max-width: 768px) {
     .advantages-container {
+        width: 90%; /* Adjust width for better spacing */
         flex-direction: column; /* Stack on small screens */
         align-items: center; /* Center align */
     }
@@ -347,6 +366,7 @@ ul li {
     .advantages-left,
     .advantages-right {
         flex: 1 1 100%; /* Full width on small screens */
+        width: 100%; /* Full width on small screens */
     }
 
     .advantages-right {
@@ -377,7 +397,7 @@ ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
+    width: 100%;
     height: 80vh;
     background-color: #F8EDE3;
     
@@ -410,6 +430,8 @@ ul li {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: auto;
+    padding-right: 20px;
 }
 
 .reach-right h2 {
@@ -459,7 +481,7 @@ ul li {
 .navbar-container {
     display: flex;
     justify-content: center;
-    background-color: #DFD3C3;
+    /* background-color: #DFD3C3; */
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -597,7 +619,7 @@ ul li {
 footer {
     background-color: #333;
     color: #f4f4f4;
-    padding: 40px 20px;
+    
     font-family: Arial, sans-serif;
 }
 
@@ -721,6 +743,7 @@ footer {
     }
 
     .product {
+        overflow: hidden; 
         flex-direction: column;
         align-items: center;
     }
@@ -1100,7 +1123,7 @@ footer {
       
       .navbar-container a {
         color: #FFFFFF; /* Text color */
-        background-color:  rgba(90, 169, 47, 0.8); /* Make background transparent */
+        background-color:  #66662b63; /* Make background transparent */
         padding: 10px 15px;
         text-decoration: none;
         border-radius: 1px;
@@ -1465,7 +1488,7 @@ select, input, button {
 }
 
 
-#foxnut {
+/* #foxnut {
     width: 50px; 
     height: 50px; 
  
@@ -1476,15 +1499,26 @@ select, input, button {
     background-size: 100% 100%; 
     background-position: center;
     background-repeat: no-repeat;
-}
+} */
 
 .foxnut {
     position: absolute;
-    width:100%;
+    width: 80%;
     height: 40px;
     background: url('https://www.makhanabazar.com/front/image/onemakhana.png') no-repeat center/cover;
     border-radius: 50%;
+    background-size: contain;
     opacity: 0.9;
+}
+@media (max-width: 600px) {
+    body{overflow-x: hidden;}
+    .foxnut {
+        width: 40px;        /* Adjust width to fit properly in smaller screens */
+        left: 15%;         /* Centered for smaller width */
+    }
+    #foxnut{
+        width: 40px;
+    }
 }
 .customer-image {
     width: 100px; /* Set the desired width */
@@ -1492,3 +1526,5 @@ select, input, button {
     border-radius: 10px; /* Optional: Add rounded corners */
     margin: 10px; /* Optional: Add some margin for spacing */
 }
+
+

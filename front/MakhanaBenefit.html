@@ -5,21 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Health Benefits of Makhana</title>
     <link rel="stylesheet" href="/front/blog.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .logo {
+    /* Align the logo container to the left */
+    display: flex;
+    height: 70px;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center;         /* Vertically center the logo */
+    /* margin: 20px;                Add space around the logo */
+}
+
+.logo-img {
+    
+    /* Control the size of the logo */
+    max-width: 100%;          /* Make sure the logo doesn't overflow */
+    height: auto;
+                 /* Maintain the logo's aspect ratio */
+    width: 200px;             /* Set a fixed width, adjust as needed */
+    object-fit: contain;      /* Ensure the image scales properly */
+}
+    </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="navbar">
-        <div class="logo">
-            <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
-        </div>
-        <div class="navbar-container">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-        </div> 
-    </header>
-
+    <header>
+      <div class="notification-top">
+          <a   href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." target="_blank" class="whatsapp-button">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat">
+            </a>
+      </div>
+      <nav class="navbar" id="navbar">
+          <div class="nav-left">
+              <a href="https://www.makhanabazar.com" class="logo">
+                  <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
+              </a>
+          </div>
+          <input type="checkbox" id="check" />
+          <label for="check" class="checkbtn">☰</label>
+          <div class="navbar-container" id="navbarContainer">
+              <a href="home.html" onclick="closeNavbar()">Home</a>
+              <a href="home.html#product" onclick="closeNavbar()">Product</a>
+              <a href="home.html#IncotermCalculator" onclick="closeNavbar()">Price Calculator</a>
+              <a href="home.html#contact" onclick="closeNavbar()">Contact Us</a>
+              <a href="blog.html" onclick="closeNavbar()" target="_blank">Blogs</a>
+          </div>
+      </nav>
+      
+      
+      <script>
+         function toggleNavbar() {
+      var navbarContainer = document.getElementById("navbarContainer");
+      navbarContainer.classList.toggle("active");
+      document.getElementById("check").checked = navbarContainer.classList.contains("active");
+  }
+  
+  function closeNavbar() {
+      document.getElementById("check").checked = false;
+      document.getElementById("navbarContainer").classList.remove("active");
+  }
+  
+      </script>
+      
+  </header>
     <!-- Blog Content -->
     <main class="blog-section">
         <article class="blog-post">

@@ -57,7 +57,7 @@ function createMakhana() {
     const foxnut = document.createElement("div");
     foxnut.classList.add("foxnut");
 
-    let startX = Math.random() * window.innerWidth;
+    let startX = Math.random() * (window.innerWidth - 50); // Ensure it starts within screen width
     let speed = Math.random() * 3 + 2; // Random falling speed
     let rotation = Math.random() * 360; // Initial rotation
     let size = Math.random() * 20 + 30; // Random size between 30-50px
@@ -76,19 +76,28 @@ function createMakhana() {
         foxnut.style.top = `${yPos}px`;
         foxnut.style.transform = `rotate(${rotation}deg)`;
 
-        if (yPos < window.innerHeight) {
+        // Adjust boundary for smaller screens
+        const fallAreaHeight = window.innerHeight > 500 ? window.innerHeight : window.innerHeight * 0.8;
+
+        if (yPos < fallAreaHeight - 50) { // Ensure it stays within adjusted screen height
             requestAnimationFrame(fall);
         } else {
             foxnut.remove(); // Remove after reaching the bottom
-        }
+        } 
     }
     fall();
 }
 
 function makhanaRain() {
-    setInterval(() => {
-        createMakhana();
-    }, 200); // Generate new makhana every 200ms
+    if (window.innerWidth > 500) { // Only create makhana if screen width is greater than 500px
+        setInterval(() => {
+            createMakhana();
+        }, 200); // Generate new makhana every 200ms
+    } else {
+        setInterval(() => {
+            createMakhana();
+        }, 400); // Generate new makhana every 400ms for smaller screens
+    }
 }
 
 makhanaRain();
