@@ -25,6 +25,77 @@
     width: 200px;             /* Set a fixed width, adjust as needed */
     object-fit: contain;      /* Ensure the image scales properly */
 }
+.navbar {
+    position: relative;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(235 226 214 / 62%);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin-left: 30px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+/* Toggle Button */
+.checkbtn {
+    display: none;
+    font-size: 1.8em;
+    color: #6B4226;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    right: 20px;
+}
+
+.checkbtn:hover {
+    transform: scale(1.1);
+}
+
+#check {
+    display: none;
+}
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-right: 10px;
+}
+
+/* Navbar Links */
+.navbar a {
+    color: #6B4226;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: rgba(223, 211, 195, 0.8);
+    color: #442C1D;
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
