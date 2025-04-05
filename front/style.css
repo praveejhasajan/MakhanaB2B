@@ -1510,7 +1510,7 @@ select, input, button {
     background-size: contain;
     opacity: 0.9;
 }
-@media (max-width: 600px) {
+@media (max-width: auto) {
     body{overflow-x: hidden;}
     .foxnut {
         width: 40px;        /* Adjust width to fit properly in smaller screens */
