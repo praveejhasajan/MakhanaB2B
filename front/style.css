@@ -1123,8 +1123,8 @@ footer {
       
       .navbar-container a {
         color: #FFFFFF; /* Text color */
-        background-color:  #66662b63; /* Make background transparent */
-        padding: 10px 15px;
+        background-color:  #717108d1; /* Make background transparent */
+        padding: 10px 15px; 
         text-decoration: none;
         border-radius: 1px;
         transition: background-color 0.3s ease;
