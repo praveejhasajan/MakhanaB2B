@@ -1553,3 +1553,31 @@ select, input, button {
     border: none;
 }
 
+@keyframes gradientChange {
+    0% {
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    }
+    25% {
+        background: linear-gradient(90deg, #fbc2eb, #a6c1ee);
+    }
+    50% {
+        background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+    }
+    75% {
+        background: linear-gradient(90deg, #d4fc79, #96e6a1);
+    }
+    100% {
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    }
+}
+.warning-message {
+    animation: gradientChange 6s ease-in-out infinite;
+    color: #7a0000;
+    padding: 14px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: background 1.5s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
