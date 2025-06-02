@@ -1439,129 +1439,94 @@ footer {
 }
 /* Container for the calculator */
 /* Default styles for small screens (mobile) */
-.containerCalculator {
-    max-width: 100%; /* Ensures it fits within the viewport */
-    width: 100%;
-    margin: auto;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #ffffff;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    visibility: visible;
-    animation: fadeIn 0.3s ease-in-out;
-    overflow-x: hidden; /* Prevents overflow */
-    box-sizing: border-box; /* Ensures padding is included in the width calculation */
+#IncotermCalculator {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 0;
 }
-
-.containerCalculator h2 {
-    text-align: center;
-}
-
-.form-group {
-    width: 100%; /* Ensures form groups take up full width */
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block; /* Ensures labels are block elements */
-    margin-bottom: 5px;
-}
-
-.form-group select, 
-.form-group button {
-    width: 100%; /* Ensures select boxes and button take up full width */
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Medium screens (tablets) */
-@media screen and (min-width: 768px) {
     .containerCalculator {
-        max-width: 600px;
-        padding: 30px;
+      max-width: 500px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
     }
-
-    .form-group select, 
-    .form-group button {
-        width: auto; /* Allows elements to take up their content's width */
-        max-width: 100%; /* Ensures they don't exceed container width */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-}
-
-/* Large screens (desktops) */
-@media screen and (min-width: 1024px) {
-    .containerCalculator {
-        max-width: 700px;
-        padding: 40px;
+    h2, h3 {
+      text-align: center;
+      color: #00796b;
     }
-}
-
-/* Extra large screens */
-@media screen and (min-width: 1200px) {
-    .containerCalculator {
-        max-width: 800px;
-        padding: 50px;
+    .form-group {
+      margin-bottom: 20px;
     }
-}
-
-
-
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    select, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
     }
-}
-
-/* Mobile-friendly adjustments */
-@media (max-width: 600px) {
-    .containerCalculator {
-        padding: 25px;
+    select:focus, button:focus {
+      border-color: #00796b;
+      outline: none;
     }
-}
-
-
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 10px 0;
-}
-.form-group {
-    display: flex;
-    flex-direction: column;
-    width: 30%; /* Keep space for each selection field */
-}
-select, input, button {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-.result-box {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    background: #e8f5e9;
-    border-left: 5px solid #4caf50;
-    text-align: left;
-}
-.result-box strong {
-    color: #388e3c;
-}
+    button {
+      background: #00796b;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004d40;
+    }
+    #resultBox, #responsibilityBox {
+      display: none;
+      margin-top: 30px;
+      background: #e0f2f1;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    #responsibilityBox h4 {
+      margin-bottom: 10px;
+      color: #00796b;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li::before {
+      content: '✅';
+      margin-right: 8px;
+    }
+    .responsibility-columns {
+      display: flex;
+      gap: 20px;
+    }
+    .loader {
+      display: none;
+      margin: 10px auto;
+      border: 5px solid #ccc;
+      border-top: 5px solid #00796b;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
 
 /* #foxnut {

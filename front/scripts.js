@@ -248,48 +248,76 @@ function updateCurrency() {
     document.getElementById("currency").innerText = currency;
 }
 
-function calculatePrice() {
-    let quantity = parseFloat(document.getElementById("quantity").value);
-    let incotermSelect = document.getElementById("incoterm");
-    let incotermRate = parseFloat(incotermSelect.value);
-    let countrySelect = document.getElementById("country");
-    let exchangeRate = parseFloat(countrySelect.options[countrySelect.selectedIndex].getAttribute("data-rate"));
+ 
+    function calculatePrice() {
+      const loader = document.getElementById("loader");
+      const resultBox = document.getElementById("resultBox");
+      const responsibilityBox = document.getElementById("responsibilityBox");
 
-    // Base price per kg in INR
-    let basePricePerKg = 1500;
+      loader.style.display = "block";
+      resultBox.style.display = "none";
+      responsibilityBox.style.display = "none";
 
-    // Ensure valid inputs
-    if (isNaN(quantity) || isNaN(incotermRate) || isNaN(exchangeRate)) {
-        alert("Please select valid inputs.");
-        return;
+      setTimeout(() => {
+        const quantity = 1000;
+        const country = document.getElementById('country');
+        const incoterm = document.getElementById('incoterm');
+
+        const rate = parseFloat(country.selectedOptions[0].dataset.rate);
+        const incotermRate = parseFloat(incoterm.value);
+        const selectedCurrency = country.value;
+        const selectedIncoterm = incoterm.options[incoterm.selectedIndex].text;
+        const incotermKey = selectedIncoterm.split(" - ")[0];
+
+        const price = (quantity * incotermRate * rate).toFixed(2);
+
+        document.getElementById('totalPrice').textContent = `${price} ${selectedCurrency}`;
+        document.getElementById('incotermExplanation').textContent = `Incoterm Selected: ${selectedIncoterm}`;
+
+        const responsibilities = {
+          FOB: {
+            seller: [
+              "Product packaging",
+              "Inland transport to port",
+              "Customs clearance at origin",
+              "Loading goods on vessel"
+            ],
+            buyer: [
+              "Ocean freight",
+              "Insurance",
+              "Customs clearance at destination",
+              "Inland delivery to final location"
+            ]
+          },
+          CIF: {
+            seller: [
+              "Product packaging",
+              "Inland transport to port",
+              "Customs clearance at origin",
+              "Loading goods on vessel",
+              "Ocean freight",
+              "Insurance"
+            ],
+            buyer: [
+              "Customs clearance at destination",
+              "Inland delivery to final location"
+            ]
+          }
+        };
+
+        const sellerList = document.getElementById("sellerResponsibilities");
+        const buyerList = document.getElementById("buyerResponsibilities");
+
+        if (responsibilities[incotermKey]) {
+          sellerList.innerHTML = responsibilities[incotermKey].seller.map(item => `<li>${item}</li>`).join("");
+          buyerList.innerHTML = responsibilities[incotermKey].buyer.map(item => `<li>${item}</li>`).join("");
+          responsibilityBox.style.display = "block";
+        }
+
+        loader.style.display = "none";
+        resultBox.style.display = "block";
+      }, 1000);
     }
-
-    // Calculate total price in INR
-    let totalPriceINR = (quantity * basePricePerKg) + (basePricePerKg*incotermRate);
-
-    // Convert to selected country's currency
-    let totalPriceForeign = totalPriceINR * exchangeRate;
-
-    // Get the selected country currency symbol
-    let currencySymbol = countrySelect.value;
-
-    // Display the result
-    document.getElementById("totalPrice").innerText = totalPriceForeign.toFixed(2) + " " + currencySymbol;
-    document.getElementById("resultBox").style.display = "block";
-
-    // Explanation for the Incoterm
-    let incotermText = incotermSelect.options[incotermSelect.selectedIndex].text.split(" - ")[0];
-    let explanation = "";
-    switch (incotermText) {
-        case "EXW": explanation = "Ex Works (EXW) means the buyer takes full responsibility for transport and costs after pickup."; break;
-        case "FCA": explanation = "Free Carrier (FCA) means the seller delivers to the agreed carrier location, and the buyer covers further transport."; break;
-        case "FOB": explanation = "Free On Board (FOB) means the seller handles delivery to the ship, while the buyer covers ocean freight and beyond."; break;
-        case "CIF": explanation = "Cost, Insurance & Freight (CIF) includes cost, main transport, and insurance by the seller."; break;
-        case "DDP": explanation = "Delivered Duty Paid (DDP) means the seller covers all costs, duties, and delivers directly to the buyer."; break;
-        default: explanation = "The selected Incoterm determines which party covers transportation, insurance, and duties."; break;
-    }
-    document.getElementById("incotermExplanation").innerText = explanation;
-}
 
 
   window.addEventListener("scroll", function () {

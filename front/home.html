@@ -447,72 +447,53 @@ function closeNavbar() {
 </div>
     </div>
 </section>
-<div class="containerCalculator" id="IncotermCalculator">
-    <h2 style="text-align:center;">Price Calculator</h2>
+ <div class="containerCalculator" id="IncotermCalculator">
+    <h2>📦 Price Calculator</h2>
 
     <div class="form-group">
-        <label for="quantity"><i class="fas fa-weight"></i> Quantity (kg):</label>
-        <select id="quantity">
-            <option value="100">100 kg</option>
-            <option value="200">200 kg</option>
-            <option value="300">300 kg</option>
-            <option value="400">400 kg</option>
-            <option value="500">500 kg</option>
-            <option value="600">600 kg</option>
-            <option value="700">700 kg</option>
-            <option value="800">800 kg</option>
-            <option value="900">900 kg</option>
-            <option value="1000">1000 kg</option>
-        </select>
+      <label for="country"><i class="fas fa-globe"></i> Select Country:</label>
+      <select id="country">
+        <option value="AUD" data-rate="0.02">Australia (AUD)</option>
+        <option value="USD" data-rate="0.015">USA (USD)</option>
+        <option value="EUR" data-rate="0.013">Europe (EUR)</option>
+        <option value="SGD" data-rate="0.02">Singapore (SGD)</option>
+        <option value="GBP" data-rate="0.01">UK (GBP)</option>
+        <option value="JPY" data-rate="1.5">Japan (JPY)</option>
+      </select>
     </div>
 
     <div class="form-group">
-        <label for="country"><i class="fas fa-globe"></i> Select Country:</label>
-        <select id="country">
-            <option value="AUD" data-rate="0.02">Australia (AUD)</option>
-            <option value="USD" data-rate="0.015">USA (USD)</option>
-            <option value="EUR" data-rate="0.013">Europe (EUR)</option>
-            <option value="SGD" data-rate="0.02">Singapore (SGD)</option>
-            <option value="NZD" data-rate="0.02">New Zealand (NZD)</option>
-            <option value="HKD" data-rate="0.1">Hong Kong (HKD)</option>
-            <option value="CHF" data-rate="0.015">Switzerland (CHF)</option>
-            <option value="JPY" data-rate="1.5">Japan (JPY)</option>
-            <option value="CAD" data-rate="0.02">Canada (CAD)</option>
-            <option value="GBP" data-rate="0.01">United Kingdom (GBP)</option>
-            <option value="AED" data-rate="0.05">UAE (AED)</option>
-            <option value="MYR" data-rate="0.08">Malaysia (MYR)</option>
-            <option value="ZAR" data-rate="0.3">South Africa (ZAR)</option>
-        </select>
+      <label for="incoterm"><i class="fas fa-truck"></i> Select Incoterm:</label>
+      <select id="incoterm">
+        <option value="1512">FOB - Free On Board</option>
+        <option value="1800">CIF - Cost, Insurance & Freight</option>
+      </select>
     </div>
 
     <div class="form-group">
-        <label for="incoterm"><i class="fas fa-truck"></i> Select Incoterm:</label>
-        <select id="incoterm">
-            <option value="0.216">EXW - Ex Works</option>
-            <option value="0.2268">FCA - Free Carrier</option>
-            <option value="0.2376">FAS - Free Alongside Ship</option>
-            <option value="0.2376">FOB - Free On Board</option>
-            <option value="0.3024">CFR - Cost & Freight </option>
-            <option value="0.3089">CIF - Cost, Insurance & Freight </option>
-            <option value="0.3132">CPT - Carriage Paid To </option>
-            <option value="0.3197">CIP - Carriage & Insurance Paid</option>
-            <option value="0.3305">DPU - Delivered at Place Unloaded</option>
-            <option value="0.3521">DAP - Delivered at Place </option>
-            <option value="0.3845">DDP - Delivered Duty Paid </option>
-        </select>
-    </div>
-    
-
-    <div class="form-group">
-        <button onclick="calculatePrice()">Calculate</button>
+      <button onclick="calculatePrice()">🚀 Calculate Price</button>
+      <div class="loader" id="loader"></div>
     </div>
 
     <div id="resultBox">
-        <h3>Total Price: <span id="totalPrice"></span></h3>
-        <p id="incotermExplanation"></p>
+      <h3>Total Price: <span id="totalPrice"></span></h3>
+      <p id="incotermExplanation"></p>
     </div>
-</div>
 
+    <div id="responsibilityBox">
+      <h3>📋 Responsibilities</h3>
+      <div class="responsibility-columns">
+        <div>
+          <h4>Seller</h4>
+          <ul id="sellerResponsibilities"></ul>
+        </div>
+        <div>
+          <h4>Buyer</h4>
+          <ul id="buyerResponsibilities"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="conuntr">
     <span class="visit-label">Total Visitors:</span>
     <a href="https://www.hitwebcounter.com" target="_blank">
