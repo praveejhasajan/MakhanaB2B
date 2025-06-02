@@ -42,10 +42,38 @@ html {
     height: 100%;
     margin-left: 30px;
 }
+@media (max-width: 768px) {
+  .navbar {
+    height: 60px;
+    padding: 0 10px;
+  }
 
-.logo img {
-    height: 50px;
+  .nav-left {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .logo img {
+    height: 40px;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .checkbtn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+    display: block;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 }
+
 
 /* Toggle Button */
 .checkbtn {
@@ -97,10 +125,8 @@ html {
     .checkbtn {
         display: block;
     }
-.logo{
-    height: 50px;
 
-}
+
     .navbar-container {
         display: none;
         flex-direction: column;
@@ -139,7 +165,7 @@ html {
 /* Base CSS */
 .main-section {
     width: 100%;
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -233,7 +259,8 @@ html {
     .product-right p {
         font-size: 1em;
         display: -webkit-box;
-        -webkit-line-clamp: 3; /* Show only 3 lines */
+        -webkit-line-clamp: 5; /* Show only 3 lines */
+        line-clamp: 5; /* Standard property for compatibility */
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -408,8 +435,8 @@ ul li {
 @media (max-width: 768px) {
     .advantages-container {
         width: 90%; /* Adjust width for better spacing */
-        flex-direction: column; /* Stack on small screens */
-        align-items: center; /* Center align */
+             flex-direction: column;
+        align-items: stretch; /* Center align */
     }
 
     .advantages-left,
@@ -447,40 +474,41 @@ ul li {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 80vh;
+    height: 60vh;
     background-color: #F8EDE3;
     
 }
-
-.reach-left,
 .reach-right {
+    width: 50%;
+    height: 80vh;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .reach-left {
-    width: 70%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .reach-left img {
-    width: 90%;
-    height: auto;
-    border-radius: 10px;
+    width: 80%;
+    height: 55vh;
+    border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .reach-right {
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: auto;
-    padding-right: 20px;
+    height: 80vh;
+    padding-right: 40px;
 }
 
 .reach-right h2 {
@@ -496,15 +524,18 @@ ul li {
 /* Responsive design */
 @media (max-width: 768px) {
     .reach {
-        width: 90%;
+        width: 100%;
         flex-direction: column;
         height: auto; /* Adjust height for small screens */
         overflow: hidden; /* Prevent overflow */
+        gap : 40px;
     }
 
     .reach-left,
     .reach-right {
-        width: 90%;
+        width: 120%;
+          flex: 1 1 100%;
+      
     }
 
     .reach-left {
@@ -608,11 +639,7 @@ ul li {
 }
 
 /* Optional: Add a background color or other styles to the logo container */
-.logo {
-    background-color: #f9f9f9; /* Example light background */
-    /* padding: 10px;             Space around the logo */
-    border-radius: 10px;       /* Rounded corners for the logo container */
-}
+
 .notification-top{
     position: fixed;
     top: 0;
@@ -1720,47 +1747,42 @@ select, input, button {
       .owl-nav button:hover {
         background-color: #084298;
       }
-  }
+  }/* Main Carousel Slide */
+.hero-carousel .hero-slide {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: -1;
+}
+
+/* Optional dark overlay */
+.hero-carousel .hero-slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Hide all slide content */
+.hero-carousel .container {
+  display: none !important;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
   .hero-carousel .hero-slide {
-    height: 100vh;
-    background-size: cover;
+    height: 45Svh; /* Adjust height as needed */
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
-    position: relative;
-    z-index: -100;
+    padding: 0;
   }
-  
+
   .hero-carousel .hero-slide::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    background-color: transparent; /* Remove overlay if needed */
   }
-  
-  .hero-carousel .container {
-    position: relative;
-    z-index: 2;
-  }
-  
-  @media (max-width: 768px) {
-    .hero-carousel .hero-slide {
-      height: 70vh;
-      padding: 40px 20px;
-    }
-  
-    .hero-carousel h1 {
-      font-size: 2rem;
-    }
-  
-    .hero-carousel p {
-      font-size: 1rem;
-    }
-  
-    .hero-carousel .btn {
-      padding: 8px 20px;
-      font-size: 14px;
-    }
-  }
-  
-  
+}
