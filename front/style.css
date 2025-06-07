@@ -1445,102 +1445,193 @@ footer {
       margin: 0;
       padding: 0;
 }
-    .containerCalculator {
-      max-width: 500px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    h2, h3 {
-      text-align: center;
-      color: #00796b;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    select, button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      transition: border-color 0.3s ease;
-    }
-    select:focus, button:focus {
-      border-color: #00796b;
-      outline: none;
-    }
-    button {
-      background: #00796b;
-      color: #fff;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #004d40;
-    }
-    #resultBox, #responsibilityBox {
-      display: none;
-      margin-top: 30px;
-      background: #e0f2f1;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    #responsibilityBox h4 {
-      margin-bottom: 10px;
-      color: #00796b;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li::before {
-      content: '✅';
-      margin-right: 8px;
-    }
-    .responsibility-columns {
-      display: flex;
-      gap: 20px;
-    }
-    .loader {
-      display: none;
-      margin: 10px auto;
-      border: 5px solid #ccc;
-      border-top: 5px solid #00796b;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+   
+.containerCalculator {
+  max-width: 90%;
+  width: 550px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in-out;
+  /* transition: background 0.3s, color 0.3s; */
+}
+#totalPrice {
+  text-align: center;
+  text-decoration: solid;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body.dark-mode .containerCalculator {
+  background: #1f1f1f;
+  color: #e0e0e0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2, h3, h4 {
+  text-align: center;
+  color: #00695c;
+}
+
+body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 {
+  color: #4dd0e1;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
 
 
-/* #foxnut {
-    width: 50px; 
-    height: 50px; 
- 
-    border-radius: 50%;
+select, button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+select:focus, button:focus {
+  border-color: #00897b;
+  outline: none;
+}
+
+button {
+  background: #00897b;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00695c;
+}
+
+#resultBox, #responsibilityBox {
+  display: none;
+  margin-top: 25px;
+  background: #e0f2f1;
+  padding: 20px;
+  border-radius: 12px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li::before {
+  content: '✅';
+  margin-right: 8px;
+}
+
+.responsibility-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.responsibility-columns > div {
+  flex: 1;
+  min-width: 130px;
+}
+
+.loader {
+  display: none;
+  margin: 20px auto;
+  border: 6px solid #ccc;
+  border-top: 6px solid #00796b;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mfu-label {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+  font-style: italic;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  background: #ffffff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  z-index: 10;
+  width: 250px;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.tooltip:hover .tooltip-content {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .containerCalculator {
+    padding: 20px;
+  }
+
+  select, button {
+    font-size: 15px;
+    padding: 10px;
+  }
+}
+@media print {
+  /* Hide everything */
+  body * {
+    display: none !important;
+  }
+  /* Only show the calculator section */
+  .containerCalculator,
+  .containerCalculator * {
+    display: block !important;
+  }
+  /* Position the calculator at the top */
+  .containerCalculator {
     position: absolute;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    background-image: url('https://www.makhanabazar.com/front/image/onemakhana.png');
-    background-size: 100% 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-} */
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+
 
 .foxnut {
     position: absolute;

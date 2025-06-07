@@ -249,75 +249,89 @@ function updateCurrency() {
 }
 
  
-    function calculatePrice() {
-      const loader = document.getElementById("loader");
-      const resultBox = document.getElementById("resultBox");
-      const responsibilityBox = document.getElementById("responsibilityBox");
 
-      loader.style.display = "block";
-      resultBox.style.display = "none";
-      responsibilityBox.style.display = "none";
+function calculatePrice() {
+  console.log("Calculating price...");
+  const country = document.getElementById("country");
+  const selectedCurrency = country.options[country.selectedIndex].value;
+  const rate = parseFloat(
+    country.options[country.selectedIndex].getAttribute("data-rate")
+  );
+  const incotermElement = document.getElementById("incoterm");
+  const incoterm = parseFloat(incotermElement.value);
+  const incotermKey = incoterm === 1 ? "FOB" : "CIF";
+  const quality = document.getElementById("quality");
+  const basePrice = parseFloat(
+    quality.options[quality.selectedIndex].getAttribute("data-price")
+  );
 
-      setTimeout(() => {
-        const quantity = 1000;
-        const country = document.getElementById('country');
-        const incoterm = document.getElementById('incoterm');
+  const gst = 0.05 * basePrice;
+  const chaCharges = 50;
+  const loadingCharges = 100;
+  const quantity = 1000;
 
-        const rate = parseFloat(country.selectedOptions[0].dataset.rate);
-        const incotermRate = parseFloat(incoterm.value);
-        const selectedCurrency = country.value;
-        const selectedIncoterm = incoterm.options[incoterm.selectedIndex].text;
-        const incotermKey = selectedIncoterm.split(" - ")[0];
+  const costPerKg = basePrice + gst + chaCharges + loadingCharges;
+  const totalINR = costPerKg * quantity * incoterm;
+  const finalPrice = totalINR / rate;
 
-        const price = (quantity * incotermRate * rate).toFixed(2);
+  document.getElementById("loader").style.display = "block";
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("resultBox").style.display = "block";
+    document.getElementById("totalPrice").innerText = `${finalPrice.toFixed(
+      2
+    )} ${selectedCurrency}`;
+    const incotermText = incotermElement.selectedOptions[0].text;
+    document.getElementById("incotermExplanation").innerText =
+      `Price includes: Quality Cost + 5% GST + CHA ₹${chaCharges} + Loading ₹${loadingCharges} × ${quantity}kg. Based on ${incotermText}.`;
 
-        document.getElementById('totalPrice').textContent = `${price} ${selectedCurrency}`;
-        document.getElementById('incotermExplanation').textContent = `Incoterm Selected: ${selectedIncoterm}`;
+    const responsibilities = {
+      FOB: {
+        seller: [
+          "Product packaging",
+          "Inland transport to port",
+          "Customs clearance at origin",
+          "Loading goods on vessel"
+        ],
+        buyer: [
+          "Ocean freight",
+          "Insurance",
+          "Customs clearance at destination",
+          "Inland delivery to final location"
+        ]
+      },
+      CIF: {
+        seller: [
+          "Product packaging",
+          "Inland transport to port",
+          "Customs clearance at origin",
+          "Loading goods on vessel",
+          "Ocean freight",
+          "Insurance"
+        ],
+        buyer: [
+          "Customs clearance at destination",
+          "Inland delivery to final location"
+        ]
+      }
+    };
 
-        const responsibilities = {
-          FOB: {
-            seller: [
-              "Product packaging",
-              "Inland transport to port",
-              "Customs clearance at origin",
-              "Loading goods on vessel"
-            ],
-            buyer: [
-              "Ocean freight",
-              "Insurance",
-              "Customs clearance at destination",
-              "Inland delivery to final location"
-            ]
-          },
-          CIF: {
-            seller: [
-              "Product packaging",
-              "Inland transport to port",
-              "Customs clearance at origin",
-              "Loading goods on vessel",
-              "Ocean freight",
-              "Insurance"
-            ],
-            buyer: [
-              "Customs clearance at destination",
-              "Inland delivery to final location"
-            ]
-          }
-        };
+    const sellerDuties = document.getElementById("sellerDuties");
+    const buyerDuties = document.getElementById("buyerDuties");
+    sellerDuties.innerHTML = "";
+    buyerDuties.innerHTML = "";
 
-        const sellerList = document.getElementById("sellerResponsibilities");
-        const buyerList = document.getElementById("buyerResponsibilities");
+    responsibilities[incotermKey].seller.forEach(item => {
+      sellerDuties.innerHTML += `<li>${item}</li>`;
+    });
 
-        if (responsibilities[incotermKey]) {
-          sellerList.innerHTML = responsibilities[incotermKey].seller.map(item => `<li>${item}</li>`).join("");
-          buyerList.innerHTML = responsibilities[incotermKey].buyer.map(item => `<li>${item}</li>`).join("");
-          responsibilityBox.style.display = "block";
-        }
+    responsibilities[incotermKey].buyer.forEach(item => {
+      buyerDuties.innerHTML += `<li>${item}</li>`;
+    });
 
-        loader.style.display = "none";
-        resultBox.style.display = "block";
-      }, 1000);
-    }
+    document.getElementById("responsibilityBox").style.display = "block";
+  }, 800);
+}
 
 
   window.addEventListener("scroll", function () {
@@ -326,6 +340,7 @@ function updateCurrency() {
     if (rect.top < window.innerHeight - 100) {
       infoBox.style.animation = "fadeInUp 1.2s ease both";
     }
+
   });
 
 

@@ -447,53 +447,83 @@ function closeNavbar() {
 </div>
     </div>
 </section>
- <div class="containerCalculator" id="IncotermCalculator">
-    <h2>📦 Price Calculator</h2>
+
+  <div class="containerCalculator">
+    
+    <h2>Export Price Calculator</h2>
 
     <div class="form-group">
-      <label for="country"><i class="fas fa-globe"></i> Select Country:</label>
+      <label for="country">Select Country:</label>
       <select id="country">
-        <option value="AUD" data-rate="0.02">Australia (AUD)</option>
-        <option value="USD" data-rate="0.015">USA (USD)</option>
-        <option value="EUR" data-rate="0.013">Europe (EUR)</option>
-        <option value="SGD" data-rate="0.02">Singapore (SGD)</option>
-        <option value="GBP" data-rate="0.01">UK (GBP)</option>
-        <option value="JPY" data-rate="1.5">Japan (JPY)</option>
+        <option value="USD" data-rate="83">USA (USD)</option>
+        <option value="EUR" data-rate="90">Germany (EUR)</option>
+        <option value="AED" data-rate="22.5">UAE (AED)</option>
+        <option value="AUD" data-rate="55">Australia (AUD)</option>
+        <option value="INR" data-rate="1">India (INR)</option>
+        <option value="GBP" data-rate="100">United Kingdom (GBP)</option>
+        <option value="CAD" data-rate="62.5">Canada (CAD)</option>
+        <option value="SGD" data-rate="62.5">Singapore (SGD)</option>
+        <option value="JPY" data-rate="0.58">Japan (JPY)</option>
+        <option value="CNY" data-rate="11.5">China (CNY)</option>
+        <option value="ZAR" data-rate="4.5">South Africa (ZAR)</option>
+        <option value="NZD" data-rate="52.6">New Zealand (NZD)</option>
+        <option value="CHF" data-rate="92">Switzerland (CHF)</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="incoterm"><i class="fas fa-truck"></i> Select Incoterm:</label>
+      <label for="incoterm">Select Incoterm:</label>
       <select id="incoterm">
-        <option value="1512">FOB - Free On Board</option>
-        <option value="1800">CIF - Cost, Insurance & Freight</option>
+        <option value="1" selected>FOB - Free On Board</option>
+        <option value="1.15">CIF - Cost Insurance Freight</option>
       </select>
     </div>
 
     <div class="form-group">
-      <button onclick="calculatePrice()">🚀 Calculate Price</button>
-      <div class="loader" id="loader"></div>
+      <label for="quality">Select Quality:</label>
+      <select id="quality">
+        <option value="A1" data-price="1700">A1</option>
+        <option value="A2" data-price="1500">A2</option>
+        <option value="A3" data-price="1250">A3</option>
+      </select>
     </div>
+
+    <button onclick="calculatePrice()">Calculate</button>
+    <div class="loader" id="loader"></div>
 
     <div id="resultBox">
-      <h3>Total Price: <span id="totalPrice"></span></h3>
-      <p id="incotermExplanation"></p>
+      <h3>Total Price:</h3>
+      <p id="totalPrice"></p>
+      <p class="mfu-label" id="incotermExplanation"></p>
+      <div class="tooltip">
+        ⓘ Hover for breakdown
+        <div class="tooltip-content">
+          <ul>
+            <li><strong>GST:</strong> 5% of base price</li>
+            <li><strong>CHA:</strong> ₹50 per 1000kg</li>
+            <li><strong>Loading:</strong> ₹100 per 1000kg</li>
+          </ul>
+        </div>
+      </div>
+      <!-- <button onclick="printCalculator()">🖨 Print</button> -->
     </div>
 
     <div id="responsibilityBox">
-      <h3>📋 Responsibilities</h3>
+      <h4>Responsibilities</h4>
       <div class="responsibility-columns">
         <div>
-          <h4>Seller</h4>
-          <ul id="sellerResponsibilities"></ul>
+          <strong>Seller:</strong>
+          <ul id="sellerDuties"></ul>
         </div>
         <div>
-          <h4>Buyer</h4>
-          <ul id="buyerResponsibilities"></ul>
+          <strong>Buyer:</strong>
+          <ul id="buyerDuties"></ul>
         </div>
       </div>
     </div>
   </div>
+  
+
 <div class="conuntr">
     <span class="visit-label">Total Visitors:</span>
     <a href="https://www.hitwebcounter.com" target="_blank">
