@@ -1842,3 +1842,24 @@ ul li::before {
     background-color: transparent; /* Remove overlay if needed */
   }
 }
+.email-float-button {
+    position: fixed;
+    bottom: 90px; /* adjust if you already have a WhatsApp button */
+    right: 20px;
+    z-index: 9999;
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+  }
+  
+  .email-float-button img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .email-float-button:hover {
+    transform: scale(1.1);
+  }
+  
