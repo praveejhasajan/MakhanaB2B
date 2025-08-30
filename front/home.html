@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Makhana Export</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/front/image/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/front/image/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/front/image/favicon.png">
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/front/image/favicon.png"> -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/front/image/fevi.png">
+    
   <!-- Optimized Meta Tags -->
 <meta name="keywords" content="Makhana, Foxnuts, Waterlily seeds, Mithila Makhana, Roasted Makhana, Organic Makhana, 
 Gluten-free snacks, Healthy Indian snacks, Superfood, Makhana exporters, Makhana manufacturers, 
@@ -140,7 +140,7 @@ Makhana import USA, Indian snacks export, Premium Makhana India">
     <nav class="navbar" id="navbar">
         <div class="nav-left">
             <a href="https://www.makhanabazar.com" class="logo">
-                <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" />
+                <img src="/front/image/logomakhahna.png" alt="Makhanabazar Logo" />
             </a>
         </div>
         <input type="checkbox" id="check" />
@@ -674,8 +674,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <script src="/front/blog-carousel.js"></script>
 
 <!-- email subscription -->
-<!-- 
-   <div class="popup-container" id="popupContainer">
+
+   <!-- <div class="popup-container" id="popupContainer">
     <div class="popup">
       <button class="close-btn" onclick="closePopup()">✕</button>
       <h2>Stay Updated!</h2>
@@ -686,49 +686,44 @@ document.addEventListener('DOMContentLoaded', () => {
       </form>
       <div class="thank-you" id="thankYouMsg">Thank you! We'll be in touch soon.</div>
     </div>
-  </div>
+  </div> -->
 
-  <script>
-    const popup = document.getElementById('popupContainer');
-    const form = document.getElementById('emailForm');
-    const thankYou = document.getElementById('thankYouMsg');
+  <!-- <script> -->
+//   const popup = document.getElementById('popupContainer');
+//   const form = document.getElementById('emailForm');
+//   const thankYou = document.getElementById('thankYouMsg');
 
-    // Show popup after 10 seconds
-    setTimeout(() => {
-      popup.style.display = 'flex';
-    }, 10000);
+//   setTimeout(() => {
+//     popup.style.display = 'flex';
+//   }, 10000);
 
-    // Close popup
-    function closePopup() {
-      popup.style.display = 'none';
-    }
+//   function closePopup() {
+//   var popup = document.getElementById('popupContainer');
+//   if (popup) popup.style.display = 'none';
+// }
 
-    // Handle form submission
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-
-      const url = "https://script.google.com/macros/s/AKfycbxNOqkK7SJSNXKTjGYimfpGuTuj7ZlmUoHuNbpd17QfKzYlON2RkBd7ZNfinAfT02hG5w/exec";
-
-      try {
-        await fetch(url, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `email=${encodeURIComponent(email)}`
-        });
-
-        form.style.display = 'none';
-        thankYou.style.display = 'block';
-        setTimeout(closePopup, 3000);
-      } catch (error) {
-        alert("Submission failed. Please try again later.");
-        console.error(error);
-      }
-    });
-  </script> -->
+//   form.addEventListener('submit', async function (e) {
+//     e.preventDefault();
+//     const email = document.getElementById('email').value;
+//     const url = "https://script.google.com/macros/s/AKfycbx1qrHj7yiqxAY2RFR_YDsDT-uuM-UvB5BCbdLO_pSDRgOQ4OMOqWr2MJAudGWplMw5Tw/exec";
+//     try {
+//       await fetch(url, {
+//         method: 'POST',
+//         mode: 'no-cors',
+//         headers: {
+//           'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//         body: `email=${encodeURIComponent(email)}`
+//       });
+//       form.style.display = 'none';
+//       thankYou.style.display = 'block';
+//       setTimeout(closePopup, 3000);
+//     } catch (error) {
+//       alert("Submission failed. Please try again later.");
+//       console.error(error);
+//     }
+//   });
+// </script>
 
 
 <section class="reviews">
