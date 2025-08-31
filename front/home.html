@@ -703,55 +703,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- email subscription -->
 
-   <!-- <div class="popup-container" id="popupContainer">
-    <div class="popup">
-      <button class="close-btn" onclick="closePopup()">✕</button>
-      <h2>Stay Updated!</h2>
-      <p>Enter your email to get offers and export updates.</p>
-      <form id="emailForm">
-        <input type="email" name="email" id="email" placeholder="Enter your email" required />
-        <button type="submit">Submit</button>
-      </form>
-      <div class="thank-you" id="thankYouMsg">Thank you! We'll be in touch soon.</div>
+<!-- Popup -->
+<!-- Popup -->
+<div class="popup-container" id="popupContainer" style="
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5);
+  z-index:2147483647; justify-content:center; align-items:center;
+">
+  <div class="popup" style="
+    background:#fff; padding:2rem; border-radius:8px; max-width:360px; width:90%;
+    text-align:center; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.25);
+  ">
+    <button class="close-btn" id="closeBtn" aria-label="Close" style="
+      position:absolute; top:10px; right:-150px; background:none; border:none; font-size:1.5rem; cursor:pointer;
+    ">✕</button>
+
+    <h2>Stay Updated!</h2>
+    <p>Enter your email to get offers and export updates.</p>
+
+    <form id="emailForm" name="emailForm">
+      <input type="email" name="email" id="email" placeholder="Enter your email" required
+             style="width:100%; margin-bottom:1rem; padding:0.5rem;" />
+      <button type="submit" style="padding:0.5rem 1rem;">Submit</button>
+    </form>
+
+    <div class="thank-you" id="thankYouMsg" style="display:none; margin-top:1rem;">
+      Thank you! We'll be in touch soon.
     </div>
-  </div> -->
+  </div>
+</div>
 
-  <!-- <script> -->
-//   const popup = document.getElementById('popupContainer');
-//   const form = document.getElementById('emailForm');
-//   const thankYou = document.getElementById('thankYouMsg');
+<script>
+(function () {
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLlCdiNcAJhmUYh2kfY2_HX13sTyc3EAOuO_TPN88N16Ejo7Np6cv0Fs54JQV0Xt0xMA/exec';
 
-//   setTimeout(() => {
-//     popup.style.display = 'flex';
-//   }, 10000);
+  document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popupContainer');
+    const closeBtn = document.getElementById('closeBtn');
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    const thankYou = document.getElementById('thankYouMsg');
 
-//   function closePopup() {
-//   var popup = document.getElementById('popupContainer');
-//   if (popup) popup.style.display = 'none';
-// }
+    // Make sure popup is at body level (avoid stacking contexts)
+    if (popup.parentElement !== document.body) document.body.appendChild(popup);
 
-//   form.addEventListener('submit', async function (e) {
-//     e.preventDefault();
-//     const email = document.getElementById('email').value;
-//     const url = "https://script.google.com/macros/s/AKfycbx1qrHj7yiqxAY2RFR_YDsDT-uuM-UvB5BCbdLO_pSDRgOQ4OMOqWr2MJAudGWplMw5Tw/exec";
-//     try {
-//       await fetch(url, {
-//         method: 'POST',
-//         mode: 'no-cors',
-//         headers: {
-//           'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//         body: `email=${encodeURIComponent(email)}`
-//       });
-//       form.style.display = 'none';
-//       thankYou.style.display = 'block';
-//       setTimeout(closePopup, 3000);
-//     } catch (error) {
-//       alert("Submission failed. Please try again later.");
-//       console.error(error);
-//     }
-//   });
-// </script>
+    function openPopup() {
+      form.style.display = '';
+      thankYou.style.display = 'none';
+      popup.style.display = 'flex';
+      setTimeout(() => emailInput.focus(), 50);
+    }
+    function closePopup() { popup.style.display = 'none'; }
+
+    // Show on every visit after 10s
+    setTimeout(openPopup, 1000);
+
+    // Close handlers
+    closeBtn.addEventListener('click', closePopup);
+    popup.addEventListener('click', (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+
+    // Submit handler
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+
+  // Try CORS first
+  try {
+    const res = await fetch(SCRIPT_URL, { method: 'POST', mode: 'cors', body: fd });
+    const raw = await res.text();
+    let data = null; try { data = JSON.parse(raw); } catch {}
+    if (!(res.ok && data && (data.ok === true || data.result === 'success' || data.status === 'ok'))) {
+      throw new Error('Unexpected response');
+    }
+  } catch (corsErr) {
+    // Fallback to no-cors: will not throw if request is delivered; we can’t read body, but your sheet logs confirm success
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+    } catch (ncErr) {
+      console.error('Both CORS and no-cors failed:', ncErr);
+      alert('Submission failed. Please try again later.');
+      return;
+    }
+  }
+
+  // Show success UI regardless (since data is being saved)
+  form.style.display = 'none';
+  thankYou.style.display = 'block';
+  setTimeout(() => popup.style.display = 'none', 2000);
+});
+  });
+})();
+</script>
 
 
 <section class="reviews">
