@@ -495,7 +495,7 @@ function closeNavbar() {
 </div>
 
 <!-- Modal for Purchase -->
-<div id="purchaseModal" class="modal" style="display: none; z-index: 100; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">
+<!-- <div id="purchaseModal" class="modal" style="display: none; z-index: 100; position: fixed; top: 0; left: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">
     <div class="modal-content">
         <span class="close" onclick="closePurchaseModal()">&times;</span>
         <h3>Complete Your Purchase</h3>
@@ -520,7 +520,7 @@ function closeNavbar() {
             <button type="submit">Confirm Purchase</button>
         </form>
     </div>
-</div>
+</div> -->
 
 
 <!-- Modal for Other Content (example modal) -->
@@ -538,37 +538,31 @@ function closeNavbar() {
 <section id="gallery-section">
     <h1>Gallery</h1>
     <div class="gallery">
-        <img src="/front/image/gallery/DSC_5852.jpg" alt="Image 1">
-        <img src="/front/image/gallery/DSC_5868.jpg" alt="Image 3">
-        <img src="/front/image/gallery/DSC_5886.jpg" alt="Image 6">
-        <!-- <img src="/front/image/imagenew1.png" alt="New Image 1"> -->
-<img src="/front/image/new2.png" alt="New Image 2">
-<img src="/front/image/new3.png" alt="New Image 3">
-<img src="/front/image/new12.png" alt="New Image 12">
-
-<img src="/front/image/new6.png" alt="New Image 6">
-<img src="/front/image/new7.png" alt="New Image 7">
-<img src="/front/image/new8.png" alt="New Image 8">
-<img src="/front/image/new9.png" alt="New Image 9">
-<img src="/front/image/new10.png" alt="New Image 10">
-<img src="/front/image/new11.png" alt="New Image 11">
-<img src="/front/image/new5.png" alt="New Image 5">
-<img src="/front/image/new13.png" alt="New Image 13">
-<img src="/front/image/new4.png" alt="New Image 4">
-
-<img src="/front/image/new14.png" alt="New Image 14">
-<img src="/front/image/new15.png" alt="New Image 15">
-
-
-        <img src="/front/image/mp1.JPG" alt="Image 2">
-        <img src="/front/image/mp2.jpg" alt="Image 4">
-        <img src="/front/image/mp112.png" alt="Image 8">
-        <img src="/front/image/mp5.JPG" alt="Image 5">
-        <img src="/front/image/mp7.jpg" alt="Image 7 ">
-        <!-- <img src="/front/image/mp9.JPG" alt="Image 9"> -->
-        <img src="/front/image/mp11.JPG" alt="Image 11">
-        <img src="/front/image/mp12.JPG" alt="Image 12">
-        <!-- <img src="/front/image/mp10.JPG" alt="Image 10"> -->
+        <img src="/front/image/gallery/DSC_5852.jpg" alt="Makhanabazar">
+        <img src="/front/image/gallery/DSC_5868.jpg" alt="Makhanabazar">
+        <img src="/front/image/gallery/DSC_5886.jpg" alt="Makhanabazar">
+        <img src="/front/image/new2.png" alt="Makhanabazar">
+        <img src="/front/image/new3.png" alt="Makhanabazar">
+        <img src="/front/image/new12.png" alt="Makhanabazar">
+        <img src="/front/image/new6.png" alt="Makhanabazar">
+        <img src="/front/image/new7.png" alt="Makhanabazar">
+        <img src="/front/image/new8.png" alt="Makhanabazar">
+        <img src="/front/image/new9.png" alt="Makhanabazar">
+        <img src="/front/image/new10.png" alt="Makhanabazar">
+        <img src="/front/image/new11.png" alt="Makhanabazar">
+        <img src="/front/image/new5.png" alt="Makhanabazar">
+        <img src="/front/image/new13.png" alt="Makhanabazar">
+        <img src="/front/image/new4.png" alt="Makhanabazar">
+        <img src="/front/image/new14.png" alt="Makhanabazar">
+        <img src="/front/image/new15.png" alt="Makhanabazar">
+        <img src="/front/image/mp1.JPG" alt="Makhanabazar">
+        <img src="/front/image/mp2.jpg" alt="Makhanabazar">
+        <img src="/front/image/mp112.png" alt="Makhanabazar">
+        <img src="/front/image/mp5.JPG" alt="Makhanabazar">
+        <img src="/front/image/mp7.jpg" alt="Makhanabazar">
+        <img src="/front/image/mp11.JPG" alt="Makhanabazar">
+        <img src="/front/image/mp12.JPG" alt="Makhanabazar">
+     
         
     </div>
 </section>
@@ -584,11 +578,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const lb = document.createElement('div');
     lb.id = 'lightbox';
     lb.className = 'lightbox';
-    lb.innerHTML = `
-      <span class="close" aria-label="Close">&times;</span>
-      <img class="lightbox-content" id="lightbox-img" alt="">
-      <div id="caption"></div>
-    `;
+    lb.innerHTML = lb.innerHTML = `
+  <span class="close" aria-label="Close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="">
+  <div id="caption"></div>
+  <button id="shareGalleryImg" style="margin:1rem auto 0;display:block;padding:0.5rem 1.2rem;font-size:1rem;cursor:pointer;background:#FF921C;color:#fff;border:none;border-radius:4px; width: 120px;">
+    <i class="bi bi-share-fill"></i> Share
+  </button>
+`;;
     document.body.appendChild(lb);
   }
 
@@ -596,6 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxImg = document.getElementById('lightbox-img');
   const caption = document.getElementById('caption');
   const closeBtn = lightbox.querySelector('.close');
+  const shareBtn = lightbox.querySelector('#shareGalleryImg');
 
   let currentIndex = -1;
 
@@ -629,7 +627,31 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox(); // click outside image
   });
-
+// Share button action
+shareBtn.addEventListener('click', async () => {
+  const imgUrl = lightboxImg.src;
+  const imgAlt = lightboxImg.alt || document.title;
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: document.title,
+        text: imgAlt,
+        url: imgUrl
+      });
+    } catch (err) {
+      // User cancelled or error
+    }
+  } else {
+    // Fallback: copy image URL to clipboard
+    try {
+      await navigator.clipboard.writeText(imgUrl);
+      shareBtn.textContent = "Link Copied!";
+      setTimeout(() => shareBtn.textContent = "Share", 1500);
+    } catch {
+      alert("Copy failed. You can manually copy the image link:\n" + imgUrl);
+    }
+  }
+});
   // Keyboard support
   document.addEventListener('keydown', (e) => {
     if (lightbox.style.display !== 'block') return;

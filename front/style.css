@@ -1302,6 +1302,9 @@ footer {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Smaller size for medium screens */
         gap: 30px; /* Reduced gap for smaller space */
     }
+    .lightbox-content{
+            margin-top: 50%;
+    }
 }
 
 @media (max-width: 400px) {
