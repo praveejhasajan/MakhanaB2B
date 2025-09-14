@@ -1994,3 +1994,70 @@ ul li::before {
       font-weight: bold;
       display: none;
     }
+    /* Responsive Blog Popup Styles */
+#blog1Popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+}
+
+#blog1Popup > div {
+  background: #fff;
+  max-width: 900px;
+  width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  position: relative;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+#blog1PopupContent {
+  overflow-y: auto;
+}
+
+#blog1Popup .blog-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+#blog1Popup button[onclick*="closeBlog1Popup"] {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  #blog1Popup > div {
+    padding: 1rem 0.5rem;
+    max-width: 99vw;
+    max-height: 98vh;
+  }
+  #blog1Popup .blog-image img {
+    max-width: 98vw;
+    max-height: 40vh;
+  }
+  #blog1Popup button[onclick*="closeBlog1Popup"] {
+    top: 6px;
+    right: 10px;
+    font-size: 1.5rem;
+  }
+  #blog1PopupContent {
+    font-size: 1rem;
+  }
+}

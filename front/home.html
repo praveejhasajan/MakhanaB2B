@@ -675,12 +675,11 @@ shareBtn.addEventListener('click', async () => {
           <div class="blog-item text-center">
             <img src="/front/image/mp13.png" alt="Makhana Board News">
             <h5>Makhana Board: Empowering Farmers & Boosting Exports</h5>
-            <p>Learn how the newly proposed Makhana Board can support farmers, regulate quality, and expand global trade opportunities for Indian Makhana.</p>
+            <p>Learn how the newly proposed Makhana Board can support farmers, regulate quality, and expand global .....</p>
             <div class="btn-action d-flex justify-content-center mt-3 gap-2">
-              <a class="btn bg-primary text-white py-1 px-3" href="makhana-board.html">
-                <i class="bi bi-book"></i> Read More
-              </a>
-              <a class="btn bg-secondary text-white py-1 px-3" href="https://www.facebook.com/sharer/sharer.php?u=https://www.makhanabazar.com/makhana-board.html" target="_blank">
+             <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog1Popup()">
+                  <i class="bi bi-book"></i> Read More</a>
+              <a class="btn bg-secondary text-white py-1 px-3" >
                 <i class="bi bi-share-fill"></i> Share
               </a>
             </div>
@@ -692,9 +691,10 @@ shareBtn.addEventListener('click', async () => {
           <div class="blog-item text-center">
             <img src="/front/image/THealthy.png" alt="Blog 2">
             <h5>How to Use Makhana in Your Diet</h5>
-            <p>Discover tasty ways to include Makhana in your daily meals for better nutrition.</p>
+            <p>Discover tasty ways to include Makhana in your daily meals for better nutrition.</p><br>
             <div class="btn-action d-flex justify-content-center mt-3">
-              <a class="btn bg-primary text-white py-1 px-3" href="blog2.html"><i class="bi bi-book"></i> Read More</a>
+              <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog2Popup()">
+               <i class="bi bi-book"></i> Read More</a>
               <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
             </div>
           </div>
@@ -704,9 +704,9 @@ shareBtn.addEventListener('click', async () => {
           <div class="blog-item text-center">
             <img src="/front/image/Tmp14.avif" alt="Blog 3">
             <h5>Makhana Farming in Bihar</h5>
-            <p>Learn about the traditional farming techniques and modern innovations in Makhana cultivation.</p>
+            <p>Learn about the traditional farming techniques and modern innovations in Makhana cultivation.</p><br><br>
             <div class="btn-action d-flex justify-content-center mt-3">
-              <a class="btn bg-primary text-white py-1 px-3" href="blog3.html"><i class="bi bi-book"></i> Read More</a>
+             <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog3Popup()"><i class="bi bi-book"></i> Read More</a>
               <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
             </div>
           </div>
@@ -715,7 +715,91 @@ shareBtn.addEventListener('click', async () => {
       </div>
     </div>
   </div>
-  
+  <!-- Blog 1 Popup Modal -->
+<div id="blog1Popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center;">
+  <div style="background:#fff; max-width:900px; width:95vw; max-height:90vh; overflow-y:auto; border-radius:10px; position:relative; padding:2rem;">
+    <button onclick="closeBlog1Popup()" style=" top:10px;padding-bottom: 100px; right:20px; background:none;margin-bottom: 100px; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+    <div id="blog1PopupContent" style="overflow-y:auto;">
+      <!-- Blog content will be injected here -->
+       
+<!-- <main class="blog-section1" style="margin-top: 150px;">
+  <article class="blog-post">
+    <h2>Makhana-Board</h2>
+    <div class="blog-meta">
+      <span class="blog-author">By makhanabazar </span> | 
+      <span class="blog-date">february 05, 2025</span>
+    </div>
+    <div class="blog-image">
+      <img src="image/imgmb.png" alt="Makhana-Board">
+    </div>
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#makhana-board">What is Makhana Board?</a></li>
+        <li><a href="#cultivation">Where is Makhana Commonly Cultivated?</a></li>
+        <li><a href="#beneficiaries">Benefit from the Makhana Board</a></li>
+        <li><a href="#key-elements">Key Elements of Makhana Board Initiatives</a></li>
+      </ul>
+    </div>
+    <section class="blog-content">
+      <h3 id="introduction">Introduction</h3>
+      <p>Makhana, also known as fox nuts or lotus seeds, has gained popularity as a superfood. Not only it is rich in essential nutrients, but it also offers a wide range of health benefits, making it a fantastic addition to a balanced diet.</p>
+      <div class="blog-image">
+        <img src="image/mp4.JPG" alt="About Makhana Board">
+      </div>
+      <h3 id="makhana-board">What is Makhana Board?</h3>
+      <p>In the Union Budget of 2025-26, Finance Minister Nirmala Sitharaman announced the establishment of a Makhana Board in Bihar. The Makhana Board is a government initiative aimed at promoting the cultivation, processing, and marketing of makhana (fox nuts), primarily in Bihar, where a significant portion of India's makhana is produced.</p>
+      <div class="blog-image">
+        <img src="image/mp13.png" alt="Health Board">
+      </div>
+      <h3 id="beneficiaries">Who Can Benefit from the Makhana Board?</h3>
+      <p>Farmers, small business owners, food processors, and exporters involved in the makhana industry can benefit from the board's programs and support.</p>
+      <h3 id="cultivation">Where is Makhana Commonly Cultivated?</h3>
+      <div class="blog-image">
+        <img src="image/mp14.avif" alt="Health Benefits of Makhana">
+      </div>
+      <p>Makhana (fox nuts) and Bihar share a deep connection, as Bihar is the largest producer of makhana in India, contributing to over 90% of the country's production.</p>
+      <ul>
+        <li><strong>Ideal Climate & Geography:</strong> The wetlands and ponds in Bihar, especially in districts like Darbhanga, Madhubani, Purnea, Katihar, and Saharsa, provide the perfect conditions for makhana cultivation.</li>
+        <li><strong>Traditional Cultivation:</strong> Makhana farming has been a part of Bihar's culture for centuries, with traditional methods of collection, drying, and roasting.</li>
+        <li><strong>High Quality:</strong> Bihar’s makhana is known for its large size, crunchiness, and superior taste, making it highly demanded in both domestic and international markets.</li>
+      </ul>
+      <h3 id="key-elements">Key Elements of Makhana Board Initiatives</h3>
+      <div class="blog-image">
+        <img src="image/mp7.jpg" alt="Health Benefits of Makhana">
+      </div>
+      <ul>
+        <li><strong>Farmer Support:</strong> The board will provide training to farmers, ensuring they benefit from relevant government schemes and adopt best practices in makhana cultivation.</li>
+        <li><strong>Processing and Value Addition:</strong> By improving processing techniques and promoting value addition, the board aims to increase the profitability of makhana products.</li>
+        <li><strong>Market Access:</strong> Efforts will be made to enhance market access, regulate pricing, and promote exports, thereby expanding the reach of makhana both domestically and internationally.</li>
+      </ul>
+    </section>
+    <section class="blog-conclusion">
+      <h3>Conclusion</h3>
+      <p>Makhana is a versatile and nutritious food that can benefit people of all ages. With the establishment of the Makhana Board, farmers and businesses will receive enhanced support, ensuring better production, processing, and market access. Whether you are looking to improve your heart health, control blood sugar levels, or expand your makhana business, this initiative is a significant step forward. Try incorporating makhana into your diet and experience the benefits firsthand.</p>
+    </section>
+    <div class="social-sharing">
+      <span>Share this post:</span>
+      <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <section class="feedback-section">
+      <h3>Leave a Comment</h3>
+      <form class="feedback-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </article>
+</main> -->
+
+    </div>
+  </div>
+</div>
   <!-- JS Includes -->
 
   <script src="/front/bootstrap/js/jquery-3.6.0.min.js"></script>
@@ -897,6 +981,258 @@ form.addEventListener('submit', async (e) => {
             });
         });
         </script>
+        <script>
+const blog1Content = `
+<main class="blog-section" style="margin-top: 50px;">
+  <article class="blog-post">
+    <h2>Makhana-Board</h2>
+    <div class="blog-meta">
+      <span class="blog-author">By makhanabazar </span> | 
+      <span class="blog-date">february 05, 2025</span>
+    </div>
+    <div class="blog-image">
+      <img src="image/imgmb.png" alt="Makhana-Board">
+    </div>
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#makhana-board">What is Makhana Board?</a></li>
+        <li><a href="#cultivation">Where is Makhana Commonly Cultivated?</a></li>
+        <li><a href="#beneficiaries">Benefit from the Makhana Board</a></li>
+        <li><a href="#key-elements">Key Elements of Makhana Board Initiatives</a></li>
+      </ul>
+    </div>
+    <section class="blog-content">
+      <h3 id="introduction">Introduction</h3>
+      <p>Makhana, also known as fox nuts or lotus seeds, has gained popularity as a superfood. Not only it is rich in essential nutrients, but it also offers a wide range of health benefits, making it a fantastic addition to a balanced diet.</p>
+      <div class="blog-image">
+        <img src="image/mp4.JPG" alt="About Makhana Board">
+      </div>
+      <h3 id="makhana-board">What is Makhana Board?</h3>
+      <p>In the Union Budget of 2025-26, Finance Minister Nirmala Sitharaman announced the establishment of a Makhana Board in Bihar. The Makhana Board is a government initiative aimed at promoting the cultivation, processing, and marketing of makhana (fox nuts), primarily in Bihar, where a significant portion of India's makhana is produced.</p>
+      <div class="blog-image">
+        <img src="image/mp13.png" alt="Health Board">
+      </div>
+      <h3 id="beneficiaries">Who Can Benefit from the Makhana Board?</h3>
+      <p>Farmers, small business owners, food processors, and exporters involved in the makhana industry can benefit from the board's programs and support.</p>
+      <h3 id="cultivation">Where is Makhana Commonly Cultivated?</h3>
+      <div class="blog-image">
+        <img src="image/mp14.avif" alt="Health Benefits of Makhana">
+      </div>
+      <p>Makhana (fox nuts) and Bihar share a deep connection, as Bihar is the largest producer of makhana in India, contributing to over 90% of the country's production.</p>
+      <ul>
+        <li><strong>Ideal Climate & Geography:</strong> The wetlands and ponds in Bihar, especially in districts like Darbhanga, Madhubani, Purnea, Katihar, and Saharsa, provide the perfect conditions for makhana cultivation.</li>
+        <li><strong>Traditional Cultivation:</strong> Makhana farming has been a part of Bihar's culture for centuries, with traditional methods of collection, drying, and roasting.</li>
+        <li><strong>High Quality:</strong> Bihar’s makhana is known for its large size, crunchiness, and superior taste, making it highly demanded in both domestic and international markets.</li>
+      </ul>
+      <h3 id="key-elements">Key Elements of Makhana Board Initiatives</h3>
+      <div class="blog-image">
+        <img src="image/mp7.jpg" alt="Health Benefits of Makhana">
+      </div>
+      <ul>
+        <li><strong>Farmer Support:</strong> The board will provide training to farmers, ensuring they benefit from relevant government schemes and adopt best practices in makhana cultivation.</li>
+        <li><strong>Processing and Value Addition:</strong> By improving processing techniques and promoting value addition, the board aims to increase the profitability of makhana products.</li>
+        <li><strong>Market Access:</strong> Efforts will be made to enhance market access, regulate pricing, and promote exports, thereby expanding the reach of makhana both domestically and internationally.</li>
+      </ul>
+    </section>
+    <section class="blog-conclusion">
+      <h3>Conclusion</h3>
+      <p>Makhana is a versatile and nutritious food that can benefit people of all ages. With the establishment of the Makhana Board, farmers and businesses will receive enhanced support, ensuring better production, processing, and market access. Whether you are looking to improve your heart health, control blood sugar levels, or expand your makhana business, this initiative is a significant step forward. Try incorporating makhana into your diet and experience the benefits firsthand.</p>
+    </section>
+    <div class="social-sharing">
+      <span>Share this post:</span>
+      <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <section class="feedback-section">
+      <h3>Leave a Comment</h3>
+      <form class="feedback-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </article>
+</main>
+`;
+</script>
+<script>
+function openBlog1Popup() {
+  document.getElementById('blog1PopupContent').innerHTML = blog1Content;
+  document.getElementById('blog1Popup').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeBlog1Popup() {
+  document.getElementById('blog1Popup').style.display = 'none';
+  document.body.style.overflow = '';
+}
+</script>
+<script>
+const blog2Content = `
+<main class="blog-section" style="margin-top: 50px;">
+  <article class="blog-post">
+    <h2>The Health Benefits of Makhana</h2>
+    <div class="blog-meta">
+      <span class="blog-author">By John Doe</span> | 
+      <span class="blog-date">October 16, 2024</span>
+    </div>
+    <div class="blog-image">
+      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&dpr=1" alt="Health Benefits of Makhana">
+    </div>
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#nutrients">Rich in Nutrients</a></li>
+        <li><a href="#heart-health">Heart Health</a></li>
+        <li><a href="#diabetes">Diabetes Friendly</a></li>
+        <li><a href="#anti-aging">Anti-Aging</a></li>
+        <li><a href="#weight-loss">Weight Loss</a></li>
+      </ul>
+    </div>
+    <section class="blog-content">
+      <h3 id="introduction">Introduction</h3>
+      <p>Makhana, also known as fox nuts or lotus seeds, has gained popularity as a superfood. Not only is it rich in essential nutrients, but it also offers a wide range of health benefits, making it a fantastic addition to a balanced diet.</p>
+      <h3 id="nutrients">Rich in Nutrients</h3>
+      <img src="https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Nutrients in Makhana" class="blog-sub-image">
+      <p>Makhana is packed with protein, fiber, potassium, magnesium, iron, and zinc. These nutrients make it an excellent choice for those looking to increase their nutrient intake without adding excess calories.</p>
+      <h3 id="heart-health">Supports Heart Health</h3>
+      <img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Heart Health Benefits" class="blog-sub-image">
+      <p>The low levels of saturated fat and high levels of antioxidants in makhana help in maintaining heart health. Regular consumption can assist in reducing the risk of cardiovascular diseases.</p>
+      <h3 id="diabetes">Good for Diabetics</h3>
+      <img src="https://images.pexels.com/photos/1295748/pexels-photo-1295748.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Diabetes Friendly" class="blog-sub-image">
+      <p>With a low glycemic index, makhana helps control blood sugar levels. Its slow-releasing carbohydrates provide sustained energy, making it a healthy snack choice for diabetics.</p>
+      <h3 id="anti-aging">Anti-Aging Properties</h3>
+      <img src="https://images.pexels.com/photos/3998418/pexels-photo-3998418.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Anti-Aging Benefits" class="blog-sub-image">
+      <p>Rich in antioxidants, makhana fights free radicals in the body, helping to reduce the signs of aging. Regular consumption can lead to healthier skin and a youthful glow.</p>
+      <h3 id="weight-loss">Weight Loss Friendly</h3>
+      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Weight Loss Benefits" class="blog-sub-image">
+      <p>Makhana is low in calories but high in protein, making it ideal for weight watchers. It keeps you full for longer, reducing the urge to snack on unhealthy foods.</p>
+    </section>
+    <section class="blog-conclusion">
+      <h3>Conclusion</h3>
+      <p>Makhana is a versatile and nutritious food that can benefit people of all ages. Whether you are looking to improve your heart health, control blood sugar levels, or simply enjoy a healthy snack, makhana is a great choice. Try incorporating it into your diet and experience the benefits firsthand.</p>
+    </section>
+    <div class="social-sharing">
+      <span>Share this post:</span>
+      <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <section class="feedback-section">
+      <h3>Leave a Comment</h3>
+      <form class="feedback-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </article>
+</main>
+`;
+</script>
+<script>
+function openBlog2Popup() {
+  document.getElementById('blog1PopupContent').innerHTML = blog2Content;
+  document.getElementById('blog1Popup').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+</script>
+<script>
+const blog3Content = `
+<main class="blog-section" style="margin-top: 50px;">
+  <article class="blog-post">
+    <h2>Makhana Farming in Bihar: Tradition, Innovation & Global Reach</h2>
+    <div class="blog-meta">
+      <span class="blog-author">By makhanabazar Research Team</span> | 
+      <span class="blog-date">September 2025</span>
+    </div>
+    <div class="blog-image">
+      <img src="/front/image/Tmp14.avif" alt="Makhana Farming in Bihar">
+    </div>
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#regions">Major Cultivation Regions</a></li>
+        <li><a href="#traditional">Traditional Farming Techniques</a></li>
+        <li><a href="#modern">Modern Innovations</a></li>
+        <li><a href="#challenges">Challenges & Opportunities</a></li>
+        <li><a href="#global">Global Demand & Export</a></li>
+      </ul>
+    </div>
+    <section class="blog-content">
+      <h3 id="overview">Overview</h3>
+      <p>
+        Makhana (fox nut or Euryale ferox) is an aquatic crop grown mainly in the wetlands of Bihar, India. Bihar accounts for over 85% of India's total Makhana production, making it the undisputed leader in this superfood’s cultivation and trade.
+      </p>
+      <h3 id="regions">Major Cultivation Regions</h3>
+      <p>
+        The districts of <strong>Darbhanga, Madhubani, Purnea, Katihar, Saharsa, and Supaul</strong> are the heartlands of Makhana farming. The unique ecosystem of North Bihar’s ponds and wetlands provides the ideal environment for Makhana growth.
+      </p>
+      <h3 id="traditional">Traditional Farming Techniques</h3>
+      <ul>
+        <li><strong>Pond Preparation:</strong> Farmers prepare ponds in March-April, ensuring water depth and quality are optimal for seed germination.</li>
+        <li><strong>Seed Sowing:</strong> Seeds are sown in shallow water and allowed to germinate. The plants spread across the pond surface, producing large floating leaves.</li>
+        <li><strong>Harvesting:</strong> Mature Makhana fruits are collected by hand, often by skilled divers who retrieve the seeds from the pond bed.</li>
+        <li><strong>Popping:</strong> The seeds are sun-dried, roasted in sand, and popped to produce the edible white Makhana kernels.</li>
+      </ul>
+      <h3 id="modern">Modern Innovations</h3>
+      <ul>
+        <li><strong>Mechanization:</strong> Introduction of mechanical poppers and improved drying techniques has increased efficiency and reduced labor intensity.</li>
+        <li><strong>Research & Training:</strong> Institutions like the <a href="https://www.icarrcer.in/" target="_blank">ICAR-RCER, Darbhanga</a> and the Bihar Agricultural University provide training and support for best practices, disease management, and value addition.</li>
+        <li><strong>Quality Certification:</strong> Bihar’s Mithila Makhana received GI (Geographical Indication) tag in 2022, boosting its global brand and export value.</li>
+      </ul>
+      <h3 id="challenges">Challenges & Opportunities</h3>
+      <ul>
+        <li><strong>Fragmented Landholdings:</strong> Most Makhana farmers are smallholders, making large-scale mechanization difficult.</li>
+        <li><strong>Water Management:</strong> Dependence on monsoon and water quality can affect yields.</li>
+        <li><strong>Market Access:</strong> Government initiatives like the new Makhana Board aim to improve market linkages, pricing, and export support.</li>
+      </ul>
+      <h3 id="global">Global Demand & Export</h3>
+      <p>
+        With rising awareness of Makhana’s health benefits, demand is growing in the USA, UK, UAE, Australia, and beyond. Bihar’s farmers are now part of a global supply chain, exporting both raw and value-added Makhana products worldwide.
+      </p>
+      <div class="blog-image">
+        <img src="/front/image/Tmp14.avif" alt="Makhana Farming Bihar">
+      </div>
+    </section>
+    <section class="blog-conclusion">
+      <h3>Conclusion</h3>
+      <p>
+        Makhana farming in Bihar is a blend of tradition and innovation. With continued research, government support, and global demand, the future for Bihar’s Makhana farmers looks bright. Supporting this sector means supporting rural livelihoods, healthy eating, and India’s agricultural heritage.
+      </p>
+    </section>
+    <div class="social-sharing">
+      <span>Share this post:</span>
+      <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <section class="feedback-section">
+      <h3>Leave a Comment</h3>
+      <form class="feedback-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </article>
+</main>
+`;
+</script>
+<script>
+function openBlog3Popup() {
+  document.getElementById('blog1PopupContent').innerHTML = blog3Content;
+  document.getElementById('blog1Popup').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+</script>
                 
 </body>
 </html>
