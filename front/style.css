@@ -2007,8 +2007,8 @@ ul li::before {
 
 #blog1Popup > div {
   background: #fff;
-  max-width: 900px;
-  width: 95vw;
+  max-width: 1200px;
+  width: 500vw;
   max-height: 90vh;
   overflow-y: auto;
   border-radius: 10px;
