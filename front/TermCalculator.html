@@ -1,424 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tasty Makhana Export Calculator</title>
-  <meta name="keywords" content="Makhana, healthy snacks, Indian food, organic Makhana, premium quality, international distribution, Indian market, global reach"/>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #f9f7f3, #fefbe9);
-      margin: 0;
-      padding: 0;
-    }
-
-    .containerCalculator {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 25px;
-      border-radius: 12px;
-      background: #fffdf8;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      border: 1px solid #eee;
-    }
-
-    .containerCalculator h2 {
-      text-align: center;
-      color: #4caf50;
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 15px;
-    }
-
-    select, input, button {
-      width: 100%;
-      margin-top: 8px;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #ff9800;
-      color: white;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #f57c00;
-    }
-
-    .result-box {
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 10px;
-      background: #e8f5e9;
-      border-left: 6px solid #4caf50;
-    }
-
-    .result-box h3 {
-      margin-top: 0;
-      color: #2e7d32;
-    }
-
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-      margin-top: 10px;
-      color: #555;
-    }
-
-    .tooltip-content {
-      visibility: hidden;
-      background-color: #fff;
-      color: #333;
-      padding: 12px;
-      border-radius: 6px;
-      position: absolute;
-      z-index: 1;
-      width: 260px;
-      bottom: 130%;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-
-    .tooltip:hover .tooltip-content {
-      visibility: visible;
-    }
-
-    .responsibility-columns {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-
-    .responsibility-columns div {
-      width: 48%;
-    }
-
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-
-    .whatsapp-button img {
-      height: 50px;
-    }
-
-    header nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background-color: #fbeec1;
-      border-bottom: 1px solid #eee;
-    }
-
-    .logo img {
-      height: 50px;
-    }
-
-    .navbar-container a {
-      margin-left: 15px;
-      text-decoration: none;
-      color: #444;
-      font-weight: 500;
-    }
-
-    .navbar-container a:hover {
-      color: #ff9800;
-    }
-
-    .toggle-btn {
-      display: none;
-    }
-
-    @media (max-width: 600px) {
-      .responsibility-columns {
-        flex-direction: column;
-      }
-
-      .responsibility-columns div {
-        width: 100%;
-        margin-bottom: 15px;
-      }
-
-      .navbar-container {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: #fbeec1;
-        padding: 10px;
-      }
-
-      .toggle-btn {
-        display: block;
-        font-size: 26px;
-        background: none;
-        border: none;
-        cursor: pointer;
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MakhanaBazar – Premium Export Quote</title>
+<style>
+body{font-family:Inter,Arial,Helvetica,sans-serif;background:#f5f8ffa;margin:0;padding:20px}
+.container{max-width:980px;margin:20px auto;background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 24px rgba(6,24,44,.08)}
+.brandBox{text-align:center;margin-bottom:12px}
+.brandBox h1{margin:0;font-size:26px;color:#1e7b34;font-weight:800}
+.brandBox p{margin:0;font-size:13px;color:#444}
+.title{text-align:center;color:#124a16;font-weight:700;margin-bottom:12px;font-size:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:12px}
+.form-group{display:flex;flex-direction:column}
+label{font-weight:600;margin-bottom:6px;font-size:13px}
+input,select{padding:10px;border-radius:8px;border:1px solid #d0cfcf;font-size:14px}
+.noPrint{ }
+.buttons{display:flex;justify-content:center;gap:14px;margin:12px 0;flex-wrap:wrap}
+.btn{padding:10px 18px;border-radius:10px;border:0;color:#fff;cursor:pointer;font-weight:700;font-size:14px;transition:.18s ease}
+.btn.calc{background:#1e7b34}.btn.pdf{background:#4a3bc8}.btn.mail{background:#0a66c2}.btn.reset{background:#b71c1c}
+.livePanel{flex:1; background:#ffffff; padding:18px; border-radius:12px; box-shadow:0 4px 18px rgba(0,0,0,0.06); min-height:200px; border:1px solid #e6e6e6}
+#grandTotalLive{font-size:26px;font-weight:800;color:#0e5f1b}
+.breakdownTable td{padding:8px;border:1px solid #e6e6e6}
+.printArea{display:none}
+@media print{body *{visibility:hidden}.printArea, .printArea *{visibility:visible}body{background:#fff}.noPrint{display:none} }
+@media (max-width:880px){.sideWrap{flex-wrap:wrap}.grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}}
+</style>
 </head>
 <body>
+<div class="container noPrint">
+  <div class="brandBox">
+    <h1>Krishipurna Organic Pvt. Ltd.</h1>
+    <p>Premium Indian Makhana Export | www.makhanabazar.com</p>
+  </div>
 
-<!-- WhatsApp Button -->
-<a href="https://wa.me/919591533598?text=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products." target="_blank" class="whatsapp-button">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat"/>
-</a>
+  <h2 class="title">CIF / FOB / EXW Export Price Calculator</h2>
 
-<!-- Navigation -->
-<header>
-  <nav class="navbar" id="navbar">
-    <div class="logo">
-      <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo"/>
+  <div class="grid">
+    <!-- Buyer Details -->
+    <div class="form-group"><label>Buyer Name</label><input id="buyerName" type="text" placeholder="Enter Buyer Name"/></div>
+    <div class="form-group"><label>Buyer Email</label><input id="buyerEmail" type="email" placeholder="Enter Buyer Email"/></div>
+
+    <div class="form-group"><label>Quantity (KG)</label><input id="kg" type="number" placeholder="e.g. 3000"/></div>
+    <div class="form-group"><label>Quality</label>
+      <select id="quality">
+        <option value="A1" data-price="1300">A1 – Premium</option>
+        <option value="A2" data-price="1200">A2 – Standard</option>
+        <option value="A3" data-price="1000">A3 – Economy</option>
+      </select>
     </div>
-    <div class="navbar-container" id="navbarContainer">
-      <a href="#home">Home</a>
-      <a href="#product">Product</a>
-      <a href="javascript:void(0);" onclick="showPopup()">Buy Now</a>
-      <a href="#contact">Contact Us</a>
-      <a href="./blog">Blogs</a>
+    <div class="form-group"><label>Manual Price (INR/kg)</label><input id="manualPrice" type="number" placeholder="Optional - overrides quality price"/></div>
+    <div class="form-group"><label>Incoterm</label>
+      <select id="incoterm"><option>EXW</option><option>FOB</option><option selected>CIF</option></select>
     </div>
-  </nav>
-</header>
+    <div class="form-group"><label>Destination Country</label>
+      <select id="destCountry">
+        <option value="USA" data-currency="USD" data-rate="88.7420">USA</option>
+        <option value="UK" data-currency="GBP" data-rate="116.7194">UK</option>
+        <option value="GERMANY" data-currency="EUR" data-rate="103.3188">Germany</option>
+        <option value="UAE" data-currency="AED" data-rate="24.14">UAE</option>
+        <option value="AUSTRALIA" data-currency="AUD" data-rate="57.83">Australia</option>
+        <option value="CANADA" data-currency="CAD" data-rate="63.31">Canada</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Destination Port</label><select id="destPort"></select></div>
+    <div class="form-group"><label>Output Currency</label>
+      <select id="currencyOnly"><option>USD</option><option>EUR</option><option>GBP</option><option>AED</option><option>AUD</option><option>CAD</option></select>
+    </div>
+  </div>
 
-<!-- Price Calculator -->
-<div class="containerCalculator">
-  <h2>Export Price Calculator</h2>
+  <!-- TOP BUTTONS (Calculate + Reset) -->
+  <div class="noPrint buttons" id="topButtons" style="justify-content:center">
+    <button class="btn calc" id="calcBtn">Calculate</button>
+    <button class="btn reset" id="resetBtn">Reset</button>
+  </div>
 
-  <label for="quantity">Quantity (kg):</label>
-  <select id="quantity">
-    <option value="100">100 kg</option>
-    <option value="200">200 kg</option>
-    <option value="500">500 kg</option>
-    <option value="1000" selected>1000 kg</option>
-  </select>
+  <!-- SIDE-BY-SIDE: CALCULATOR (left) + LIVE RESULT (right) -->
+  <div class="sideWrap" style="display:flex;gap:16px;flex-wrap:wrap;">
+    <!-- left column is the inputs area (already above) - we keep live panel on right -->
+    <div class="livePanel" id="liveResult">
+      <h3 style="margin-top:0; color:#1e7b34; font-size:18px; text-align:center;">Live Cost Breakdown</h3>
 
-  <label for="quality">Select Quality:</label>
-  <select id="quality">
-    <option value="A1" data-price="1600">A1</option>
-    <option value="A2" data-price="1300">A2</option>
-    <option value="A3" data-price="1200">A3</option>
-  </select>
-
-  <label for="country">Select Country:</label>
-  <select id="country" onchange="updateCurrency()">
-    <option value="USD" data-rate="0.012">USA (USD)</option>
-    <option value="EUR" data-rate="0.011">Germany (EUR)</option>
-    <option value="AED" data-rate="0.044">UAE (AED)</option>
-    <option value="AUD" data-rate="0.018">Australia (AUD)</option>
-    <option value="INR" data-rate="1">India (INR)</option>
-    <option value="GBP" data-rate="0.009">United Kingdom (GBP)</option>
-    <option value="CAD" data-rate="0.016">Canada (CAD)</option>
-    <option value="SGD" data-rate="0.016">Singapore (SGD)</option>
-    <option value="JPY" data-rate="1.3">Japan (JPY)</option>
-    <option value="CNY" data-rate="0.16">China (CNY)</option>
-    <option value="ZAR" data-rate="0.22">South Africa (ZAR)</option>
-    <option value="NZD" data-rate="0.017">New Zealand (NZD)</option>
-    <option value="CHF" data-rate="0.011">Switzerland (CHF)</option>
-  </select>
-
-  <label for="incoterm">Select Incoterm:</label>
-  <select id="incoterm">
-    <option value="1" selected>FOB - Free On Board</option>
-    <option value="1.15">CIF - Cost Insurance Freight</option>
-  </select>
-
-  <button onclick="calculatePrice()">Calculate</button>
-  <button onclick="downloadPDF()">Download PDF</button>
-  <button onclick="shareViaWhatsApp()">Share via WhatsApp</button>
-
-  <div class="result-box" id="resultBox" style="display: none;">
-    <h3>Total Price:</h3>
-    <p><strong><span id="totalPrice">0</span> <span id="currency">USD</span></strong></p>
-    <p id="incotermExplanation"></p>
-    <div class="tooltip">ⓘ Hover for breakdown
-      <div class="tooltip-content">
-        <ul>
-          <li><strong>GST:</strong> 5% of base price</li>
-          <li><strong>CHA:</strong> ₹50 per 1000kg</li>
-          <li><strong>Loading:</strong> ₹100 per 1000kg</li>
-        </ul>
+      <!-- GRAND TOTAL BOX -->
+      <div id="grandTotalBox" style="background:#f3f8f2;border:1px solid #cbe5c8;padding:12px;border-radius:8px;text-align:center;margin-bottom:12px;">
+        <div style="font-size:13px;font-weight:600;color:#124a16;">Grand Total</div>
+        <div id="grandTotalLive">--</div>
       </div>
+
+      <!-- BREAKDOWN TABLE -->
+      <table id="breakdownTable" class="breakdownTable" style="width:100%;border-collapse:collapse;">
+  <tbody id="breakdownBody"></tbody>
+</table>
     </div>
   </div>
 
-  <div id="responsibilityBox">
-    <h4>Responsibilities</h4>
-    <div class="responsibility-columns">
-      <div><strong>Seller:</strong><ul id="sellerDuties"></ul></div>
-      <div><strong>Buyer:</strong><ul id="buyerDuties"></ul></div>
-    </div>
+  <!-- BOTTOM BUTTONS (appear after calculate) -->
+  <div class="buttons noPrint" id="bottomButtons" style="display:none; justify-content:center; margin-top:10px;">
+    <button class="btn pdf" id="pdfBtn">Download Quote</button>
+    <button class="btn mail" id="mailBtn">Send Email</button>
   </div>
+
+  <!-- Terms & Conditions (hidden until calculate) -->
+  <h3 id="tcHeader" style="margin-top:18px; text-align:left; color:#1e7b34; display:none;">Terms & Conditions</h3>
+  <ul id="tcBox" style="font-size:14px; line-height:1.6; padding-left:18px; display:none;">
+    <li><strong>Pricing Basis:</strong> All prices are quoted based on the selected Incoterm (EXW/FOB/CIF).</li>
+    <li><strong>Payment Terms:</strong> 100% advance payment unless otherwise agreed in writing.</li>
+    <li><strong>Validity:</strong> This quotation is valid for 7 days from the date of issue.</li>
+    <li><strong>Delivery Time:</strong> Dispatch within 10–12 business days after payment confirmation.</li>
+    <li><strong>Documentation Provided:</strong> Commercial Invoice, Packing List, Fumigation Certificate, Phytosanitary Certificate, Certificate of Origin (on request), and Bill of Lading (after vessel departure).</li>
+    <li><strong>Quality Assurance:</strong> Goods are inspected under our internal quality control standards before dispatch.</li>
+    <li><strong>Insurance:</strong> For CIF shipments, marine insurance is included as per Incoterms 2020.</li>
+    <li><strong>Liability:</strong> Seller is not responsible for delays caused by port congestion, customs, or shipping line issues.</li>
+  </ul>
+
+</div>
+
+<!-- PRINT / PDF AREA -->
+<div class="printArea" id="printArea">
+  <img src="https://i.imgur.com/ODz3R2y.png" style="width:130px;display:block;margin:auto;margin-bottom:10px;"/>
+  <h1 style="text-align:center;color:#1e7b34;margin-bottom:4px">Krishipurna Organic Pvt. Ltd.</h1>
+  <p style="text-align:center;margin:0 0 12px 0;font-size:13px">Premium Makhana Export | www.makhanabazar.com</p>
+
+  <h3 style="text-align:center;margin:0;">EXPORT QUOTATION</h3>
+  <p style="text-align:center;margin:0 0 12px 0;font-size:13px;">Quotation No: <span id="quoteNo"></span> | Date: <span id="quoteDate"></span></p>
+
+  <table style="width:100%;font-size:13px;margin-bottom:12px;">
+    <tr><td><strong>Buyer Name:</strong></td><td id="pbName"></td></tr>
+    <tr><td><strong>Buyer Email:</strong></td><td id="pbEmail"></td></tr>
+  </table>
+
+  <h2 style="text-align:center;margin-bottom:10px">COST SUMMARY</h2>
+  <table id="exportTable" style="width:100%;border-collapse:collapse;font-size:13px"></table>
+
+  <h3 style="margin-top:18px;">Terms & Conditions</h3>
+  <ul style="font-size:12px;line-height:1.5;">
+    <li>Pricing basis as per Incoterm.</li>
+    <li>100% advance payment unless otherwise agreed.</li>
+    <li>Quotation valid for 7 days.</li>
+  </ul>
 </div>
 
 <script>
-  function updateCurrency() {
-    let countrySelect = document.getElementById("country");
-    let currency = countrySelect.options[countrySelect.selectedIndex].value;
-    document.getElementById("currency").innerText = currency;
-  }
+(function(){
+  const kgInput=document.getElementById('kg');
+  const qualitySel=document.getElementById('quality');
+  const manualPriceInput=document.getElementById('manualPrice');
+  const incotermSel=document.getElementById('incoterm');
+  const destCountry=document.getElementById('destCountry');
+  const destPort=document.getElementById('destPort');
+  const currencyOnly=document.getElementById('currencyOnly');
+  const breakdownBody=document.getElementById('breakdownBody');
+  const exportTable=document.getElementById('exportTable');
+  const pdfBtn=document.getElementById('pdfBtn');
+  const mailBtn=document.getElementById('mailBtn');
+  const buyerName=document.getElementById('buyerName');
+  const buyerEmail=document.getElementById('buyerEmail');
+  const topButtons=document.getElementById('topButtons');
+  const bottomButtons=document.getElementById('bottomButtons');
+  const tcHeader=document.getElementById('tcHeader');
+  const tcBox=document.getElementById('tcBox');
+  const grandTotalLive=document.getElementById('grandTotalLive');
+  const quoteNo=document.getElementById('quoteNo');
+  const quoteDate=document.getElementById('quoteDate');
 
-  function calculatePrice() {
-    let quantity = parseFloat(document.getElementById("quantity").value);
-    let qualityPrice = parseFloat(document.getElementById("quality").selectedOptions[0].getAttribute("data-price"));
-    let countrySelect = document.getElementById("country");
-    let currency = countrySelect.value;
-    let exchangeRate = parseFloat(countrySelect.selectedOptions[0].getAttribute("data-rate"));
-    let incotermMultiplier = parseFloat(document.getElementById("incoterm").value);
-    let incotermText = document.getElementById("incoterm").selectedOptions[0].text;
-
-    let basePriceINR = qualityPrice * quantity;
-    let gst = 0.05 * basePriceINR;
-    let loading = 100;
-    let cha = 50;
-
-    let internalFactor = 1.1; // Hidden internal profit
-
-    let totalINR = (basePriceINR + gst + loading + cha) * incotermMultiplier * internalFactor;
-    let totalForeign = totalINR * exchangeRate;
-
-    document.getElementById("totalPrice").innerText = totalForeign.toFixed(2);
-    document.getElementById("currency").innerText = currency;
-    document.getElementById("resultBox").style.display = "block";
-
-    let explanation = "";
-    switch (incotermText.split(" - ")[0]) {
-      case "FOB":
-        explanation = "Seller pays for delivery to port and loading on ship. Buyer pays freight & insurance.";
-        break;
-      case "CIF":
-        explanation = "Seller pays for cost, freight and insurance to destination port.";
-        break;
-      default:
-        explanation = "Incoterm defines responsibilities in export.";
-        break;
-    }
-    document.getElementById("incotermExplanation").innerText = explanation;
-
-    const sellerDuties = document.getElementById("sellerDuties");
-    const buyerDuties = document.getElementById("buyerDuties");
-    sellerDuties.innerHTML = "";
-    buyerDuties.innerHTML = "";
-
-    if (incotermText.includes("FOB")) {
-      sellerDuties.innerHTML = "<li>Packaging</li><li>Inland Transport</li><li>Export Clearance</li><li>Loading on ship</li>";
-      buyerDuties.innerHTML = "<li>Freight</li><li>Insurance</li><li>Import Clearance</li><li>Delivery to site</li>";
-    } else if (incotermText.includes("CIF")) {
-      sellerDuties.innerHTML = "<li>All costs up to destination port</li><li>Insurance</li>";
-      buyerDuties.innerHTML = "<li>Import Duties</li><li>Customs Clearance</li><li>Inland Delivery</li>";
-    }
-  }
-
-  async function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    doc.setFontSize(18);
-    doc.text("Quotation Summary", 10, 20);
-
-    doc.setFontSize(12);
-    const totalPrice = document.getElementById("totalPrice")?.innerText || "N/A";
-    const currency = document.getElementById("currency")?.innerText || "";
-    const incoterm = document.getElementById("incoterm")?.selectedOptions?.[0]?.text || "N/A";
-    const country = document.getElementById("country")?.selectedOptions?.[0]?.text || "N/A";
-    const quality = document.getElementById("quality")?.selectedOptions?.[0]?.text || "N/A";
-    const quantity = document.getElementById("quantity")?.value || "N/A";
-
-    doc.text(`Total Price: ${totalPrice} ${currency}`, 10, 40);
-    doc.text(`Incoterm: ${incoterm}`, 10, 50);
-    doc.text(`Country: ${country}`, 10, 60);
-    doc.text(`Quality: ${quality}`, 10, 70);
-    doc.text(`Quantity: ${quantity} kg`, 10, 80);
-    doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 90);
-
-    doc.save("Quotation.pdf");
-  }
-
-  function shareViaWhatsApp() {
-    const total = document.getElementById("totalPrice").innerText;
-    const currency = document.getElementById("currency").innerText;
-    const country = document.getElementById("country").selectedOptions[0].text;
-    const quality = document.getElementById("quality").selectedOptions[0].text;
-    const quantity = document.getElementById("quantity").value;
-    const incoterm = document.getElementById("incoterm").selectedOptions[0].text;
-
-    const message = `Hello! Here's my Makhana export quotation:\n\n- Total: ${total} ${currency}\n- Country: ${country}\n- Quantity: ${quantity} kg\n- Quality: ${quality}\n- Incoterm: ${incoterm}\n\nPlease confirm if you're interested.`;
-
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
-  }
-
-  const currencySymbols = {
-    USD: "$",
-    EUR: "€",
-    INR: "₹",
-    GBP: "£",
-    AED: "د.إ",
-    AUD: "A$",
-    CAD: "C$",
-    SGD: "S$",
-    JPY: "¥",
-    CNY: "¥",
-    ZAR: "R",
-    NZD: "NZ$",
-    CHF: "CHF"
+  const portMap={
+    'USA':['New York','Los Angeles','Houston','Savannah','Newark'],
+    'UK':['Tilbury','Southampton','London Gateway','Felixstowe','Liverpool'],
+    'GERMANY':['Hamburg','Bremerhaven','Wilhelmshaven'],
+    'UAE':['Jebel Ali','Abu Dhabi','Sharjah'],
+    'AUSTRALIA':['Sydney','Melbourne','Brisbane'],
+    'CANADA':['Vancouver','Toronto','Montreal']
   };
 
-  window.onload = function () {
-    updateCurrency();
+  const freightRate={
+    'NewYork':3100,'LosAngeles':3500,'Houston':2900,'Savannah':3000,'Newark':3050,
+    'Tilbury':2200,'Southampton':2400,'LondonGateway':2300,'Felixstowe':2350,'Liverpool':2500,
+    'Hamburg':2000,'Bremerhaven':2100,'Wilhelmshaven':2050,
+    'JebelAli':1500,'AbuDhabi':1400,'Sharjah':1300,
+    'Sydney':2900,'Melbourne':3100,'Brisbane':3000,
+    'Vancouver':2600,'Toronto':2800,'Montreal':2700
   };
 
-  const originalCalculatePrice = calculatePrice;
-  calculatePrice = function () {
-    originalCalculatePrice();
+  const importCharges={USA:1800,UK:1301,GERMANY:1500,UAE:900,AUSTRALIA:1600,CANADA:1400};
 
-    let countrySelect = document.getElementById("country");
-    let currency = countrySelect.value;
-    let totalEl = document.getElementById("totalPrice");
-    let rawPrice = parseFloat(totalEl.innerText);
-    let symbol = currencySymbols[currency] || "";
+  function loadPorts(){
+    const ports=portMap[destCountry.value]||[];
+    destPort.innerHTML=ports.map(p=>`<option value="${p}">${p}</option>`).join('');
+    currencyOnly.value=destCountry.selectedOptions[0].dataset.currency;
+  }
+  destCountry.addEventListener('change',loadPorts);loadPorts();
 
-    totalEl.innerText = symbol + rawPrice.toFixed(2);
-  };
+  function calculate(){
+    const kg=parseFloat(kgInput.value);
+    if(!kg){alert('Enter KG');return;}
 
-  const navbarContainer = document.getElementById("navbarContainer");
-  const toggleBtn = document.createElement("button");
-  toggleBtn.className = "toggle-btn";
-  toggleBtn.innerText = "☰";
-  toggleBtn.onclick = () => {
-    navbarContainer.style.display = navbarContainer.style.display === "block" ? "none" : "block";
-  };
-  document.querySelector("nav.navbar").prepend(toggleBtn);
+    let pricePerKg=parseFloat(qualitySel.selectedOptions[0].dataset.price);
+    const manualPrice=parseFloat(manualPriceInput.value);
+    if(!isNaN(manualPrice) && manualPrice>0) pricePerKg=manualPrice;
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 600) {
-      navbarContainer.style.display = "flex";
+    const USD_INR = 88.7420;
+    const inc = incotermSel.value;
+    const portKey = destPort.value.replace(/\s+/g,'');
+    const dest = destCountry.value;
+    const curr = currencyOnly.value;
+
+    // Convert product INR -> USD using USD_INR (always use USD rate)
+    const productUSD = (kg * pricePerKg) / USD_INR;
+    const exportLocal = 321;
+    const indiaTransport = 810;
+    const oceanFreight = freightRate[portKey] || 0;
+    const importLocal = importCharges[dest] || 0;
+    const insurance = inc === 'CIF' ? productUSD * 0.001 : 0;
+
+    let totalUSD = 0;
+    if(inc === 'EXW') totalUSD = productUSD;
+    if(inc === 'FOB') totalUSD = productUSD + exportLocal;
+    if(inc === 'CIF') totalUSD = productUSD + exportLocal + indiaTransport + oceanFreight + importLocal + insurance;
+
+    // Correct currency conversion: USD -> destination currency using INR parity
+    const currencyINR = { USD: 88.7420, GBP: 116.7194, EUR: 103.3188, AED: 24.14, AUD: 57.83, CAD: 63.31 };
+    let final;
+    if(curr === 'USD'){
+      final = totalUSD;
     } else {
-      navbarContainer.style.display = "none";
+      final = totalUSD * (currencyINR['USD'] / currencyINR[curr]);
+    }
+
+    // Build LIVE BREAKDOWN TABLE (side panel)
+    const liveRows=[
+      ['Quantity (KG)',kg],
+      ['Quality Selected',qualitySel.value],
+      ['Price Per KG (INR)',pricePerKg],
+      ['Incoterm',inc],
+      ['Destination Country',dest],
+      ['Destination Port',destPort.value],
+      ['Output Currency',curr],
+      ['Product Cost (USD)',productUSD.toFixed(2)],
+    ];
+    if(inc !== 'EXW') liveRows.push(['Export Local Charges (USD)',exportLocal]);
+    if(inc === 'CIF'){
+      liveRows.push(['Transport India (USD)',indiaTransport]);
+      liveRows.push(['Ocean Freight (USD)',oceanFreight]);
+      liveRows.push(['Import Local Charges (USD)',importLocal]);
+      liveRows.push(['Insurance (USD)',insurance.toFixed(2)]);
+    }
+    liveRows.push([`GRAND TOTAL (${inc})`,`${final.toFixed(2)} ${curr}`]);
+
+    breakdownBody.innerHTML = liveRows.map(r=>`<tr><td style='padding:6px;font-weight:600;'>${r[0]}</td><td style='padding:6px;'>${r[1]}</td></tr>`).join('');
+
+    // Update Grand Total Live
+    grandTotalLive.innerText = `${final.toFixed(2)} ${curr}`;
+
+    // Build Export Table
+    const rows=[
+      ['Quantity (KG)',kg],
+      ['Quality Selected',qualitySel.value],
+      ['Price Per KG (INR)',pricePerKg],
+      ['Incoterm',inc],
+      ['Destination Country',dest],
+      ['Destination Port',destPort.value],
+      ['Output Currency',curr],
+      ['Product Cost (USD)',productUSD.toFixed(2)],
+    ];
+
+    if(inc !== 'EXW') rows.push(['Export Local Charges (USD)',exportLocal]);
+    if(inc === 'CIF'){
+      rows.push(['Transport India (USD)',indiaTransport]);
+      rows.push(['Ocean Freight (USD)',oceanFreight]);
+      rows.push(['Import Local Charges (USD)',importLocal]);
+      rows.push(['Insurance (USD)',insurance.toFixed(2)]);
+    }
+
+    rows.push([`GRAND TOTAL (${inc})`,`${final.toFixed(2)} ${curr}`]);
+
+    exportTable.innerHTML = rows.map(r=>`<tr><td style='padding:8px;border:1px solid #ddd;'>${r[0]}</td><td style='padding:8px;border:1px solid #ddd;'>${r[1]}</td></tr>`).join('');
+
+    // Show export buttons and T&C
+    bottomButtons.style.display = 'flex';
+    tcHeader.style.display = 'block';
+    tcBox.style.display = 'block';
+
+    // Update pdf metadata fields
+    quoteNo.innerText = 'KPQ-' + Math.floor(Math.random()*90000+10000);
+    quoteDate.innerText = new Date().toLocaleDateString();
+    document.getElementById('pbName').innerText = buyerName.value || '-';
+    document.getElementById('pbEmail').innerText = buyerEmail.value || '-';
+  }
+
+  document.getElementById('calcBtn').addEventListener('click',calculate);
+
+  // PDF export using html2pdf (assumes html2pdf is loaded on the page)
+  pdfBtn.addEventListener('click',()=>{
+    // ensure metadata updated
+    quoteNo.innerText = 'KPQ-' + Math.floor(Math.random()*90000+10000);
+    quoteDate.innerText = new Date().toLocaleDateString();
+    document.getElementById('pbName').innerText = buyerName.value || '-';
+    document.getElementById('pbEmail').innerText = buyerEmail.value || '-';
+
+    const element = document.getElementById('printArea');
+    const opt = { margin:0.4, filename:'quotation.pdf', html2canvas:{scale:2}, jsPDF:{unit:'in',format:'a4'} };
+    if(window.html2pdf){
+      html2pdf().set(opt).from(element).save();
+    } else {
+      alert('PDF export library (html2pdf) not found.');
     }
   });
+
+  // Send email (opens mailto with table body)
+  mailBtn.addEventListener('click',()=>{
+    const rows = [...exportTable.querySelectorAll('tr')].map(tr => tr.innerText).join('%0A');
+    const subject = encodeURIComponent('Export Quotation from Krishipurna Organic');
+    const body = encodeURIComponent(rows);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  });
+
+  // Reset
+  document.getElementById('resetBtn').addEventListener('click',()=>location.reload());
+
+})();
 </script>
-
-<!-- Load jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 </body>
 </html>
