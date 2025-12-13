@@ -20,144 +20,184 @@ html {
 } */
 
 
+/* --------------------------
+   Premium glass navbar (final)
+   -------------------------- */
+
+/* NAVBAR BASE */
 .navbar {
-    position: relative;
-    left: 0;
-    height: 70px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(235 226 214 / 62%);
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+  position: relative;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Warm welcoming gold-beige glass color */
+
+    background: rgba(255, 245, 225, 0.50); /* light & premium */
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+    border-bottom: 1px solid rgba(210, 180, 120, 0.35);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    text-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+
+  background-size: cover;
+  background-position: center;
+  z-index: 1000;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
+/* LEFT AREA (logo + small utilities) */
 .nav-left {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    margin-left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: 10px;
+  height: 100%;
 }
+
+/* NAVBAR CONTAINER (links) -- desktop layout */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 10px;
+  z-index: 1001;
+}
+
+/* NAV LINKS (desktop) */
+.navbar a {
+  color: #6B4226;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.22s ease-in-out;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Hover - warm golden highlight */
+.navbar a:hover {
+  background: rgba(255,205,120,0.22);
+  color: #3d2400;
+  box-shadow: 0 6px 18px rgba(255,200,120,0.12);
+  transform: translateY(-2px);
+}
+
+/* Active / focus */
+.navbar a:focus,
+.navbar a.active {
+  outline: none;
+  background: rgba(255,205,120,0.30);
+  color: #3d2400;
+  box-shadow: 0 8px 24px rgba(255,200,120,0.16);
+}
+
+/* Toggle button (hamburger) - desktop hidden by default */
+.checkbtn {
+  display: none;
+  font-size: 1.8em;
+  color: #6B4226;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.18s ease-in-out;
+  position: relative;
+  z-index: 1002;
+}
+.checkbtn:hover { transform: scale(1.06); }
+
+/* Hide the checkbox visually but keep accessible */
+#check { display: none; }
+
+/* ===========================
+   MOBILE: slide-in menu (right)
+   =========================== */
 @media (max-width: 768px) {
+
   .navbar {
     height: 60px;
-    padding: 0 10px;
+    padding: 0 12px;
   }
 
   .nav-left {
-    height: 100%;
+    margin-left: 8px;
+    gap: 12px;
+  }
+
+  .logo img { height: 40px; display: block; margin: 0; padding: 0; }
+
+  /* Show toggle */
+  .checkbtn { display: block; }
+
+  /* The menu panel -- keep it in DOM but offscreen initially */
+  .navbar-container {
     display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 72%;
+    max-width: 360px;
+    background: rgba(255, 244, 230, 0.96); /* warm, nearly opaque panel */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 28px 20px;
+    box-shadow: -6px 0 30px rgba(0,0,0,0.18);
+    transition: right 0.32s cubic-bezier(.2,.9,.25,1);
+    gap: 10px;
+    z-index: 1001;
+    align-items: stretch;
+    justify-content: flex-start;
   }
 
-  .logo img {
-    height: 40px;
+  /* When checkbox is checked, slide the menu in */
+  #check:checked ~ .navbar-container {
+    right: 0;
+  }
+  
+
+  /* Mobile nav items - stacked and spacious */
+  .navbar a {
     display: block;
-    margin: 0;
-    padding: 0;
+    padding: 14px 12px;
+    color: #4a2f1a;
+    background: transparent;
+    border-radius: 6px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    font-weight: 700;
   }
 
-  .checkbtn {
-    font-size: 30px;
-    cursor: pointer;
-    color: #000;
-    display: block;
-    height: 100%;
-    display: flex;
-    align-items: center;
+  .navbar a:hover {
+    background: rgba(255, 205, 120, 0.18);
+    color: #3d2400;
+    transform: none;
   }
-}
 
+  /* Fix: remove previous odd border-bottom trick */
+  .navbar a[style] { border-bottom: none !important; }
 
-/* Toggle Button */
-.checkbtn {
-    display: none;
-    font-size: 1.8em;
-    color: #6B4226;
-    background: none;
+  /* ensure close button sits visibly */
+  .navbar-container .close-menu {
+    align-self: flex-end;
+    background: transparent;
     border: none;
-    cursor: pointer;
-    padding: 8px;
-    transition: transform 0.3s ease-in-out;
-    position: absolute;
-    right: 20px;
-}
-
-.checkbtn:hover {
-    transform: scale(1.1);
-}
-
-#check {
-    display: none;
-}
-
-/* Navbar Container */
-.navbar-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-right: 10px;
-}
-
-/* Navbar Links */
-.navbar a {
+    font-size: 1.3rem;
     color: #6B4226;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
+    padding: 6px;
+    cursor: pointer;
+  }
 }
 
-.navbar a:hover {
-    background-color: rgba(223, 211, 195, 0.8);
-    color: #442C1D;
-    transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .checkbtn {
-        display: block;
-    }
-
-
-    .navbar-container {
-        display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -70%;
-        height: 100vh;
-        width: 70%;
-        /* background: rgba(223, 211, 195, 0.95); */
-        padding: 20px;
-        text-align: center;
-        /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
-        transition: all 0.3s ease-in-out;
-        z-index: 999; /* Ensure it overlays the main screen */
-    }
-
-    #check:checked ~ .navbar-container {
-        right: 0;
-        display: flex;
-    }
-
-    .navbar a {
-        display: block;
-        padding: 12px;
-        border-bottom: 60px solid #6B4226;
-    }
-
-    .navbar a:hover {
-        background-color: rgba(223, 211, 195, 0.8);
-        border-radius: 0;
-    }
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar, .navbar * { transition: none !important; animation: none !important; }
 }
 
 
@@ -1147,12 +1187,15 @@ ul li {
       
       
       .navbar-container a {
-        color: #FFFFFF; /* Text color */
-        background-color:  #717108d1; /* Make background transparent */
-        padding: 10px 15px; 
-        text-decoration: none;
-        border-radius: 1px;
-        transition: background-color 0.3s ease;
+        color: #0e0e0e; /* Text color */
+         background: rgba(255, 255, 255, 0.08);   /* ultra-light transparent layer */
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
+    
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    transition: all 0.3s ease;
     }
     
     .navbar-container a:hover {
@@ -1706,97 +1749,14 @@ ul li::before {
     border-radius: 8px;
     transition: background 1.5s ease-in-out;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}#blog.container-fluid {
+  background: linear-gradient(180deg, #f8f2e7 0%, #f3eadc 100%) !important;
+  padding: 20px 0 !important;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
 }
-/* blog */
-.container-fluid {
-    background-color: #f9f9f9;
-  }
-  
-  .blog-item {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    height: 100%;
-    background: #fff;
-  }
-  
-  .blog-item:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-  }
-  
-  .blog-item img {
-    max-height: 180px;
-    object-fit: cover;
-    margin: 0 auto 15px;
-    border-radius: 8px;
-    width: 100%;
-    transition: transform 0.3s ease;
-  }
-  
-  .blog-item:hover img {
-    transform: scale(1.03);
-  }
-  
-  .blog-item h5 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .blog-item p {
-    font-size: 0.95rem;
-    color: #666;
-  }
-  
-  .btn-action a {
-    margin: 0 5px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-action a:hover {
-    opacity: 0.85;
-  }
-  
-  .owl-carousel .owl-item {
-    padding: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .blog-item img {
-      max-height: 140px;
-    }
-  
-    .blog-item h5 {
-      font-size: 1rem;
-    }
-  
-    .blog-item p {
-      font-size: 0.9rem;
-    }
-    .owl-nav {
-        display: flex !important;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-      }
-    
-      .owl-nav button {
-        background-color: #0d6efd;
-        border: none;
-        padding: 6px 14px;
-        color: white;
-        border-radius: 5px;
-        font-size: 14px;
-      }
-    
-      .owl-nav button:hover {
-        background-color: #084298;
-      }
-  }/* Main Carousel Slide */
+/* Main Carousel Slide */
 .hero-carousel .hero-slide {
   height: 90vh;
   background-size: cover;
@@ -1806,33 +1766,257 @@ ul li::before {
   z-index: -1;
 }
 
-/* Optional dark overlay */
-.hero-carousel .hero-slide::before {
-  content: '';
+/* Decorative soft glows */
+#blog.container-fluid::before,
+#blog.container-fluid::after {
+  content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(46px);
+  opacity: 0.42;
+  z-index: 0;
+}
+
+#blog.container-fluid::before {
+  left: -8%;
+  top: -12%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,200,120,0.16), transparent 45%);
+}
+
+#blog.container-fluid::after {
+  right: -6%;
+  bottom: -8%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 60% 40%, rgba(255,210,140,0.14), transparent 45%);
+}
+
+/* Inner container (your .containerBlog) */
+.containerBlog {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.containerBlog .mx-auto.text-center.mb-5 {
+  max-width: 720px;
+  margin-bottom: 32px !important;
+}
+.containerBlog h6.text-primary.text-uppercase {
+  color: #c79a32; /* golden tone */
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.containerBlog h1.display-5 {
+  font-size: 2.25rem;
+  color: #222;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.02;
+}
+
+/* Owl.carousel spacing */
+.owl-carousel.blog-carousel .owl-item {
+  padding: 0 10px !important;
+  display: flex !important;
+  height: auto !important;
+}
+.owl-carousel .owl-stage {
+  display: flex !important;
+}
+
+/* Grid fallback */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px !important;
+}
+
+/* ============================================
+   BLOG CARD – PREMIUM GLASS DESIGN
+   ============================================ */
+.blog-item {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px) saturate(125%);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.45);
+  min-height: 360px;
+  padding: 16px !important; 
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+
+  box-shadow:
+    0 18px 40px rgba(20,24,30,0.08),
+    0 8px 16px rgba(255,255,255,0.22) inset,
+    0 0 28px rgba(255,200,120,0.05) inset;
+
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+.blog-item:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 30px 70px rgba(20,24,30,0.14),
+    0 12px 22px rgba(255,255,255,0.26) inset;
+}
+
+/* ============================================
+   SOFT ANIMATED GLOW BEHIND CARDS
+   ============================================ */
+.blog-item::before {
+  content: "";
+  position: absolute;
+  left: -8%;
+  top: 6%;
+  width: 110%;
+  height: 80%;
+  border-radius: 20px;
+  pointer-events: none;
   z-index: 1;
+
+  background: radial-gradient(circle at 30% 20%, rgba(255,214,138,0.15), transparent 55%),
+              radial-gradient(circle at 70% 80%, rgba(255,240,220,0.08), transparent 45%);
+
+  filter: blur(24px);
+  opacity: 0.75;
+  animation: glowFloat 6s ease-in-out infinite;
 }
 
-/* Hide all slide content */
-.hero-carousel .container {
-  display: none !important;
+@keyframes glowFloat {
+  0% { transform: translateY(6px) scale(0.99); opacity: .7; }
+  50% { transform: translateY(-6px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(6px) scale(0.99); opacity: .7; }
 }
 
-/* Responsive for mobile */
-@media (max-width: 768px) {
-  .hero-carousel .hero-slide {
-    height: 45Svh; /* Adjust height as needed */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 0;
-  }
+/* keep content above glow */
+.blog-item > * { position: relative; z-index: 3; }
 
-  .hero-carousel .hero-slide::before {
-    background-color: transparent; /* Remove overlay if needed */
-  }
+/* ============================================
+   GOLDEN ACCENT STRIP
+   ============================================ */
+.blog-item::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 6px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(180deg,#f0c15c,#d3a646);
+  box-shadow: 0 8px 16px rgba(210,170,70,0.25);
+  z-index: 5;
+}
+
+/* ============================================
+   IMAGE BLOCK
+   ============================================ */
+.blog-item img {
+  width: 100%;
+  height: 150px !important;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  transition: transform .4s ease;
+  display: block;
+}
+
+.blog-item:hover img {
+  transform: scale(1.06);
+}
+
+/* ============================================
+   TEXT CONTENT
+   ============================================ */
+.blog-item h5 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 8px 0 10px;
+  color: #222;
+}
+
+.blog-item p {
+  font-size: .96rem;
+  line-height: 1.55;
+  color: #4f4f4f;
+  flex-grow: 1;
+  margin: 0;
+}
+
+/* ============================================
+   FOOTER BUTTONS
+   ============================================ */
+.btn-action {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn.bg-primary {
+  background: #d4a24f !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 12px 30px rgba(212,162,79,0.14);
+}
+
+.btn.bg-primary:hover {
+  background: #c19045 !important;
+}
+
+.btn.bg-secondary {
+  background: #6c757d !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* ============================================
+   text-center fix (equal height)
+   ============================================ */
+.blog-item.text-center {
+  height: 100% !important;
+  min-height: 440px !important;
+  display: flex !important;
+  flex-direction: column;
+  text-align: center;
+}
+.blog-item.text-center h5,
+.blog-item.text-center p { text-align: center !important; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1150px) {
+  .blog-item { min-height: 420px; }
+  .blog-item img { height: 180px; }
+}
+@media (max-width: 900px) {
+  .blog-item { min-height: 400px; }
+  .blog-item img { height: 160px; }
+}
+@media (max-width: 600px) {
+  #blog.container-fluid { padding: 48px 0 !important; }
+  .blog-item { min-height: auto; padding: 16px; }
+  .blog-item img { height: 170px; }
+  .owl-nav { display:flex !important; justify-content:center; gap: 10px; margin-top: 12px; }
+  .owl-nav button { background: #d4a24f; color: #fff; border-radius: 6px; padding: 8px 12px; border: none; }
+  .owl-nav button:hover { background: #c19045; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .blog-item::before { animation: none !important; transform: none !important; }
+  .blog-item, .blog-item * { transition: none !important; }
 }
 .email-float-button {
     position: fixed;

@@ -79,6 +79,8 @@ Bulk Makhana international shipping
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/bootstrap/css/owl.carousel.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
       <link rel="stylesheet" href="/style.css">
     <style>
         /* Optional: Adding padding to the body to avoid overlap with fixed alert */
@@ -194,9 +196,8 @@ input,select{padding:10px;border-radius:8px;border:1px solid #d0cfcf;font-size:1
         <div class="navbar-container" id="navbarContainer">
             <a href="#home" onclick="closeNavbar()">Home</a>
             <a href="#product" onclick="closeNavbar()">Product</a>
+            <a href="#IncotermCalculator1" onclick="closeNavbar()">Price Calculator</a>
             <a href="#gallery-section" onclick="closeNavbar()">Gallery</a>
-
-            <!-- <a href="#IncotermCalculator" onclick="closeNavbar()">Price Calculator</a> -->
             <a href="#contact" onclick="closeNavbar()">Contact Us</a>
             <a href="#blog">Blogs</a>
         </div>
@@ -231,9 +232,9 @@ function closeNavbar() {
 </div>
 <!-- Hero Carousel Start -->
 <div class="hero-carousel owl-carousel owl-theme">
-  <div class="hero-slide" style="background-image: url('/image/slider6.png');"></div>
-  <div class="hero-slide" style="background-image: url('/image/slider4.png');"></div>
-  <div class="hero-slide" style="background-image: url('/image/slider5.png');"></div>
+    <div class="hero-slide" style="background-image: url('/image/slider1.jpeg');"></div>
+  <div class="hero-slide" style="background-image: url('/image/slider.jpeg');"></div>
+  <div class="hero-slide" style="background-image: url('/image/slider2.jpeg');"></div>
 </div>
 <!-- Hero Carousel End -->
 
@@ -369,7 +370,7 @@ function closeNavbar() {
     <h3>Peri-Peri</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
      <strong>Price: ₹180/-</strong>
-    <p><strong>*Inclusive of GST</strong></p>
+    <p><strong>Min order 84 pices</strong></p>
     <p><strong>Available Package Sizes: 155Gm</strong></p>
     <a href="https://wa.me/9211959766?text=Hi!%20I%20am%20interested%20in%20buying%20Large%20Makhana.%20Please%20provide%20pricing%20and%20order%20details%20for%20the%20available%20package%20sizes." 
        target="_blank" class="buy-now">Buy Now</a>
@@ -445,80 +446,8 @@ function closeNavbar() {
     </div>
 </section>
 
-  <!-- <div class="containerCalculator">
-    
-    <h2>Export Price Calculator</h2>
-
-    <div class="form-group">
-      <label for="country">Select Country:</label>
-      <select id="country">
-        <option value="USD" data-rate="83">USA (USD)</option>
-        <option value="EUR" data-rate="90">Germany (EUR)</option>
-        <option value="AED" data-rate="22.5">UAE (AED)</option>
-        <option value="AUD" data-rate="55">Australia (AUD)</option>
-        <option value="INR" data-rate="1">India (INR)</option>
-        <option value="GBP" data-rate="100">United Kingdom (GBP)</option>
-        <option value="CAD" data-rate="62.5">Canada (CAD)</option>
-        <option value="SGD" data-rate="62.5">Singapore (SGD)</option>
-        <option value="JPY" data-rate="0.58">Japan (JPY)</option>
-        <option value="CNY" data-rate="11.5">China (CNY)</option>
-        <option value="ZAR" data-rate="4.5">South Africa (ZAR)</option>
-        <option value="NZD" data-rate="52.6">New Zealand (NZD)</option>
-        <option value="CHF" data-rate="92">Switzerland (CHF)</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="incoterm">Select Incoterm:</label>
-      <select id="incoterm">
-        <option value="1" selected>FOB - Free On Board</option>
-        <option value="1.15">CIF - Cost Insurance Freight</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="quality">Select Quality:</label>
-      <select id="quality">
-        <option value="A1" data-price="1600">A1</option>
-        <option value="A2" data-price="1300">A2</option>
-        <option value="A3" data-price="1200">A3</option>
-      </select>
-    </div>
-
-    <button onclick="calculatePrice()">Calculate</button>
-    <div class="loader" id="loader"></div>
-
-    <div id="resultBox">
-      <h3>Total Price:</h3>
-      <p id="totalPrice"></p>
-      <p class="mfu-label" id="incotermExplanation"></p>
-      <div class="tooltip">
-        ⓘ Hover for breakdown
-        <div class="tooltip-content">
-          <ul>
-            <li><strong>GST:</strong> 5% of base price</li>
-            <li><strong>CHA:</strong> ₹50 per 1000kg</li>
-            <li><strong>Loading:</strong> ₹100 per 1000kg</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div id="responsibilityBox">
-      <h4>Responsibilities</h4>
-      <div class="responsibility-columns">
-        <div>
-          <strong>Seller:</strong>
-          <ul id="sellerDuties"></ul>
-        </div>
-        <div>
-          <strong>Buyer:</strong>
-          <ul id="buyerDuties"></ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
-<div class="container noPrint">
+<!-- Incoterm Calculator Section -->
+<div class="container noPrint" id ="IncotermCalculator1">
   <div class="brandBox">
     <h1>Krishipurna Organic Pvt. Ltd.</h1>
     <p>Premium Indian Makhana Export | www.makhanabazar.com</p>
@@ -1012,57 +941,79 @@ shareBtn.addEventListener('click', async () => {
 
 <!-- Blog Section -->
 <div class="container-fluid py-5" id="blog">
-    <div class="container">
-      <div class="mx-auto text-center mb-5" style="max-width: 600px;">
-        <h6 class="text-primary text-uppercase">Blogs</h6>
-        <h1 class="display-5">Latest Articles & Insights</h1>
+  <div class="containerBlog">
+    <div class="mx-auto text-center mb-5" style="max-width: 600px;">
+      <h6 class="text-primary text-uppercase">Blogs</h6>
+      <h1 class="display-5">Latest Articles & Insights</h1>
+    </div>
+
+    <div class="owl-carousel blog-carousel px-5">
+      <!-- Blog 1 -->
+      <div class="pb-5">
+        <div class="blog-item text-center">
+          <img src="/image/mp13.png" alt="Makhana Board News">
+          <h5>Makhana Board: Empowering Farmers & Boosting Exports</h5>
+          <p>Learn how the newly proposed Makhana Board can support farmers, regulate quality, and expand global reach for fox-nut producers.</p>
+          <div class="btn-action d-flex justify-content-center mt-3 gap-2">
+            <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog1Popup()"><i class="bi bi-book"></i> Read More</a>
+            <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
+          </div>
+        </div>
       </div>
-      <div class="owl-carousel blog-carousel px-5">
-        <!-- Blog 1 -->
-        <div class="pb-5">
-          <div class="blog-item text-center">
-            <img src="/image/mp13.png" alt="Makhana Board News">
-            <h5>Makhana Board: Empowering Farmers & Boosting Exports</h5>
-            <p>Learn how the newly proposed Makhana Board can support farmers, regulate quality, and expand global .....</p>
-            <div class="btn-action d-flex justify-content-center mt-3 gap-2">
-             <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog1Popup()">
-                  <i class="bi bi-book"></i> Read More</a>
-              <a class="btn bg-secondary text-white py-1 px-3" >
-                <i class="bi bi-share-fill"></i> Share
-              </a>
-            </div>
+
+      <!-- Blog 2 -->
+      <div class="pb-5">
+        <div class="blog-item text-center">
+          <img src="/image/THealthy.png" alt="How to Use Makhana">
+          <h5>How to Use Makhana in Your Diet</h5>
+          <p>Discover tasty ways to include Makhana in your daily meals for better nutrition — snacks, salads, and desserts.</p>
+          <div class="btn-action d-flex justify-content-center mt-3 gap-2">
+            <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog2Popup()"><i class="bi bi-book"></i> Read More</a>
+            <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
           </div>
         </div>
-        
-        <!-- Blog 2 -->
-        <div class="pb-5">
-          <div class="blog-item text-center">
-            <img src="/image/THealthy.png" alt="Blog 2">
-            <h5>How to Use Makhana in Your Diet</h5>
-            <p>Discover tasty ways to include Makhana in your daily meals for better nutrition.</p><br>
-            <div class="btn-action d-flex justify-content-center mt-3">
-              <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog2Popup()">
-               <i class="bi bi-book"></i> Read More</a>
-              <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
-            </div>
-          </div>
-        </div>
-        <!-- Blog 3 -->
-        <div class="pb-5">
-          <div class="blog-item text-center">
-            <img src="/image/Tmp14.avif" alt="Blog 3">
-            <h5>Makhana Farming in Bihar</h5>
-            <p>Learn about the traditional farming techniques and modern innovations in Makhana cultivation.</p><br><br>
-            <div class="btn-action d-flex justify-content-center mt-3">
-             <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog3Popup()"><i class="bi bi-book"></i> Read More</a>
-              <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
-            </div>
-          </div>
-        </div>
-        <!-- Add more blog cards as needed -->
       </div>
+
+      <!-- Blog 3 -->
+      <div class="pb-5">
+        <div class="blog-item text-center">
+          <img src="/image/Tmp14.avif" alt="Makhana Farming">
+          <h5>Makhana Farming in Bihar</h5>
+          <p>Learn about traditional farming techniques and modern innovations in Makhana cultivation to increase yields and quality.</p>
+          <div class="btn-action d-flex justify-content-center mt-3 gap-2">
+            <a class="btn bg-primary text-white py-1 px-3" href="javascript:void(0);" onclick="openBlog3Popup()"><i class="bi bi-book"></i> Read More</a>
+            <a class="btn bg-secondary text-white py-1 px-3" href="#"><i class="bi bi-share-fill"></i> Share</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- add more blog items here -->
     </div>
   </div>
+</div>
+
+<!-- ===== Owl Carousel INIT (ensure jQuery + OwlCarousel included on page) ===== -->
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    // If owl is not present, skip silently
+    if (typeof jQuery === 'undefined' || typeof jQuery.fn.owlCarousel === 'undefined') return;
+
+    jQuery('.owl-carousel.blog-carousel').owlCarousel({
+      loop: false,
+      margin: 18,
+      nav: true,
+      dots: false,
+      navText: ['<span class="bi bi-chevron-left"></span>','<span class="bi bi-chevron-right"></span>'],
+      responsive: {
+        0:   { items: 1, center: true, stagePadding: 30 },
+        600: { items: 2, center: false, stagePadding: 0 },
+        900: { items: 3, center: false, stagePadding: 0 },
+        1200:{ items: 3, center: false }
+      }
+    });
+  });
+</script>
+  
   <!-- Blog 1 Popup Modal -->
 <div id="blog1Popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:99999; justify-content:center; align-items:center;">
   <div style="background:#fff; max-width:1400px; width:280vw; max-height:90vh; overflow-y:auto; border-radius:10px; position:relative; padding:2rem;">
@@ -1319,16 +1270,49 @@ form.addEventListener('submit', async (e) => {
         </div>
 
         <!-- COLUMN 4: SOCIAL -->
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="footer-social">
-                <a href="https://facebook.com" target="_blank">Facebook</a>
-                <a href="https://instagram.com" target="_blank">Instagram</a>
-                <a href="https://twitter.com" target="_blank">Twitter</a>
-                <a href="https://youtube.com" target="_blank">YouTube</a>
-            </div>
-        </div>
+      <div class="footer-social">
+  <a href="https://www.facebook.com/MAKHANABAZAR" target="_blank" aria-label="Facebook">
+    <!-- Facebook (blue background + white f) -->
+    <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <rect rx="12" ry="12" width="24" height="24" fill="#1877F2"/>
+      <path d="M15.5 8.5h-1.6c-.3 0-.7.2-.7.8v1.2h2.3l-.3 2.1h-2v6.4h-2.3v-6.4h-1.9v-2.1h1.9V9.2c0-1.8 1.1-2.8 2.7-2.8.8 0 1.6.1 1.9.2v1.9z" fill="#fff"/>
+    </svg>
+  </a>
 
+  <a href="https://www.instagram.com/krishipurnaorganics/" target="_blank" aria-label="Instagram">
+    <!-- Instagram (gradient background + camera) -->
+    <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <defs>
+        <linearGradient id="igGrad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#feda75"/>
+          <stop offset="30%" stop-color="#fa7e1e"/>
+          <stop offset="60%" stop-color="#d62976"/>
+          <stop offset="100%" stop-color="#962fbf"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="24" height="24" rx="6" fill="url(#igGrad)"/>
+      <rect x="6.2" y="6.2" width="11.6" height="11.6" rx="3" fill="none" stroke="#fff" stroke-width="1.4"/>
+      <circle cx="12" cy="12" r="3.1" fill="#fff"/>
+      <circle cx="16.6" cy="7.4" r="0.9" fill="#fff"/>
+    </svg>
+  </a>
+
+  <a href="https://www.linkedin.com/company/krishipurna-organic-pvt-ltd" target="_blank" aria-label="LinkedIn">
+    <!-- LinkedIn (blue background + white in) -->
+    <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <rect width="24" height="24" rx="12" fill="#0A66C2"/>
+      <path d="M7.5 10.5H5.3v7.2h2.2v-7.2zM6.4 8.9c-.7 0-1.2-.6-1.2-1.3 0-.8.5-1.3 1.2-1.3.7 0 1.2.6 1.2 1.3 0 .7-.5 1.3-1.2 1.3zM19 17.7h-2.2v-3.6c0-.9 0-2.1-1.3-2.1-1.3 0-1.5 1-1.5 2v3.7H12v-7.2h2.1v1c.3-.6 1.2-1.3 2.6-1.3 2.7 0 3.3 1.8 3.3 4.1v3.4z" fill="#fff"/>
+    </svg>
+  </a>
+
+  <a href="https://www.youtube.com/@Krishipurnaorganic" target="_blank" aria-label="YouTube">
+    <!-- YouTube (red background + white play) -->
+    <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <rect width="24" height="24" rx="6" fill="#FF0000"/>
+      <path d="M9.5 8.8v6.4l5.3-3.2-5.3-3.2z" fill="#fff"/>
+    </svg>
+  </a>
+</div>
     </div>
 
     <div class="footer-bottom">
