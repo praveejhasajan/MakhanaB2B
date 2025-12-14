@@ -8,6 +8,7 @@ body {
     padding: 0;
     background-color:  #F8EDE3;
     -webkit-text-size-adjust: 100%;
+    max-width: 100%;
     overflow-x: hidden;
 }
 html {
@@ -63,9 +64,8 @@ html {
 .navbar-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   padding-right: 10px;
-  z-index: 1001;
 }
 
 /* NAV LINKS (desktop) */
@@ -106,11 +106,11 @@ html {
   border: none;
   cursor: pointer;
   padding: 8px;
-  transition: transform 0.18s ease-in-out;
-  position: relative;
-  z-index: 1002;
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  right: 20px;
 }
-.checkbtn:hover { transform: scale(1.06); }
+.checkbtn:hover { transform: scale(1.1); }
 
 /* Hide the checkbox visually but keep accessible */
 #check { display: none; }
@@ -160,6 +160,7 @@ html {
   /* When checkbox is checked, slide the menu in */
   #check:checked ~ .navbar-container {
     right: 0;
+    display: flex;
   }
   
 
