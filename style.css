@@ -410,15 +410,15 @@ html {
     font-size: 1rem;
 }
 
-.advantages-left ul li::before {
-    content: '✔';
+/* .advantages-left ul li::before {
+    /* content: '✔'; */
     position: absolute;
     left: 0;
     top: 0;
     color: #007b5e;
     font-size: 1rem;
     line-height: 1.5;
-}
+} */
 
 /* Right Section: Image */
 .advantages-right {
@@ -759,6 +759,42 @@ ul li {
 .review img {
     border-radius: 50%;
     margin-bottom: 10px;
+}
+@media (max-width: 992px) {
+    .reviews-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ===== Mobile View (Swipeable) ===== */
+@media (max-width: 576px) {
+    .reviews-container {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+    }
+
+    .review {
+        min-width: 85%;
+        scroll-snap-align: center;
+        padding: 18px;
+    }
+
+    .customer-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .review p {
+        font-size: 15px;
+    }
+
+    /* Hide scrollbar (optional) */
+    .reviews-container::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .stars {
@@ -1603,10 +1639,10 @@ ul {
   padding: 0;
 }
 
-ul li::before {
+/* ul li::before {
   content: '✅';
   margin-right: 8px;
-}
+} */
 
 .responsibility-columns {
   display: flex;
