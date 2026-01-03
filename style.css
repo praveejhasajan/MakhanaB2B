@@ -15,10 +15,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Navbar and Toggle Button Styles . Outliner code for debug*/
-/* * {
-    outline: 1px solid rgba(255, 0, 0, 0.3); 
-} */
+
 
 
 /* --------------------------
@@ -410,15 +407,7 @@ html {
     font-size: 1rem;
 }
 
-/* .advantages-left ul li::before {
-    /* content: '✔'; */
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #007b5e;
-    font-size: 1rem;
-    line-height: 1.5;
-} */
+
 
 /* Right Section: Image */
 .advantages-right {
@@ -2345,3 +2334,5 @@ ul {
   .expandable-text .content::after { display:none; }
   .expand-toggle { display: none !important; }
 }
+
+
