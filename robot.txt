@@ -1,1 +1,4 @@
- 
+ User-agent: *
+Allow: /
+
+Sitemap: https://www.makhanabazar.com/sitemap.xml
