@@ -171,36 +171,41 @@ html {
     top: 0;
     right: -100%;
     height: 100vh;
-    width: 72%;
-    max-width: 360px;
-    background: rgba(255, 244, 230, 0.96); /* warm, nearly opaque panel */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 28px 20px;
-    box-shadow: -6px 0 30px rgba(0,0,0,0.18);
-    transition: right 0.32s cubic-bezier(.2,.9,.25,1);
-    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    /* Transparent frosted glass overlay for mobile menu */
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    padding: 22px 18px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.38);
+    transition: right 0.28s cubic-bezier(.2,.9,.25,1), opacity 0.22s ease;
+    gap: 12px;
     z-index: 1001;
     align-items: stretch;
     justify-content: flex-start;
+    opacity: 0;
   }
 
   /* When checkbox is checked, slide the menu in */
   #check:checked ~ .navbar-container {
     right: 0;
     display: flex;
+    opacity: 1;
   }
   
 
   /* Mobile nav items - stacked and spacious */
   .navbar a {
     display: block;
-    padding: 14px 12px;
-    color: #4a2f1a;
-    background: transparent;
-    border-radius: 6px;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-    font-weight: 700;
+    padding: 16px 14px;
+    color: #fff;
+    background: rgba(26, 23, 20, 0.18);
+    border-radius: 10px;
+    border-bottom: none;
+    font-weight: 800;
+    font-size: 1.12rem;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
   }
 
   .navbar a:hover {
@@ -222,6 +227,19 @@ html {
     padding: 6px;
     cursor: pointer;
   }
+
+  /* Center the logo in the header on mobile */
+  .navbar .logo { position: absolute; left: 50%; transform: translateX(-50%); z-index: 1010; }
+  .navbar .logo img { height: 46px; }
+
+  /* Make hamburger toggle clearly visible on the right */
+  .checkbtn { position: absolute; right: 14px; top: 10px; z-index: 1012; color: #fff; }
+
+  /* Ensure menu links are accessible and easy to tap */
+  .navbar a:focus { outline: 3px solid rgba(255,205,120,0.22); outline-offset: 4px; }
+
+  /* Slight separator between groups */
+  .navbar .menu-group { margin-top: 6px; }
 }
 
 /* Accessibility: reduce motion */
@@ -326,20 +344,24 @@ html {
     }
 
     .product-right p {
-        font-size: 1em;
-        display: -webkit-box;
-        -webkit-line-clamp: 5; /* Show only 3 lines */
-        line-clamp: 5; /* Standard property for compatibility */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition: max-height 0.3s ease;
-        max-height: 4.5em; /* Adjust based on line height */
+      font-size: 1em;
+      /* fallback for browsers without -webkit-box support */
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 5; /* WebKit prefixed clamping */
+      line-clamp: 5; /* Standard property (where supported) */
+      -webkit-box-orient: vertical;
+      box-orient: vertical; /* non-prefixed fallback */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: max-height 0.3s ease;
+      max-height: 4.5em; /* Adjust based on line height */
     }
 
     .product-right p.expanded {
-        -webkit-line-clamp: unset; /* Remove the clamp */
-        max-height: none;
+      -webkit-line-clamp: unset; /* Remove the clamp */
+      line-clamp: none;
+      max-height: none;
     }
 
     .cta {
@@ -398,6 +420,59 @@ html {
     list-style: none;
     padding: 0;
     margin: 0;
+
+/* ===== Responsive hero & lazy-bg helper ===== */
+.hero-carousel { width:100%; }
+.hero-slide {
+  background-size: cover;
+  background-position: center center;
+  min-height: 300px;
+  transition: background-image 0.36s ease-in-out, opacity 0.3s ease;
+  background-repeat: no-repeat;
+}
+.hero-slide.bg-lazy { background-color: #efe6db; opacity: 0.95; }
+
+@media (max-width: 768px) {
+  .hero-slide { min-height: 160px; }
+  .logo img { height: 34px; }
+}
+
+/* Ensure all images are responsive and don't overflow */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Mobile nav small refinements */
+@media (max-width:420px){
+  .navbar-container { width: 82%; }
+  .navbar a { font-size: 15px; padding: 12px 10px; }
+}
+
+/* Mobile usability improvements */
+@media (max-width: 480px) {
+  /* make touch targets larger and full-width for CTAs */
+  .navbar a { padding: 14px 14px; font-size: 16px; }
+  .checkbtn { font-size: 28px; padding: 8px 10px; }
+  .buy-now, .cta, .btn { width: 100%; box-sizing: border-box; }
+  /* reduce hero height on smallest screens */
+  .hero-slide { min-height: 140px; }
+}
+
+/* Gallery layout responsive grid */
+.gallery { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); align-items: center; }
+.gallery img { width: 100%; height: auto; object-fit: cover; border-radius: 6px; }
+
+/* Lightbox improvements for mobile */
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center; padding:16px; }
+.lightbox .lightbox-content { max-width:92vw; max-height:92vh; width:auto; height:auto; border-radius:6px; box-shadow:0 8px 30px rgba(0,0,0,0.6); }
+.lightbox .close { position:absolute; top:12px; right:14px; font-size:28px; color:#fff; background:transparent; border:none; }
+
+/* Focus-visible for keyboard users */
+:focus { outline: none; }
+*:focus-visible { outline: 3px solid #ffcc66; outline-offset: 2px; }
+
+/* Ensure form controls are full width on small screens */
+@media (max-width: 768px){
+  input, select, textarea { width: 100%; box-sizing: border-box; }
+}
 }
 
 .advantages-left ul li {

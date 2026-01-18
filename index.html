@@ -92,8 +92,42 @@ Bulk Makhana international shipping
 <noscript><link rel="stylesheet" href="/style.css"></noscript>
 
     <style>
+    /* ===== Global Loader ===== */
+#globalLoader {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.makhana-rotate {
+  width: 90px;
+  height: 90px;
+  animation: spin 2s linear infinite;
+}
+
+.loader-content p {
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e7b34;
+  letter-spacing: 0.3px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+  
         /* Optional: Adding padding to the body to avoid overlap with fixed alert */
-        .moving-alert {
+    .moving-alert {
     position: flex;
     /* top: 100px; Adjust based on your navbar height */
     /* width: 100%; */
@@ -137,7 +171,6 @@ Bulk Makhana international shipping
 .form-group{display:flex;flex-direction:column}
 label{font-weight:600;margin-bottom:6px;font-size:13px}
 input,select{padding:10px;border-radius:8px;border:1px solid #d0cfcf;font-size:14px}
-.noPrint{ }
 .buttons{display:flex;justify-content:center;gap:14px;margin:12px 0;flex-wrap:wrap}
 .btn{padding:10px 18px;border-radius:10px;border:0;color:#fff;cursor:pointer;font-weight:700;font-size:14px;transition:.18s ease}
 .btn.calc{background:#1e7b34}.btn.pdf{background:#4a3bc8}.btn.mail{background:#0a66c2}.btn.reset{background:#b71c1c}
@@ -178,11 +211,18 @@ input,select{padding:10px;border-radius:8px;border:1px solid #d0cfcf;font-size:1
 </head>
 <body>
   
+<!-- Global Loader -->
+<div id="globalLoader">
+  <div class="loader-content">
+    <img src="/image/makhana-loader.png" alt="Makhanabazar Loading" class="makhana-rotate" loading="lazy">
+    <p>WE Export GI-taged Makhana</p>
+  </div>
+</div>
 
   <a href="mailto:info@makhanabazar.com?subject=Inquiry%20for%20Makhana%20Products&body=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." 
-  class="email-float-button" target="_blank" title="Email Us">
- <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email Icon" loading="lazy">
-</a>
+    class="email-float-button" target="_blank" title="Email Us">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email Icon" loading="lazy" width="40" height="40">
+  </a>
 
 <!-- WhatsApp Button Code -->
 <!-- Google Tag Manager (noscript) -->
@@ -193,17 +233,17 @@ input,select{padding:10px;border-radius:8px;border:1px solid #d0cfcf;font-size:1
 <header>
     <div class="notification-top">
         <a   href="https://wa.me/9211959766?text=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." target="_blank" class="whatsapp-button">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" loading="lazy" width="34" height="34">
           </a>
     </div>
     <nav class="navbar" id="navbar">
         <div class="nav-left">
             <a href="https://www.makhanabazar.com" class="logo">
-                <img src="/image/logomakhahna.png" alt="Makhanabazar Logo" />
+              <img src="/image/logomakhahna.png" alt="Makhanabazar Logo" loading="lazy" width="140" height="40" />
             </a>
         </div>
-        <input type="checkbox" id="check" />
-        <label for="check" class="checkbtn">☰</label>
+        <input type="checkbox" id="check" aria-hidden="false" />
+        <label for="check" class="checkbtn" role="button" aria-controls="navbarContainer" aria-expanded="false" tabindex="0" aria-label="Toggle navigation">☰</label>
         <div class="navbar-container" id="navbarContainer">
             <a href="#home" onclick="closeNavbar()">Home</a>
             <a href="#product" onclick="closeNavbar()">Product</a>
@@ -228,6 +268,31 @@ function closeNavbar() {
     document.getElementById("navbarContainer").classList.remove("active");
 }
     </script>
+    <script>
+      // Keep aria-expanded in sync with the checkbox for accessibility
+      (function(){
+        const chk = document.getElementById('check');
+        const toggle = document.querySelector('label.checkbtn');
+        const nav = document.getElementById('navbarContainer');
+        if(!chk || !toggle || !nav) return;
+        function sync(){
+          const expanded = !!chk.checked;
+          toggle.setAttribute('aria-expanded', expanded);
+          nav.setAttribute('aria-hidden', !expanded);
+        }
+        // initial
+        sync();
+        chk.addEventListener('change', sync);
+        // allow keyboard activation on label
+        toggle.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault(); chk.checked = !chk.checked; chk.dispatchEvent(new Event('change'));
+          }
+        });
+        // Close menu when any link is clicked (mobile)
+        nav.addEventListener('click', (e)=>{ if(e.target.tagName === 'A') { chk.checked = false; chk.dispatchEvent(new Event('change')); }});
+      })();
+    </script>
     
 </header>
 
@@ -244,9 +309,9 @@ function closeNavbar() {
 </div>
 <!-- Hero Carousel Start -->
 <div class="hero-carousel owl-carousel owl-theme">
-    <div class="hero-slide" style="background-image: url('/image/slider1.jpeg');"></div>
-  <div class="hero-slide" style="background-image: url('/image/slide11.png');"></div>
-  <div class="hero-slide" style="background-image: url('/image/slider2.jpeg');"></div>
+    <div class="hero-slide bg-lazy" data-bg="/image/slider1.jpeg" role="img" aria-label="Makhana slide 1"></div>
+  <div class="hero-slide bg-lazy" data-bg="/image/slide11.png" role="img" aria-label="Makhana slide 2"></div>
+  <div class="hero-slide bg-lazy" data-bg="/image/slider2.jpeg" role="img" aria-label="Makhana slide 3"></div>
 </div>
 <!-- Hero Carousel End -->
 
@@ -258,8 +323,8 @@ function closeNavbar() {
 
         <!-- LEFT SIDE (ONE IMAGE ONLY) -->
         <div class="product-left">
-            <img src="/image/Slider3.png" 
-                 alt="Premium Darbhanga Makhana Manufacturer and Exporter" />
+          <img src="/image/Slider3.png" loading="lazy" 
+             alt="Premium Darbhanga Makhana Manufacturer and Exporter" width="560" height="360" />
         </div>
 
         <!-- RIGHT SIDE (ALL CONTENT MERGED) -->
@@ -329,7 +394,7 @@ function closeNavbar() {
 
  <!-- Hand Picked -->
 <div class="category-card">
-    <img src="/image/handpicked.png" alt="Hand Picked">
+    <img src="/image/handpicked.png" alt="Hand Picked" loading="lazy">
     <h3>Hand Picked (A1 catagory) </h3>
     <span>This is the largest and most premium grade, often used for high-end products due to its visual appeal and crunchiness.</span>
     <!-- <p><strong>Price: ₹1,400/kg</strong></p>
@@ -343,7 +408,7 @@ function closeNavbar() {
 
 <!-- Large -->
 <div class="category-card">
-    <img src="/image/MakhanaSuta.jpeg" alt="Large">
+    <img src="/image/MakhanaSuta.jpeg" alt="Large" loading="lazy">
     <h3>Large (A2 Catagory)</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
     <!-- <p><strong>Price: ₹1,250/kg</strong></p>
@@ -356,7 +421,7 @@ function closeNavbar() {
 
 <!-- Sample Booking -->
 <div class="category-card">
-    <img src="/image/Thurra.jpg" alt="Samples">
+    <img src="/image/Thurra.jpg" alt="Samples" loading="lazy">
     <h3>Small (A3 Catagory)</h3>
     <span>Contains 3 , 4 Suta Makhana </span>
     <!-- <p><strong>Price: ₹940</strong></p> -->
@@ -368,7 +433,7 @@ function closeNavbar() {
    
 <!-- Sisu Aahar (Baby Food) -->
 <div class="category-card">
-  <img src="/image/babyfood-min.png" alt="Sisu Aahar Baby Food">
+  <img src="/image/babyfood-min.png" alt="Sisu Aahar Baby Food" loading="lazy">
   <h3>Makhana Baby Food</h3>
   <span>Specially formulated Makhana-based baby food approved by WHO. A rich source of protein, calcium, and essential nutrients for infant development.</span>
   <p><strong>Available Package Sizes:</strong> 200GM, 400GM</p>
@@ -378,7 +443,7 @@ function closeNavbar() {
 
 <!-- Peri-Peri -->
 <div class="category-card">
-    <img src="/image/gallery/Periperi-min.png" alt="Peri-Peri">
+    <img src="/image/gallery/Periperi-min.png" alt="Peri-Peri" loading="lazy">
     <h3>Peri-Peri</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
      <strong>Price: ₹180/-</strong>
@@ -390,7 +455,7 @@ function closeNavbar() {
 
 <!-- Pudina -->
 <div class="category-card">
-    <img src="/image/gallery/Pudina-min.png" alt="cream & Onion">
+    <img src="/image/gallery/Pudina-min.png" alt="cream & Onion" loading="lazy">
     <h3>Pudina</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
    <strong>Price: ₹180/-</strong>
@@ -401,7 +466,7 @@ function closeNavbar() {
 </div>
 <!-- Mix Masala -->
 <div class="category-card">
-    <img src="/image/gallery/MIX_Masala-min.png" alt="Cheese">
+    <img src="/image/gallery/MIX_Masala-min.png" alt="Cheese" loading="lazy">
     <h3>Mix Masala</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
   <strong>Price: ₹180/-</strong>
@@ -412,7 +477,7 @@ function closeNavbar() {
 </div>
 <!-- Cream & Onion -->
 <div class="category-card">
-    <img src="/image/gallery/creamOnion-min.png" alt="Cheese">
+    <img src="/image/gallery/creamOnion-min.png" alt="Cheese" loading="lazy">
     <h3>Creame-Onion</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
    <strong>Price: ₹180/-</strong>
@@ -422,7 +487,7 @@ function closeNavbar() {
        target="_blank" class="buy-now">Buy Now</a>
 </div>
 <div class="category-card">
-    <img src="/image/gallery/Tangy tomato-min.png" alt="Cheese">
+    <img src="/image/gallery/Tangy tomato-min.png" alt="Cheese" loading="lazy">
     <h3>Tangy tomato</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
  `` <strong>Price: ₹180/-</strong>
@@ -434,7 +499,7 @@ function closeNavbar() {
 
 <!-- Black Salt -->
 <div class="category-card">
-    <img src="/image/gallery/Salt and paper (1).png" alt="Cheese">
+    <img src="/image/gallery/Salt and paper (1).png" alt="Cheese" loading="lazy">
     <h3>Salt & Paper</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
    <strong>Price: ₹180/-</strong>
@@ -444,7 +509,7 @@ function closeNavbar() {
        target="_blank" class="buy-now">Buy Now</a>
 </div>
 <div class="category-card">
-    <img src="/image/gallery/cheese-min.png" alt="Cheese">
+    <img src="/image/gallery/cheese-min.png" alt="Cheese" loading="lazy">
     <h3>Cheese</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
      <strong>Price: ₹180/-</strong>
@@ -457,6 +522,34 @@ function closeNavbar() {
 
     </div>
 </section>
+
+<!-- Lazy-load background images for hero slides -->
+<script>
+  (function(){
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if(e.isIntersecting){
+            const el = e.target;
+            const src = el.getAttribute('data-bg');
+            if(src){
+              el.style.backgroundImage = `url('${src}')`;
+              el.classList.remove('bg-lazy');
+              obs.unobserve(el);
+            }
+          }
+        });
+      }, {rootMargin: '200px'});
+      document.querySelectorAll('.hero-slide[data-bg]').forEach(s => io.observe(s));
+    } else {
+      // Fallback: load immediately
+      document.querySelectorAll('.hero-slide[data-bg]').forEach(el => {
+        const src = el.getAttribute('data-bg');
+        if(src) el.style.backgroundImage = `url('${src}')`;
+      });
+    }
+  })();
+</script>
 
 <!-- Incoterm Calculator Section -->
 <div class="container noPrint" id ="IncotermCalculator1">
@@ -548,7 +641,7 @@ function closeNavbar() {
 
 <!-- PRINT / PDF AREA -->
 <div class="printArea" id="printArea">
-  <img src="https://i.imgur.com/ODz3R2y.png" style="width:130px;display:block;margin:auto;margin-bottom:10px;"/>
+  <img src="https://i.imgur.com/ODz3R2y.png" style="width:130px;display:block;margin:auto;margin-bottom:10px;" loading="lazy" width="130" height="40"/>
   <h1 style="text-align:center;color:#1e7b34;margin-bottom:4px">Krishipurna Organic Pvt. Ltd.</h1>
   <p style="text-align:center;margin:0 0 12px 0;font-size:13px">Premium Makhana Export | www.makhanabazar.com</p>
 
@@ -754,10 +847,9 @@ function closeNavbar() {
 <div class="conuntr">
     <span class="visit-label">Total Visitors:</span>
     <a href="https://www.hitwebcounter.com" target="_blank">
-        <img src="https://hitwebcounter.com/counter/counter.php?page=20235181&style=0002&nbdigits=5&type=ip&initCount=5000" 
-             title="Counter Widget" 
-             alt="Visit counter For Websites" 
-            />
+      <img src="https://hitwebcounter.com/counter/counter.php?page=20235181&style=0002&nbdigits=5&type=ip&initCount=5000" 
+         title="Counter Widget" 
+         alt="Visit counter For Websites" loading="lazy" />
     </a>                                      
 </div>
 
@@ -780,7 +872,7 @@ function closeNavbar() {
  -->
         <!-- Right Section for Advantages Image
         <div class="advantages-right">
-            <img src="/image/NewImage.jpeg" alt="Advantages Image">
+            <img src="/image/NewImage.jpeg" alt="Advantages Image" loading="lazy">
         </div>
     </div>
 </section> -->
@@ -830,25 +922,25 @@ function closeNavbar() {
     <h1>Gallery</h1>
     <div class="gallery">
      
-        <img src="/image/new2.png" alt="Makhanabazar">
-        <img src="/image/new3.png" alt="Makhanabazar">        
-        <img src="/image/new7.png" alt="Makhanabazar">
-        <img src="/image/new8.png" alt="Makhanabazar">
-        <img src="/image/new9.png" alt="Makhanabazar">
-        <img src="/image/new10.png" alt="Makhanabazar">
-        <img src="/image/new11.png" alt="Makhanabazar">
+        <img src="/image/new2.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/new3.png" alt="Makhanabazar" loading="lazy">        
+        <img src="/image/new7.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/new8.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/new9.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/new10.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/new11.png" alt="Makhanabazar" loading="lazy">
      
-        <img src="/image/new14.png" alt="Makhanabazar">
-        <img src="/image/new12.png" alt="Makhanabazar">
+        <img src="/image/new14.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/new12.png" alt="Makhanabazar" loading="lazy">
 
-        <img src="/image/mp1k.JPG" alt="Makhanabazar">
-        <img src="/image/mp2.jpg" alt="Makhanabazar">
-        <img src="/image/mp112.png" alt="Makhanabazar">
-        <img src="/image/mp5.JPG" alt="Makhanabazar">
-        <img src="/image/coverimage.png" alt="Makhanabazar">
+        <img src="/image/mp1k.JPG" alt="Makhanabazar" loading="lazy">
+        <img src="/image/mp2.jpg" alt="Makhanabazar" loading="lazy">
+        <img src="/image/mp112.png" alt="Makhanabazar" loading="lazy">
+        <img src="/image/mp5.JPG" alt="Makhanabazar" loading="lazy">
+        <img src="/image/coverimage.png" alt="Makhanabazar" loading="lazy">
        
   
-        <img src="/image/mp12.JPG" alt="Makhanabazar">
+        <img src="/image/mp12.JPG" alt="Makhanabazar" loading="lazy">
           <!-- <img src="/image/gallery/DSC_5852.jpg" alt="Makhanabazar"> -->
         <!-- <img src="/image/gallery/DSC_5868.jpg" alt="Makhanabazar"> -->
         <!-- <img src="/image/gallery/DSC_5886.jpg" alt="Makhanabazar"> -->
@@ -963,7 +1055,7 @@ shareBtn.addEventListener('click', async () => {
       <!-- Blog 1 -->
       <div class="pb-5">
         <div class="blog-item text-center">
-          <img src="/image/mp13.png" alt="Makhana Board News">
+          <img src="/image/mp13.png" alt="Makhana Board News" loading="lazy">
           <h5>Makhana Board: Empowering Farmers & Boosting Exports</h5>
           <p>Learn how the newly proposed Makhana Board can support farmers, regulate quality, and expand global reach for fox-nut producers.</p>
           <div class="btn-action d-flex justify-content-center mt-3 gap-2">
@@ -976,7 +1068,7 @@ shareBtn.addEventListener('click', async () => {
       <!-- Blog 2 -->
       <div class="pb-5">
         <div class="blog-item text-center">
-          <img src="/image/THealthy.png" alt="How to Use Makhana">
+          <img src="/image/THealthy.png" alt="How to Use Makhana" loading="lazy">
           <h5>How to Use Makhana in Your Diet</h5>
           <p>Discover tasty ways to include Makhana in your daily meals for better nutrition — snacks, salads, and desserts.</p>
           <div class="btn-action d-flex justify-content-center mt-3 gap-2">
@@ -989,7 +1081,7 @@ shareBtn.addEventListener('click', async () => {
       <!-- Blog 3 -->
       <div class="pb-5">
         <div class="blog-item text-center">
-          <img src="/image/Tmp14.avif" alt="Makhana Farming">
+          <img src="/image/Tmp14.avif" alt="Makhana Farming" loading="lazy">
           <h5>Makhana Farming in Bihar</h5>
           <p>Learn about traditional farming techniques and modern innovations in Makhana cultivation to increase yields and quality.</p>
           <div class="btn-action d-flex justify-content-center mt-3 gap-2">
@@ -1041,7 +1133,7 @@ shareBtn.addEventListener('click', async () => {
       <span class="blog-date">february 05, 2025</span>
     </div>
     <div class="blog-image">
-      <img src="image/imgmb.png" alt="Makhana-Board">
+      <img src="image/imgmb.png" alt="Makhana-Board" loading="lazy">
     </div>
     <div class="toc">
       <h3>Table of Contents</h3>
@@ -1057,18 +1149,18 @@ shareBtn.addEventListener('click', async () => {
       <h3 id="introduction">Introduction</h3>
       <p>Makhana, also known as fox nuts or lotus seeds, has gained popularity as a superfood. Not only it is rich in essential nutrients, but it also offers a wide range of health benefits, making it a fantastic addition to a balanced diet.</p>
       <div class="blog-image">
-        <img src="image/mp4.JPG" alt="About Makhana Board">
+        <img src="image/mp4.JPG" alt="About Makhana Board" loading="lazy">
       </div>
       <h3 id="makhana-board">What is Makhana Board?</h3>
       <p>In the Union Budget of 2025-26, Finance Minister Nirmala Sitharaman announced the establishment of a Makhana Board in Bihar. The Makhana Board is a government initiative aimed at promoting the cultivation, processing, and marketing of makhana (fox nuts), primarily in Bihar, where a significant portion of India's makhana is produced.</p>
       <div class="blog-image">
-        <img src="image/mp13.png" alt="Health Board">
+        <img src="image/mp13.png" alt="Health Board" loading="lazy">
       </div>
       <h3 id="beneficiaries">Who Can Benefit from the Makhana Board?</h3>
       <p>Farmers, small business owners, food processors, and exporters involved in the makhana industry can benefit from the board's programs and support.</p>
       <h3 id="cultivation">Where is Makhana Commonly Cultivated?</h3>
       <div class="blog-image">
-        <img src="image/mp14.avif" alt="Health Benefits of Makhana">
+        <img src="image/mp14.avif" alt="Health Benefits of Makhana" loading="lazy">
       </div>
       <p>Makhana (fox nuts) and Bihar share a deep connection, as Bihar is the largest producer of makhana in India, contributing to over 90% of the country's production.</p>
       <ul>
@@ -1078,7 +1170,7 @@ shareBtn.addEventListener('click', async () => {
       </ul>
       <h3 id="key-elements">Key Elements of Makhana Board Initiatives</h3>
       <div class="blog-image">
-        <img src="image/mp7.jpg" alt="Health Benefits of Makhana">
+        <img src="image/mp7.jpg" alt="Health Benefits of Makhana" loading="lazy">
       </div>
       <ul>
         <li><strong>Farmer Support:</strong> The board will provide training to farmers, ensuring they benefit from relevant government schemes and adopt best practices in makhana cultivation.</li>
@@ -1217,25 +1309,25 @@ form.addEventListener('submit', async (e) => {
     <h2>Customer Reviews</h2>
     <div class="reviews-container">
         <div class="review">
-            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image">
+            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image" loading="lazy">
             <p>"Amazing taste."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>- Happy Customer</span>
         </div>
         <div class="review">
-            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image">
+            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image" loading="lazy">
             <p>"Excellent quality and fast shipping. Five stars!"</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>- Satisfied Buyer</span>
         </div>
         <div class="review">
-            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image">
+            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image" loading="lazy">
             <p>"Great value for the price. Will buy again."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>Repeat Customer</span>
         </div>
         <div class="review">
-            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image">
+            <img src="/image/gallery/customer.png" class="customer-image" alt="Customer Image" loading="lazy">
             <p>"Amazing product! Totally worth it."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <span>- Delighted Customer</span>
@@ -1387,8 +1479,8 @@ const blog1Content = `
       <span class="blog-author">By makhanabazar </span> | 
       <span class="blog-date">february 05, 2025</span>
     </div>
-    <div class="blog-image">
-      <img src="image/imgmb.png" alt="Makhana-Board">
+      <div class="blog-image">
+      <img src="image/imgmb.png" alt="Makhana-Board" loading="lazy">
     </div>
     <div class="toc">
       <h3>Table of Contents</h3>
@@ -1404,18 +1496,18 @@ const blog1Content = `
       <h3 id="introduction">Introduction</h3>
       <p>Makhana, also known as fox nuts or lotus seeds, has gained popularity as a superfood. Not only it is rich in essential nutrients, but it also offers a wide range of health benefits, making it a fantastic addition to a balanced diet.</p>
       <div class="blog-image">
-        <img src="image/mp4.JPG" alt="About Makhana Board">
+        <img src="image/mp4.JPG" alt="About Makhana Board" loading="lazy">
       </div>
       <h3 id="makhana-board">What is Makhana Board?</h3>
       <p>In the Union Budget of 2025-26, Finance Minister Nirmala Sitharaman announced the establishment of a Makhana Board in Bihar. The Makhana Board is a government initiative aimed at promoting the cultivation, processing, and marketing of makhana (fox nuts), primarily in Bihar, where a significant portion of India's makhana is produced.</p>
       <div class="blog-image">
-        <img src="image/mp13.png" alt="Health Board">
+        <img src="image/mp13.png" alt="Health Board" loading="lazy">
       </div>
       <h3 id="beneficiaries">Who Can Benefit from the Makhana Board?</h3>
       <p>Farmers, small business owners, food processors, and exporters involved in the makhana industry can benefit from the board's programs and support.</p>
       <h3 id="cultivation">Where is Makhana Commonly Cultivated?</h3>
       <div class="blog-image">
-        <img src="image/mp14.avif" alt="Health Benefits of Makhana">
+        <img src="image/mp14.avif" alt="Health Benefits of Makhana" loading="lazy">
       </div>
       <p>Makhana (fox nuts) and Bihar share a deep connection, as Bihar is the largest producer of makhana in India, contributing to over 90% of the country's production.</p>
       <ul>
@@ -1425,7 +1517,7 @@ const blog1Content = `
       </ul>
       <h3 id="key-elements">Key Elements of Makhana Board Initiatives</h3>
       <div class="blog-image">
-        <img src="image/mp7.jpg" alt="Health Benefits of Makhana">
+        <img src="image/mp7.jpg" alt="Health Benefits of Makhana" loading="lazy">
       </div>
       <ul>
         <li><strong>Farmer Support:</strong> The board will provide training to farmers, ensuring they benefit from relevant government schemes and adopt best practices in makhana cultivation.</li>
@@ -1477,7 +1569,7 @@ const blog2Content = `
       <span class="blog-date">October 16, 2024</span>
     </div>
     <div class="blog-image">
-      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&dpr=1" alt="Health Benefits of Makhana">
+      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&dpr=1" alt="Health Benefits of Makhana" loading="lazy">
     </div>
     <div class="toc">
       <h3>Table of Contents</h3>
@@ -1494,19 +1586,19 @@ const blog2Content = `
       <h3 id="introduction">Introduction</h3>
       <p>Makhana, also known as fox nuts or lotus seeds, has gained popularity as a superfood. Not only is it rich in essential nutrients, but it also offers a wide range of health benefits, making it a fantastic addition to a balanced diet.</p>
       <h3 id="nutrients">Rich in Nutrients</h3>
-      <img src="https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Nutrients in Makhana" class="blog-sub-image">
+      <img src="https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Nutrients in Makhana" class="blog-sub-image" loading="lazy">
       <p>Makhana is packed with protein, fiber, potassium, magnesium, iron, and zinc. These nutrients make it an excellent choice for those looking to increase their nutrient intake without adding excess calories.</p>
       <h3 id="heart-health">Supports Heart Health</h3>
-      <img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Heart Health Benefits" class="blog-sub-image">
+      <img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Heart Health Benefits" class="blog-sub-image" loading="lazy">
       <p>The low levels of saturated fat and high levels of antioxidants in makhana help in maintaining heart health. Regular consumption can assist in reducing the risk of cardiovascular diseases.</p>
       <h3 id="diabetes">Good for Diabetics</h3>
-      <img src="https://images.pexels.com/photos/1295748/pexels-photo-1295748.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Diabetes Friendly" class="blog-sub-image">
+      <img src="https://images.pexels.com/photos/1295748/pexels-photo-1295748.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Diabetes Friendly" class="blog-sub-image" loading="lazy">
       <p>With a low glycemic index, makhana helps control blood sugar levels. Its slow-releasing carbohydrates provide sustained energy, making it a healthy snack choice for diabetics.</p>
       <h3 id="anti-aging">Anti-Aging Properties</h3>
-      <img src="https://images.pexels.com/photos/3998418/pexels-photo-3998418.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Anti-Aging Benefits" class="blog-sub-image">
+      <img src="https://images.pexels.com/photos/3998418/pexels-photo-3998418.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Anti-Aging Benefits" class="blog-sub-image" loading="lazy">
       <p>Rich in antioxidants, makhana fights free radicals in the body, helping to reduce the signs of aging. Regular consumption can lead to healthier skin and a youthful glow.</p>
       <h3 id="weight-loss">Weight Loss Friendly</h3>
-      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Weight Loss Benefits" class="blog-sub-image">
+      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&dpr=1" alt="Weight Loss Benefits" class="blog-sub-image" loading="lazy">
       <p>Makhana is low in calories but high in protein, making it ideal for weight watchers. It keeps you full for longer, reducing the urge to snack on unhealthy foods.</p>
     </section>
     <section class="blog-conclusion">
@@ -1549,7 +1641,7 @@ const blog3Content = `
       <span class="blog-date">September 2025</span>
     </div>
     <div class="blog-image">
-      <img src="/image/Tmp14.avif" alt="Makhana Farming in Bihar">
+      <img src="/image/Tmp14.avif" alt="Makhana Farming in Bihar" loading="lazy">
     </div>
     <div class="toc">
       <h3>Table of Contents</h3>
@@ -1595,7 +1687,7 @@ const blog3Content = `
         With rising awareness of Makhana’s health benefits, demand is growing in the USA, UK, UAE, Australia, and beyond. Bihar’s farmers are now part of a global supply chain, exporting both raw and value-added Makhana products worldwide.
       </p>
       <div class="blog-image">
-        <img src="/image/Tmp14.avif" alt="Makhana Farming Bihar">
+        <img src="/image/Tmp14.avif" alt="Makhana Farming Bihar" loading="lazy">
       </div>
     </section>
     <section class="blog-conclusion">
@@ -1632,6 +1724,43 @@ function openBlog3Popup() {
 </script>
 
 <script src="/scripts.js"></script>  
+<script>
+  window.addEventListener('load', function () {
+    const loader = document.getElementById('globalLoader');
+    if (!loader) return;
+
+    loader.style.opacity = '0';
+    loader.style.transition = 'opacity 0.4s ease';
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 400);
+  });
+</script>
+
+<!-- Lazy-load background images for hero slides -->
+<script>
+  (function(){
+    var items = document.querySelectorAll('.bg-lazy');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var el = entry.target;
+            var src = el.getAttribute('data-bg');
+            if(src){ el.style.backgroundImage = 'url(' + src + ')'; el.removeAttribute('data-bg'); }
+            el.classList.remove('bg-lazy');
+            obs.unobserve(el);
+          }
+        });
+      },{rootMargin: '200px 0px'});
+      items.forEach(function(i){ io.observe(i); });
+    } else {
+      // Fallback: load all immediately
+      items.forEach(function(el){ var src = el.getAttribute('data-bg'); if(src) el.style.backgroundImage = 'url(' + src + ')'; el.classList.remove('bg-lazy'); });
+    }
+  })();
+</script>
 
 </body>
 </html>
