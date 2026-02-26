@@ -3,8 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Product Production</title>
-    <link rel="stylesheet" href="/front/blog.css"> <!-- Ensure this path is correct -->
+    <title>Makhana Bazar Blog | Insights, Farming and Market Updates</title>
+    <meta name="description" content="Read Makhanabazar blogs on makhana health benefits, farming insights, market trends, and healthy snack ideas.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://www.makhanabazar.com/blog.html">
+    <meta property="og:title" content="Makhana Bazar Blog | Insights, Farming and Market Updates">
+    <meta property="og:description" content="Latest articles on makhana nutrition, Bihar farming, and healthy snacking from Makhanabazar.">
+    <meta property="og:url" content="https://www.makhanabazar.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Makhanabazar">
+    <meta property="og:image" content="https://www.makhanabazar.com/image/coverimage.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Makhana Bazar Blog | Insights, Farming and Market Updates">
+    <meta name="twitter:description" content="Explore makhana health benefits, product updates, and export insights.">
+    <meta name="twitter:image" content="https://www.makhanabazar.com/image/coverimage.jpg">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Makhanabazar Blog",
+        "url": "https://www.makhanabazar.com/blog.html",
+        "description": "Articles on makhana health, farming, and market insights.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Makhanabazar",
+          "url": "https://www.makhanabazar.com"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/blog.css"> <!-- Ensure this path is correct -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- <link rel="stylesheet" href="style.css"> Font Awesome for icons -->
     <style>
@@ -41,17 +68,17 @@
         <nav class="navbar" id="navbar">
             <div class="nav-left">
                 <a href="https://www.makhanabazar.com" class="logo">
-                    <img src="/front/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" class="logo-img" loading="lazy"/>
+                    <img src="/image/Makhanabazarlogo.png" alt="Makhanabazar Logo" class="logo-img" loading="lazy"/>
                 </a>
             </div>
             <input type="checkbox" id="check" />
-            <label for="check" class="checkbtn">☰</label>
+            <label for="check" class="checkbtn">&#9776;</label>
             <div class="navbar-container" id="navbarContainer">
-                <a href="home.html" onclick="closeNavbar()">Home</a>
-                <a href="home.html#product" onclick="closeNavbar()">Product</a>
-                <a href="home.html#IncotermCalculator" onclick="closeNavbar()">Price Calculator</a>
+                <a href="/index.html" onclick="closeNavbar()">Home</a>
+                <a href="/index.html#product" onclick="closeNavbar()">Product</a>
+                <a href="/index.html#IncotermCalculator" onclick="closeNavbar()">Price Calculator</a>
                 <a href="#contact" onclick="closeNavbar()">Contact Us</a>
-                <a href="./blog.html" onclick="closeNavbar()" target="_blank">Blogs</a>
+                <a href="/blog.html" onclick="closeNavbar()">Blogs</a>
             </div>
         </nav>
         
@@ -81,14 +108,14 @@
 <div class="blogs-listing-main clearfix">
     <div class="blogs-listing-banner">
         <div class="blog-image img">
-            <a href="/front/MakhanaBenefits.html" target="_blank">
+            <a href="/MakhanaBenefits.html" target="_blank">
                 <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&dpr=1" alt="The Health Benefits of Makhana" title="The Health Benefits of Makhana" loading="lazy">
             </a>
         </div>
     </div>
     <div class="blogslist col-md-7">
         <div class="clearfix">
-            <a href="https://www.example.com/category/health" class="blog-ribbon">Health</a>
+            <a href="javascript:void(0);" class="blog-ribbon">Health</a>
         </div>
         <div class="blog-title">
             <a href="MakhanaBenefits.html">The Health Benefits of Makhana</a>
@@ -121,21 +148,21 @@
             </div>
             <div class="blogslist col-md-7">
                 <div class="clearfix">
-                    <a href="https://www.example.com/category" class="blog-ribbon">Recipes</a>
+                    <a href="javascript:void(0);" class="blog-ribbon">Industry</a>
                 </div>
                 <div class="blog-title">
-                    <a href="https://www.example.com/blog-post2">5 Creative Ways to Use Makhana in Your Diet</a>
+                    <a href="MakhanaBenefit.html">5 Creative Ways to Use Makhana in Your Diet</a>
                 </div>
                 <div class="blogs-tags"> 
-                    <a class="section-ribbon" href="https://www.example.com/author">Jane Smith</a> 
+                    <a class="section-ribbon" href="javascript:void(0);">Makhanabazar Team</a> 
                     <a class="blogs-date" href="javascript:void(0);"> Oct 20, 2024 </a> 
                     <div class="all-social-div">
                         <a class="general-icons icon-share common-share" href="javascript:void(0)" data-target="#share2"></a>
                         <ul class="all-social" id="share2" style="display: none;">
-                            <li><a href="http://www.facebook.com/sharer/sharer.php?u=https://www.example.com/blog-post2" class="general-icons share-icon-fb" target="_blank"></a></li>
-                            <li><a href="http://x.com/intent/tweet/?text=5 Creative Ways to Use Makhana in Your Diet&url=https://www.example.com/blog-post2" class="general-icons share-icon-twit" target="_blank"></a></li>
-                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.example.com/blog-post2" class="general-icons share-icon-linkedin" target="_blank"></a></li>
-                            <li><a href="whatsapp://send?text=https://www.example.com/blog-post2" class="general-icons share-icon-whatsapp" target="_blank"></a></li>
+                            <li><a href="http://www.facebook.com/sharer/sharer.php?u=MakhanaBenefit.html" class="general-icons share-icon-fb" target="_blank"></a></li>
+                            <li><a href="http://x.com/intent/tweet/?text=5 Creative Ways to Use Makhana in Your Diet&url=MakhanaBenefit.html" class="general-icons share-icon-twit" target="_blank"></a></li>
+                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=MakhanaBenefit.html" class="general-icons share-icon-linkedin" target="_blank"></a></li>
+                            <li><a href="whatsapp://send?text=MakhanaBenefit.html" class="general-icons share-icon-whatsapp" target="_blank"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,21 +181,21 @@
             </div>
             <div class="blogslist col-md-7">
                 <div class="clearfix">
-                    <a href="https://www.example.com/category" class="blog-ribbon">Sustainability</a>
+                    <a href="javascript:void(0);" class="blog-ribbon">Sustainability</a>
                 </div>
                 <div class="blog-title">
-                    <a href="https://www.example.com/blog-post3">Sustainable Practices in Makhana Farming</a>
+                    <a href="MakhanaBoard.html">Sustainable Practices in Makhana Farming</a>
                 </div>
                 <div class="blogs-tags"> 
-                    <a class="section-ribbon" href="https://www.example.com/author">Mike Johnson</a> 
+                    <a class="section-ribbon" href="javascript:void(0);">Makhanabazar Research Team</a> 
                     <a class="blogs-date" href="javascript:void(0);"> Oct 25, 2024 </a> 
                     <div class="all-social-div">
                         <a class="general-icons icon-share common-share" href="javascript:void(0)" data-target="#share3"></a>
                         <ul class="all-social" id="share3" style="display: none;">
-                            <li><a href="http://www.facebook.com/sharer/sharer.php?u=https://www.example.com/blog-post3" class="general-icons share-icon-fb" target="_blank"></a></li>
-                            <li><a href="http://x.com/intent/tweet/?text=Sustainable Practices in Makhana Farming&url=https://www.example.com/blog-post3" class="general-icons share-icon-twit" target="_blank"></a></li>
-                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.example.com/blog-post3" class="general-icons share-icon-linkedin" target="_blank"></a></li>
-                            <li><a href="whatsapp://send?text=https://www.example.com/blog-post3" class="general-icons share-icon-whatsapp" target="_blank"></a></li>
+                            <li><a href="http://www.facebook.com/sharer/sharer.php?u=MakhanaBoard.html" class="general-icons share-icon-fb" target="_blank"></a></li>
+                            <li><a href="http://x.com/intent/tweet/?text=Sustainable Practices in Makhana Farming&url=MakhanaBoard.html" class="general-icons share-icon-twit" target="_blank"></a></li>
+                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=MakhanaBoard.html" class="general-icons share-icon-linkedin" target="_blank"></a></li>
+                            <li><a href="whatsapp://send?text=MakhanaBoard.html" class="general-icons share-icon-whatsapp" target="_blank"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -187,21 +214,21 @@
             </div>
             <div class="blogslist col-md-7">
                 <div class="clearfix">
-                    <a href="https://www.example.com/category" class="blog-ribbon">Recipes</a>
+                    <a href="javascript:void(0);" class="blog-ribbon">Industry</a>
                 </div>
                 <div class="blog-title">
-                    <a href="https://www.example.com/blog-post4">Makhana Recipes for a Healthy Lifestyle</a>
+                    <a href="MakhanaBoard.html">Makhana Board and Industry Growth in Bihar</a>
                 </div>
                 <div class="blogs-tags"> 
-                    <a class="section-ribbon" href="https://www.example.com/author">Sara Connor</a> 
+                    <a class="section-ribbon" href="javascript:void(0);">Makhanabazar Editorial</a> 
                     <a class="blogs-date" href="javascript:void(0);"> Oct 30, 2024 </a> 
                     <div class="all-social-div">
                         <a class="general-icons icon-share common-share" href="javascript:void(0)" data-target="#share4"></a>
                         <ul class="all-social" id="share4" style="display: none;">
-                            <li><a href="http://www.facebook.com/sharer/sharer.php?u=https://www.example.com/blog-post4" class="general-icons share-icon-fb" target="_blank"></a></li>
-                            <li><a href="http://x.com/intent/tweet/?text=Makhana Recipes for a Healthy Lifestyle&url=https://www.example.com/blog-post4" class="general-icons share-icon-twit" target="_blank"></a></li>
-                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.example.com/blog-post4" class="general-icons share-icon-linkedin" target="_blank"></a></li>
-                            <li><a href="whatsapp://send?text=https://www.example.com/blog-post4" class="general-icons share-icon-whatsapp" target="_blank"></a></li>
+                            <li><a href="http://www.facebook.com/sharer/sharer.php?u=MakhanaBoard.html" class="general-icons share-icon-fb" target="_blank"></a></li>
+                            <li><a href="http://x.com/intent/tweet/?text=Makhana Board and Industry Growth in Bihar&url=MakhanaBoard.html" class="general-icons share-icon-twit" target="_blank"></a></li>
+                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url=MakhanaBoard.html" class="general-icons share-icon-linkedin" target="_blank"></a></li>
+                            <li><a href="whatsapp://send?text=MakhanaBoard.html" class="general-icons share-icon-whatsapp" target="_blank"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -256,3 +283,6 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
+
+
