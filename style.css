@@ -1386,19 +1386,52 @@ ul li {
         font-size: 1em;
     }
 }
-  /* Chatbot and WhatsApp button styles */
-  .whatsapp-button {
-    position: fixed;
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    z-index: 1000; /* Ensure it is above other elements */
+/* Floating WhatsApp button */
+.whatsapp-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1100;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #25d366, #1fb95a);
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 24px rgba(18, 92, 46, 0.35);
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
 }
 
 .whatsapp-button img {
-    width: 50px; /* Size of WhatsApp icon */
-    height: 50px; /* Size of WhatsApp icon */
-    border-radius: 50%; /* Makes the button circular */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Adds a shadow for better visibility */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.03);
+  box-shadow: 0 14px 28px rgba(18, 92, 46, 0.42);
+}
+
+.whatsapp-button:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.42);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-button {
+    width: 52px;
+    height: 52px;
+    right: 14px;
+    bottom: 14px;
+  }
+  .whatsapp-button img {
+    width: 27px;
+    height: 27px;
+  }
 }
 /* product */
 /* Product Category Section Styles */
@@ -2913,17 +2946,15 @@ select:focus-visible {
   }
 }
 
-/* Expandable description: small-screen truncation with inline "Read more" */
-.expandable-text { position: relative; width:100%; box-sizing:border-box; }
+/* Expandable description: mobile-safe "Read more" layout */
+.expandable-text { position: relative; width: 100%; box-sizing: border-box; }
 .expandable-text .content {
-  overflow: hidden;
-  max-height: 6.6rem; /* approx 3-4 lines on mobile */
   line-height: 1.6rem;
   transition: max-height 280ms ease;
   position: relative;
-  padding-right: 1rem;
 }
-/* subtle gradient to indicate more content */
+
+/* subtle fade for collapsed mobile copy */
 .expandable-text.collapsed .content::after {
   content: "";
   position: absolute;
@@ -2932,15 +2963,11 @@ select:focus-visible {
   bottom: 0;
   height: 2.6rem;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.88) 60%, rgba(255,255,255,1) 100%);
 }
 
-/* inline text toggle — visually small and at the end on mobile */
 .expand-toggle {
-  display: none; /* hidden by default (desktop) */
-  position: absolute;
-  right: 8px;
-  bottom: 6px;
+  display: none;
   color: #FF921C;
   background: transparent;
   border: none;
@@ -2948,28 +2975,37 @@ select:focus-visible {
   cursor: pointer;
   text-decoration: underline;
   font-size: 0.95rem;
-  padding: 0 .25rem;
+  padding: 0;
 }
 
-/* expanded state shows full content */
-.expandable-text.expanded .content {
-  max-height: 200vh; /* large enough to show all text */
-}
-.expandable-text.expanded .content::after { display:none; }
-
-/* Show inline toggle only on small screens */
 @media (max-width: 768px) {
-  .expand-toggle { display: inline-block; }
+  .expandable-text .content {
+    overflow: hidden;
+    max-height: 6.6rem;
+  }
+  .expandable-text.expanded .content {
+    max-height: 200vh;
+  }
+  .expandable-text.expanded .content::after {
+    display: none;
+  }
+  .expand-toggle {
+    display: inline-flex;
+    position: static;
+    margin-top: 10px;
+    align-self: flex-start;
+    line-height: 1.2;
+  }
 }
-/* On larger screens show full text and hide toggle */
+
 @media (min-width: 769px) {
-  .expandable-text .content { max-height: none; }
-  .expandable-text .content::after { display:none; }
+  .expandable-text .content {
+    overflow: visible;
+    max-height: none;
+  }
+  .expandable-text .content::after { display: none; }
   .expand-toggle { display: none !important; }
 }
-
-
-
 /* ===============================
    BLOG VISIBILITY & UI IMPROVEMENT
    =============================== */

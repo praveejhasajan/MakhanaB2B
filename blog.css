@@ -216,6 +216,45 @@ body {
   object-fit: cover;
 }
 
+.import-query-box {
+  border: 1px solid var(--blog-border);
+  border-radius: 16px;
+  background: #fffaf3;
+  padding: 16px;
+  margin: 14px 0;
+}
+
+.import-query-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.import-query-form label {
+  font-weight: 600;
+  color: #553300;
+  margin-top: 4px;
+}
+
+.import-query-form input,
+.import-query-form select,
+.import-query-form textarea {
+  width: 100%;
+  border: 1px solid #e4d4be;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  color: #2f1f09;
+  font: inherit;
+}
+
+.import-query-form input:focus,
+.import-query-form select:focus,
+.import-query-form textarea:focus {
+  outline: 2px solid rgba(255, 146, 28, 0.35);
+  border-color: #f0b561;
+}
+
 .back-link {
   display: inline-flex;
   margin-bottom: 12px;
