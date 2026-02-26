@@ -113,39 +113,74 @@
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 5;
+  z-index: 40;
 }
 #holi-festive .holi-splash {
   position: absolute;
-  width: 32vmax;
-  height: 32vmax;
+  width: 40vmax;
+  height: 40vmax;
   border-radius: 50%;
-  filter: blur(52px);
-  opacity: .14;
+  filter: blur(62px);
+  opacity: .26;
+  animation: holiPulse 6s ease-in-out infinite;
 }
 #holi-festive .splash-1 {
-  background: radial-gradient(circle, rgba(255, 83, 112, .9), rgba(255, 83, 112, 0));
-  left: -10vmax;
-  top: -9vmax;
+  background: radial-gradient(circle, rgba(255, 69, 128, .95), rgba(255, 69, 128, 0));
+  left: -12vmax;
+  top: -10vmax;
 }
 #holi-festive .splash-2 {
-  background: radial-gradient(circle, rgba(58, 197, 164, .9), rgba(58, 197, 164, 0));
-  right: -9vmax;
-  top: 10vmax;
+  background: radial-gradient(circle, rgba(22, 197, 163, .95), rgba(22, 197, 163, 0));
+  right: -12vmax;
+  top: 8vmax;
+  animation-delay: 1.5s;
 }
 #holi-festive .splash-3 {
-  background: radial-gradient(circle, rgba(247, 173, 63, .9), rgba(247, 173, 63, 0));
-  left: 28%;
+  background: radial-gradient(circle, rgba(255, 157, 0, .95), rgba(255, 157, 0, 0));
+  left: 24%;
   bottom: -14vmax;
+  animation-delay: 3s;
 }
 #holi-festive .holi-dot {
   position: absolute;
-  bottom: -70px;
+  bottom: -90px;
   border-radius: 50%;
-  opacity: .22;
+  opacity: .48;
+  box-shadow: 0 0 14px rgba(255, 255, 255, .45);
+  mix-blend-mode: screen;
   will-change: transform, opacity;
   animation: holiFloat var(--dur, 13s) linear infinite;
   animation-delay: var(--delay, 0s);
+}
+#holi-festive .holi-streak {
+  position: absolute;
+  top: -80px;
+  width: 6px;
+  height: 34px;
+  border-radius: 999px;
+  opacity: .58;
+  filter: blur(.2px);
+  transform: rotate(var(--tilt, 0deg));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, .1), var(--c1), var(--c2));
+  animation: holiFall var(--fallDur, 6s) linear infinite;
+  animation-delay: var(--fallDelay, 0s);
+}
+.holi-greeting {
+  position: fixed;
+  left: 14px;
+  bottom: 18px;
+  z-index: 45;
+  pointer-events: none;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: .4px;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: linear-gradient(120deg, rgba(255, 79, 122, .88), rgba(255, 161, 0, .88), rgba(26, 195, 156, .88), rgba(98, 80, 225, .88));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .22);
+  animation: holiBadgeGlow 2.8s ease-in-out infinite;
 }
 @keyframes holiFloat {
   0% {
@@ -153,15 +188,44 @@
     opacity: 0;
   }
   15% {
-    opacity: .22;
+    opacity: .56;
   }
   100% {
-    transform: translate3d(var(--drift, 0px), -120vh, 0) scale(1.12);
+    transform: translate3d(var(--drift, 0px), -120vh, 0) scale(1.18);
     opacity: 0;
   }
 }
+@keyframes holiFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(var(--tilt, 0deg));
+    opacity: 0;
+  }
+  20% {
+    opacity: .7;
+  }
+  100% {
+    transform: translate3d(var(--xDrift, 0px), 120vh, 0) rotate(calc(var(--tilt, 0deg) + 32deg));
+    opacity: 0;
+  }
+}
+@keyframes holiPulse {
+  0%, 100% { transform: scale(1); opacity: .2; }
+  50% { transform: scale(1.1); opacity: .34; }
+}
+@keyframes holiBadgeGlow {
+  0%, 100% { transform: translateY(0); box-shadow: 0 8px 24px rgba(0, 0, 0, .22); }
+  50% { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(255, 109, 35, .42); }
+}
 @media (prefers-reduced-motion: reduce) {
-  #holi-festive { display: none !important; }
+  #holi-festive, .holi-greeting { display: none !important; }
+}
+@media (max-width: 767px) {
+  .holi-greeting {
+    left: 10px;
+    bottom: 12px;
+    font-size: 12px;
+    padding: 7px 10px;
+  }
 }
   
         /* Optional: Adding padding to the body to avoid overlap with fixed alert */
@@ -595,6 +659,7 @@
   <span class="holi-splash splash-2"></span>
   <span class="holi-splash splash-3"></span>
 </div>
+<div class="holi-greeting" aria-hidden="true">Happy Holi</div>
 
   <a href="mailto:info@makhanabazar.com?subject=Inquiry%20for%20Makhana%20Products&body=Hi!%20I%20am%20interested%20in%20buying%20Makhana%20products.%20Please%20provide%20pricing%20and%20order%20details." 
     class="email-float-button" target="_blank" title="Email Us">
@@ -620,13 +685,17 @@
             </a>
         </div>
         <input type="checkbox" id="check" aria-hidden="false" />
-        <label for="check" class="checkbtn" role="button" aria-controls="navbarContainer" aria-expanded="false" tabindex="0" aria-label="Toggle navigation">☰</label>
+        <label for="check" class="checkbtn" role="button" aria-controls="navbarContainer" aria-expanded="false" tabindex="0" aria-label="Toggle navigation">&#9776;</label>
         <div class="navbar-container" id="navbarContainer">
             <a href="#home" onclick="closeNavbar()">Home</a>
             <a href="#product" onclick="closeNavbar()">Product</a>
             <a href="#IncotermCalculator1" onclick="closeNavbar()">Price Calculator</a>
             <a href="#gallery-section" onclick="closeNavbar()">Gallery</a>
-            <a href="#blog">Blogs</a>
+            <a href="#blog" onclick="closeNavbar()">Blogs</a>
+            <a href="/export-wholesale-makhana-india.html" onclick="closeNavbar()">Export Hub</a>
+            <a href="/makhana-foxnut-supplier-usa.html" onclick="closeNavbar()">USA</a>
+            <a href="/makhana-wholesale-supplier-uae-dubai.html" onclick="closeNavbar()">UAE</a>
+            <a href="/private-label-makhana-manufacturer.html" onclick="closeNavbar()">Private Label</a>
             <a href="#contact" onclick="closeNavbar()">Contact Us</a>
             
         </div>
@@ -696,11 +765,11 @@ function closeNavbar() {
 
 <main class="main-section">
 
-    <section class="product" id="home">
+        <section class="product" id="home">
 
         <!-- LEFT SIDE (ONE IMAGE ONLY) -->
         <div class="product-left">
-          <img src="/image/Slider3.png" loading="lazy" 
+          <img src="/image/diet.png" loading="lazy" onerror="this.onerror=null;this.src='/image/Slider3.png';"
              alt="Premium Darbhanga Makhana Manufacturer and Exporter" width="560" height="360" />
         </div>
 
@@ -711,51 +780,29 @@ function closeNavbar() {
 
             <div class="expandable-text" id="productDesc">
                 <div class="content">
-
-                    <strong>Krishipurna Organic Pvt Ltd</strong> is a leading 
-                    <strong>Makhana (Foxnut) manufacturer, wholesale supplier, and global exporter</strong> 
-                    from Darbhanga, Bihar — the birthplace of the finest Makhana in the world.
-
-                    <br><br>
-
-                    With 80+ years of legacy, we pioneered the commercial and organic production 
-                    of Makhana and have built a reputation for purity, consistency, and premium quality.  
-                    Our products reach customers in <strong>USA, UK, Canada, Australia, UAE, Singapore</strong>
-                    and multiple FTA-based markets.
-
-                    <br><br>
-
-                    We supply <strong>raw makhana, roasted makhana, bulk foxnuts, private-label brands, 
-                    FMCG companies, supermarkets, and international distributors</strong> with reliable 
-                    quality and sustainable sourcing.
-
-                    <br><br>
-
-                    <strong>Our Certifications</strong>  
-                    To meet global food safety and export standards, we are certified with:
-
-                    <ul>
-                        <li>FSSAI – Food Safety & Standards Authority of India</li>
-                        <li>APEDA – Agricultural & Processed Food Products Export Board</li>
-                        <li>ISO 22000 – Food Safety Management System</li>
-                        <li>HACCP – International Food Safety Certification</li>
-                        <li>Organic Certification (available upon request)</li>
-                    </ul>
-
-                    <br>
-
-                    <strong>Global Reach</strong>  
-                    Our makhana is enjoyed in major cities including  
-                    <strong>New York, London, Toronto, Sydney, Dubai, and Singapore</strong>  
-                    where health-conscious customers choose us for quality, crispness, and nutrition.
-
+                    <p><strong>Krishipurna Organic Pvt Ltd</strong> is a trusted <strong>Makhana manufacturer, wholesale supplier, and exporter in India</strong>, based in Darbhanga, Bihar - the core region of Mithila Makhana.</p>
+                    <p>With 80+ years of legacy, we deliver <strong>raw makhana, roasted foxnuts, and private label makhana products</strong> for importers, distributors, supermarkets, and FMCG snack brands.</p>
+                    <p>Our export-grade quality and supply reliability support buyers across <strong>USA, UK, Canada, UAE, Australia, and Singapore</strong>, with consistent quality checks and professional dispatch handling.</p>
+                    <p>If you are looking for a dependable <strong>bulk makhana exporter from India</strong>, we provide scalable sourcing, packaging flexibility, and business-focused support for domestic and global markets.</p>
                 </div>
 
-                <span class="expand-toggle" 
-                      role="button" 
-                      tabindex="0" 
-                      aria-controls="productDesc" 
+                <span class="expand-toggle"
+                      role="button"
+                      tabindex="0"
+                      aria-controls="productDesc"
                       aria-expanded="false">Read more</span>
+            </div>
+
+            <div class="certification-showcase" aria-label="Our certifications">
+              <h2 class="certification-title">Our Certifications</h2>
+              <div class="certification-grid">
+                <div class="certification-pill"><span class="certification-icon" aria-hidden="true">&#10003;</span>FSSAI</div>
+                <div class="certification-pill"><span class="certification-icon" aria-hidden="true">&#10003;</span>APEDA</div>
+                <div class="certification-pill"><span class="certification-icon" aria-hidden="true">&#10003;</span>ISO 22000</div>
+                <div class="certification-pill"><span class="certification-icon" aria-hidden="true">&#10003;</span>HACCP</div>
+                <div class="certification-pill"><span class="certification-icon" aria-hidden="true">&#10003;</span>Organic</div>
+                <div class="certification-pill"><span class="certification-icon" aria-hidden="true">&#10003;</span>GI Tagged</div>
+              </div>
             </div>
 
         </div>
@@ -785,7 +832,7 @@ function closeNavbar() {
 
 <!-- Large -->
 <div class="category-card">
-    <img src="/image/MakhanaSuta.jpeg" alt="Large" loading="lazy">
+    <img src="/image/new2.jpg" alt="Large" loading="lazy" onerror="this.onerror=null;this.src='/image/MakhanaSuta.jpeg';">
     <h3>Large (A2 Catagory)</h3>
     <span>Large and well-rounded, suitable for direct snacking or high-quality packaged products.</span>
     <!-- <p><strong>Price: ₹1,250/kg</strong></p>
@@ -1943,11 +1990,11 @@ shareBtn.addEventListener('click', async () => {
         <div class="footer-section">
             <h3>Learn</h3>
             <ul class="footer-links">
-                <li><a href="#who-we-are">Our Story</a></li>
+                <li><a href="#home">Our Story</a></li>
                 <li><a href="#blog">Makhana Recipes</a></li>
-                <li><a href="#whyus">Nutrition Facts</a></li>
-                <li><a href="#whyus">Health Benefits</a></li>
-                <li><a href="#faq">FAQ's</a></li>
+                <li><a href="/MakhanaBenefit.html">Nutrition Facts</a></li>
+                <li><a href="/MakhanaBenefits.html">Health Benefits</a></li>
+                <li><a href="/faq.html">FAQ's</a></li>
             </ul>
         </div>
 
@@ -1955,16 +2002,17 @@ shareBtn.addEventListener('click', async () => {
         <div class="footer-section">
             <h3>More from MakhanaBazar</h3>
             <ul class="footer-links">
-                <li><a href="#login">Sign In</a></li>
-                <li><a href="#wholesale">Wholesale Opportunities</a></li>
-                <li><a href="#distributor">Distributor Program</a></li>
+                <li><a href="/private-label-makhana-manufacturer.html">Private Label Program</a></li>
+                <li><a href="/export-wholesale-makhana-india.html">Wholesale Opportunities</a></li>
+                <li><a href="/makhana-foxnut-supplier-usa.html">Distributor Program (USA)</a></li>
+                <li><a href="/makhana-wholesale-supplier-uae-dubai.html">UAE Wholesale Program</a></li>
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </div>
 
         <!-- COLUMN 4: SOCIAL -->
       <div class="footer-social">
-  <a href="https://www.facebook.com/MAKHANABAZAR" target="_blank" aria-label="Facebook">
+  <a href="https://www.facebook.com/MAKHANABAZAR" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
     <!-- Facebook (blue background + white f) -->
     <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
       <rect rx="12" ry="12" width="24" height="24" fill="#1877F2"/>
@@ -1972,7 +2020,7 @@ shareBtn.addEventListener('click', async () => {
     </svg>
   </a>
 
-  <a href="https://www.instagram.com/krishipurnaorganics/" target="_blank" aria-label="Instagram">
+  <a href="https://www.instagram.com/krishipurnaorganics/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
     <!-- Instagram (gradient background + camera) -->
     <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
       <defs>
@@ -1990,7 +2038,7 @@ shareBtn.addEventListener('click', async () => {
     </svg>
   </a>
 
-  <a href="https://www.linkedin.com/company/krishipurna-organic-pvt-ltd" target="_blank" aria-label="LinkedIn">
+  <a href="https://www.linkedin.com/company/krishipurna-organic-pvt-ltd" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
     <!-- LinkedIn (blue background + white in) -->
     <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
       <rect width="24" height="24" rx="12" fill="#0A66C2"/>
@@ -1998,7 +2046,7 @@ shareBtn.addEventListener('click', async () => {
     </svg>
   </a>
 
-  <a href="https://www.youtube.com/@Krishipurnaorganic" target="_blank" aria-label="YouTube">
+  <a href="https://www.youtube.com/@Krishipurnaorganic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
     <!-- YouTube (red background + white play) -->
     <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
       <rect width="24" height="24" rx="6" fill="#FF0000"/>
@@ -2391,14 +2439,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!holiLayer) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const colors = ['#ff4d6d', '#f59e0b', '#22c55e', '#00c2ff', '#a855f7', '#ef4444'];
-    const count = window.innerWidth < 768 ? 14 : 24;
+    const colors = ['#ff4d6d', '#ff9f1c', '#22c55e', '#00c2ff', '#a855f7', '#ef4444', '#ff3e9e', '#ffd60a'];
+    const dotCount = window.innerWidth < 768 ? 26 : 46;
+    const streakCount = window.innerWidth < 768 ? 14 : 24;
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < dotCount; i++) {
       const dot = document.createElement('span');
-      const size = Math.round(8 + Math.random() * 16);
-      const drift = Math.round((Math.random() - 0.5) * 90);
-      const dur = (9 + Math.random() * 8).toFixed(2);
+      const size = Math.round(9 + Math.random() * 18);
+      const drift = Math.round((Math.random() - 0.5) * 130);
+      const dur = (7 + Math.random() * 7).toFixed(2);
       const delay = (Math.random() * 8).toFixed(2);
 
       dot.className = 'holi-dot';
@@ -2412,15 +2461,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
       holiLayer.appendChild(dot);
     }
+
+    for (let i = 0; i < streakCount; i++) {
+      const streak = document.createElement('span');
+      const c1 = colors[Math.floor(Math.random() * colors.length)];
+      const c2 = colors[Math.floor(Math.random() * colors.length)];
+      const xDrift = Math.round((Math.random() - 0.5) * 70);
+      const tilt = Math.round((Math.random() - 0.5) * 24);
+      const fallDur = (4.2 + Math.random() * 3.8).toFixed(2);
+      const fallDelay = (Math.random() * 6).toFixed(2);
+
+      streak.className = 'holi-streak';
+      streak.style.left = `${(Math.random() * 100).toFixed(2)}%`;
+      streak.style.setProperty('--c1', c1);
+      streak.style.setProperty('--c2', c2);
+      streak.style.setProperty('--xDrift', `${xDrift}px`);
+      streak.style.setProperty('--tilt', `${tilt}deg`);
+      streak.style.setProperty('--fallDur', `${fallDur}s`);
+      streak.style.setProperty('--fallDelay', `-${fallDelay}s`);
+
+      holiLayer.appendChild(streak);
+    }
   })();
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
