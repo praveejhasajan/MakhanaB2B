@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
 :root {
   --blog-bg: #f8ede3;
   --blog-card: #fff;
@@ -11,6 +13,9 @@
 body {
   background: linear-gradient(180deg, #f7ecdf 0%, #f8ede3 55%, #f5e6d5 100%);
   color: var(--blog-text);
+  font-family: 'Work Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .blog-page,
@@ -42,6 +47,7 @@ body {
   font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.3rem);
   line-height: 1.2;
   color: #4a2e04;
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
 }
 
 .blog-sub {
@@ -94,6 +100,7 @@ body {
 .post-body h3 {
   margin: 0 0 10px;
   line-height: 1.28;
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
 }
 
 .featured-content h2 a,
@@ -109,6 +116,7 @@ body {
   margin: 0 0 10px;
   color: #5e4a2d;
   line-height: 1.74;
+  font-size: 1.02rem;
 }
 
 .read-btn,
@@ -189,12 +197,14 @@ body {
   line-height: 1.2;
   color: #412705;
   font-size: clamp(1.45rem, 1.2rem + 1vw, 2.15rem);
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
 }
 
 .article-content h2 {
   margin: 18px 0 8px;
   color: #5a3600;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
 }
 
 .article-content ul {
@@ -299,3 +309,11 @@ body {
     padding: 16px;
   }
 }
+
+.article-content h3 {
+  margin: 14px 0 6px;
+  color: #5a3600;
+  font-size: 1.2rem;
+  font-family: 'Libre Baskerville', 'Times New Roman', serif;
+}
+
