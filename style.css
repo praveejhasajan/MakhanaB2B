@@ -1391,7 +1391,7 @@ ul li {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  z-index: 1100;
+  z-index: 10001;
   width: 58px;
   height: 58px;
   border-radius: 50%;
@@ -2553,7 +2553,7 @@ ul {
     position: fixed;
     bottom: 90px; /* adjust if you already have a WhatsApp button */
     right: 20px;
-    z-index: 9999;
+    z-index: 99999;
     background-color: white;
     border-radius: 50%;
     padding: 8px;
@@ -2577,7 +2577,7 @@ ul {
       height: 100vh;
       width: 100vw;
       background-color: rgba(0, 0, 0, 0.5);
-      z-index: 9999;
+      z-index: 99999;
       justify-content: center;
       align-items: center;
     }
@@ -3378,3 +3378,25 @@ select:focus-visible {
     transform: translateX(-4px) !important;
   }
 }
+
+
+
+
+.whatsapp-float-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10002;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #25d366, #1fb95a);
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 24px rgba(18, 92, 46, 0.35);
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.whatsapp-float-button img { width: 30px; height: 30px; border-radius: 50%; }
+.whatsapp-float-button:hover { transform: translateY(-2px) scale(1.04); filter: brightness(1.03); box-shadow: 0 14px 28px rgba(18, 92, 46, 0.42);}
