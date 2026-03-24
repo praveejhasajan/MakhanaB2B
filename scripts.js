@@ -1,4 +1,4 @@
-function createMakhana() {
+﻿function createMakhana() {
   const foxnut = document.createElement("div");
   foxnut.classList.add("foxnut");
 
@@ -230,8 +230,283 @@ function calculatePrice() {
   }, 800);
 }
 
+function initNavDropdowns() {
+  const items = document.querySelectorAll(".nav-item.has-submenu");
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const btn = item.querySelector(".nav-link");
+    if (!btn) return;
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      const isOpen = item.classList.contains("open");
+      items.forEach((other) => other.classList.remove("open"));
+      if (!isOpen) {
+        item.classList.add("open");
+      }
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest(".nav-item")) return;
+    items.forEach((item) => {
+      item.classList.remove("open");
+      const btn = item.querySelector(".nav-link");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+async function submitLeadForm(form, sourceOverride) {
+  const status = form.querySelector(".cro-form-status");
+  if (status) {
+    status.textContent = "Submitting...";
+    status.dataset.state = "loading";
+  }
+
+  const data = new FormData(form);
+  const requirement = data.get("requirement") || form.dataset.requirement || "";
+  const payload = {
+    name: data.get("name") || "",
+    phone: data.get("phone") || "",
+    requirement,
+    quantity: data.get("quantity") || "",
+    location: data.get("location") || "",
+    purpose: data.get("purpose") || "",
+    intent: inferIntent(requirement),
+    source: sourceOverride || form.dataset.source || "CRO"
+  };
+
+  try {
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error("Lead submit failed");
+
+    if (status) {
+      status.textContent = "Thanks! Our team will message you shortly.";
+      status.dataset.state = "success";
+    }
+    form.reset();
+
+    if (form.dataset.successWhatsapp === "true") {
+      const message = encodeURIComponent(
+        "Hi Makhanabazar, I want the export price list PDF. My requirement: " +
+          (payload.requirement || "Makhana") +
+          ". Quantity: " +
+          (payload.quantity || "Not specified") +
+          "."
+      );
+      window.open(`https://wa.me/919591533598?text=${message}`, "_blank");
+    }
+    return true;
+  } catch (error) {
+    console.error("Lead submit error:", error);
+    if (status) {
+      status.textContent = "Could not submit now. Please try again.";
+      status.dataset.state = "error";
+    }
+    return false;
+  }
+}
+
+function initExitIntentPopup() {
+  if (document.getElementById("croExitPopup")) return;
+  if (location.pathname.includes("chatbot")) return;
+
+  const popup = document.createElement("div");
+  popup.id = "croExitPopup";
+  popup.className = "cro-exit-popup";
+  popup.setAttribute("aria-hidden", "true");
+  popup.innerHTML = `
+    <div class="cro-exit-card" role="dialog" aria-modal="true" aria-labelledby="croExitTitle">
+      <button class="cro-exit-close" type="button" aria-label="Close popup">×</button>
+      <span class="cro-exit-badge">Export Pricing PDF</span>
+      <h2 id="croExitTitle">Get Makhana Export Price List PDF</h2>
+      <p>Share your requirement to get the PDF + best quote in minutes.</p>
+      <form class="cro-lead-form" data-source="exit-popup" data-success-whatsapp="true">
+        <div class="cro-form-grid">
+          <label>
+            <span>Name</span>
+            <input name="name" type="text" placeholder="Your name" autocomplete="name">
+          </label>
+          <label>
+            <span>Phone *</span>
+            <input name="phone" type="tel" placeholder="10-digit mobile" required inputmode="numeric" pattern="\\d{10}">
+          </label>
+          <label>
+            <span>Requirement</span>
+            <select name="requirement">
+              <option value="Export Inquiry">Export Inquiry</option>
+              <option value="Bulk Order">Bulk Order</option>
+              <option value="Retail Purchase">Retail Purchase</option>
+              <option value="Price Inquiry">Price Inquiry</option>
+            </select>
+          </label>
+          <label>
+            <span>Quantity</span>
+            <input name="quantity" type="text" placeholder="Ex: 25kg / 100kg">
+          </label>
+        </div>
+        <label>
+          <span>Location</span>
+          <input name="location" type="text" placeholder="City / Country">
+        </label>
+        <button type="submit" class="cro-primary-btn">Get PDF on WhatsApp</button>
+        <p class="cro-form-note">Stock fast moving hai. Direct farmer sourcing from Bihar.</p>
+        <div class="cro-form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  const closeBtn = popup.querySelector(".cro-exit-close");
+  closeBtn.addEventListener("click", () => closeExitPopup());
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) closeExitPopup();
+  });
+
+  function closeExitPopup() {
+    popup.classList.remove("active");
+    popup.setAttribute("aria-hidden", "true");
+    localStorage.setItem("mbz_exit_popup_seen", String(Date.now()));
+  }
+
+  function openExitPopup() {
+    if (popup.classList.contains("active")) return;
+    popup.classList.add("active");
+    popup.setAttribute("aria-hidden", "false");
+  }
+
+  const seen = Number(localStorage.getItem("mbz_exit_popup_seen") || 0);
+  const dayMs = 24 * 60 * 60 * 1000;
+  const shouldShow = Date.now() - seen > dayMs;
+
+  if (shouldShow) {
+    document.addEventListener("mouseleave", (event) => {
+      if (event.clientY <= 0) openExitPopup();
+    });
+    setTimeout(() => {
+      if (window.innerWidth < 900) openExitPopup();
+    }, 32000);
+  }
+}
+
+function initInlineBlogForms() {
+  const targets = document.querySelectorAll(".blog-content, .article-content, .article-body, .blog-container");
+  if (!targets.length) return;
+
+  targets.forEach((target) => {
+    if (target.querySelector(".cro-inline-capture")) return;
+    const inline = document.createElement("div");
+    inline.className = "cro-inline-capture";
+    inline.innerHTML = `
+      <div class="cro-inline-header">
+        <span class="cro-inline-badge">Fast Quote</span>
+        <h3>Get bulk price for your requirement</h3>
+        <p>Share quantity + destination. We reply with best price & MOQ.</p>
+      </div>
+      <form class="cro-lead-form" data-source="blog-inline">
+        <div class="cro-form-grid">
+          <label>
+            <span>Name</span>
+            <input name="name" type="text" placeholder="Your name">
+          </label>
+          <label>
+            <span>Phone *</span>
+            <input name="phone" type="tel" placeholder="10-digit mobile" required inputmode="numeric" pattern="\\d{10}">
+          </label>
+          <label>
+            <span>Requirement</span>
+            <select name="requirement">
+              <option value="Bulk Order">Bulk Order</option>
+              <option value="Export Inquiry">Export Inquiry</option>
+              <option value="Retail Purchase">Retail Purchase</option>
+            </select>
+          </label>
+          <label>
+            <span>Quantity</span>
+            <input name="quantity" type="text" placeholder="Ex: 25kg / 1 ton">
+          </label>
+        </div>
+        <button type="submit" class="cro-primary-btn">Get Best Quote</button>
+        <div class="cro-form-status" role="status" aria-live="polite"></div>
+      </form>
+    `;
+
+    const firstPara = target.querySelector("p");
+    if (firstPara) {
+      firstPara.insertAdjacentElement("afterend", inline);
+    } else {
+      target.appendChild(inline);
+    }
+  });
+}
+
+function initCtaStrip() {
+  if (document.querySelector(".cro-cta-strip")) return;
+  if (location.pathname.includes("chatbot")) return;
+
+  const strip = document.createElement("section");
+  strip.className = "cro-cta-strip";
+  strip.innerHTML = `
+    <div class="cro-cta-copy">
+      <h3>Ready to source premium Makhana?</h3>
+      <p>Get fast export pricing, MOQ details, and shipment support.</p>
+    </div>
+    <div class="cro-cta-actions">
+      <button class="cro-secondary-btn" type="button" data-open-exit>Get Price List</button>
+      <a class="cro-primary-btn" href="https://wa.me/919591533598?text=I%20want%20bulk%20makhana%20pricing%20and%20MOQ.">WhatsApp Now</a>
+      <a class="cro-secondary-btn" href="/import-makhana-query">Submit Inquiry</a>
+    </div>
+  `;
+  document.body.appendChild(strip);
+
+  strip.querySelectorAll("[data-open-exit]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const popup = document.getElementById("croExitPopup");
+      if (popup) {
+        popup.classList.add("active");
+        popup.setAttribute("aria-hidden", "false");
+      }
+    });
+  });
+}
+
+function initStickyWhatsapp() {
+  if (document.querySelector(".sticky-whatsapp") || document.querySelector(".whatsapp-float-button") || document.querySelector(".whatsapp-button")) return;
+  const link = document.createElement("a");
+  link.className = "sticky-whatsapp";
+  link.href = "https://wa.me/919591533598?text=Hi%20Makhanabazar%20team,%20I%20want%20makhana%20pricing.";
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.setAttribute("aria-label", "Chat on WhatsApp");
+  link.innerHTML = `
+    <span class="sticky-whatsapp-icon" aria-hidden="true">WA</span>
+    <span class="sticky-whatsapp-text">Chat on WhatsApp</span>
+  `;
+  document.body.appendChild(link);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  ensureCroStyles();
+  initNavDropdowns();
   makhanaRain();
+
+  document.addEventListener("submit", function (event) {
+    const form = event.target;
+    if (!form.classList || !form.classList.contains("cro-lead-form")) return;
+    event.preventDefault();
+    submitLeadForm(form);
+  });
+
+  initExitIntentPopup();
+  initInlineBlogForms();
+  initCtaStrip();
+  initStickyWhatsapp();
+
 
   const ctaButtons = document.querySelectorAll(".cta");
   ctaButtons.forEach((button) => {
@@ -307,3 +582,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+
+
+
+
+

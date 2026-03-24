@@ -1,4 +1,4 @@
-*{
+﻿*{
     margin: 0;
     padding: 0;
 }
@@ -980,7 +980,7 @@ ul li {
 .stars {
     color: #ffc107;
 }
-/* FINAL — WORKING GEOMETRIC LINE FOOTER */
+/* FINAL â€” WORKING GEOMETRIC LINE FOOTER */
 .premium-footer {
     background: #ffffff; /* Clean white premium background */
     position: relative;
@@ -2036,7 +2036,7 @@ ul {
 }
 
 /* ul li::before {
-  content: '✅';
+  content: 'âœ…';
   margin-right: 8px;
 } */
 
@@ -2333,7 +2333,7 @@ ul {
 }
 
 /* ============================================
-   BLOG CARD – PREMIUM GLASS DESIGN
+   BLOG CARD â€“ PREMIUM GLASS DESIGN
    ============================================ */
 .blog-item {
   background: rgba(255,255,255,0.75);
@@ -3400,3 +3400,411 @@ select:focus-visible {
 }
 .whatsapp-float-button img { width: 30px; height: 30px; border-radius: 50%; }
 .whatsapp-float-button:hover { transform: translateY(-2px) scale(1.04); filter: brightness(1.03); box-shadow: 0 14px 28px rgba(18, 92, 46, 0.42);}
+
+.related-links { margin: 24px 0; padding: 16px; border: 1px solid #e8d7bf; background: #fffaf2; border-radius: 12px; }
+.related-links h3 { margin: 0 0 10px; font-size: 1rem; color: #5a3600; }
+.related-links a { display: inline-block; margin: 0 10px 6px 0; color: #1e7b34; font-weight: 600; text-decoration: none; }
+.related-links a:hover { text-decoration: underline; }
+
+
+/* ===============================
+   CRO Lead Capture System
+   =============================== */
+.cro-exit-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.18), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(248, 212, 122, 0.22), transparent 40%),
+    rgba(16, 12, 8, 0.55);
+  backdrop-filter: blur(6px);
+}
+.cro-exit-popup.active { display: flex; }
+
+.cro-exit-card {
+  width: min(100%, 460px);
+  background: #fffaf2;
+  border-radius: 18px;
+  border: 1px solid #f0d9b6;
+  box-shadow: 0 24px 60px rgba(88, 52, 8, 0.28);
+  padding: 24px 22px 20px;
+  position: relative;
+  animation: croPop 0.35s ease;
+  color: #3b2607;
+}
+
+.cro-exit-badge {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #7a4300;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cro-exit-card h2 {
+  margin: 10px 0 6px;
+  font-size: clamp(1.35rem, 1rem + 1vw, 1.8rem);
+  color: #4a2b06;
+}
+
+.cro-exit-card p {
+  margin: 0 0 14px;
+  color: #5a3b12;
+}
+
+.cro-exit-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 84, 26, 0.2);
+  background: #fff1d9;
+  color: #7a4300;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cro-lead-form {
+  display: grid;
+  gap: 12px;
+}
+
+.cro-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cro-lead-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #5b3c14;
+  font-weight: 600;
+}
+
+.cro-lead-form input,
+.cro-lead-form select,
+.cro-lead-form textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e3cda8;
+  font: inherit;
+  background: #fff;
+  color: #3a260a;
+}
+
+.cro-lead-form input:focus,
+.cro-lead-form select:focus,
+.cro-lead-form textarea:focus {
+  outline: 2px solid rgba(245, 158, 11, 0.35);
+  border-color: #f0b75a;
+}
+
+.cro-primary-btn,
+.cro-secondary-btn {
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cro-primary-btn {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(245, 158, 11, 0.32);
+}
+
+.cro-secondary-btn {
+  background: #fff;
+  color: #6b3d08;
+  border-color: #f0d2a5;
+}
+
+.cro-primary-btn:hover,
+.cro-secondary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(93, 54, 5, 0.12);
+}
+
+.cro-form-note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #7a5a2f;
+}
+
+.cro-form-status {
+  font-size: 0.85rem;
+  color: #0f7a2e;
+}
+
+.cro-form-status[data-state="error"] { color: #b42318; }
+
+.cro-inline-capture {
+  margin: 18px 0 24px;
+  padding: 16px;
+  background: #fff8ec;
+  border: 1px solid #f0ddc2;
+  border-radius: 14px;
+}
+
+.cro-inline-header h3 {
+  margin: 6px 0 4px;
+  font-size: 1.2rem;
+  color: #4a2b06;
+}
+
+.cro-inline-header p {
+  margin: 0 0 12px;
+  color: #6a4a1d;
+}
+
+.cro-inline-badge {
+  display: inline-flex;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.2);
+  color: #7a4300;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.cro-cta-strip {
+  max-width: 1100px;
+  margin: 28px auto 40px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff4df, #fff);
+  border: 1px solid #f1dbb5;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  box-shadow: 0 18px 36px rgba(67, 38, 4, 0.1);
+}
+
+.cro-cta-copy h3 {
+  margin: 0 0 6px;
+  color: #4a2b06;
+}
+
+.cro-cta-copy p {
+  margin: 0;
+  color: #6a4a1d;
+}
+
+.cro-cta-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.sticky-whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 10003;
+  background: linear-gradient(145deg, #25d366, #1fb95a);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 12px 26px rgba(18, 92, 46, 0.35);
+}
+
+.sticky-whatsapp-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sticky-whatsapp:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px rgba(18, 92, 46, 0.45);
+}
+
+@keyframes croPop {
+  from { transform: translateY(10px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@media (max-width: 720px) {
+  .cro-form-grid { grid-template-columns: 1fr; }
+  .cro-cta-strip { grid-template-columns: 1fr; text-align: left; }
+  .cro-cta-actions { justify-content: flex-start; }
+  .sticky-whatsapp { right: 12px; bottom: 16px; }
+}
+
+/* ===============================
+   Header dropdown menus
+   =============================== */
+.nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-link {
+  appearance: none;
+  border: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #6B4226;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.22s ease-in-out;
+}
+
+.nav-link:hover {
+  background: rgba(255,205,120,0.22);
+  color: #3d2400;
+  box-shadow: 0 6px 18px rgba(255,200,120,0.12);
+  transform: translateY(-2px);
+}
+
+.submenu {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  min-width: 200px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  background: rgba(255, 252, 246, 0.98);
+  border: 1px solid rgba(210, 180, 120, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 16px 28px rgba(65, 41, 12, 0.16);
+  z-index: 1002;
+}
+
+.submenu a {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #5b3b16;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.submenu a:hover {
+  background: rgba(255,205,120,0.2);
+  border-color: rgba(255,205,120,0.35);
+}
+
+.nav-item:hover .submenu,
+.nav-item:focus-within .submenu,
+.nav-item.open .submenu {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .nav-item { width: 100%; }
+  .nav-link { width: min(86vw, 340px); margin-left: auto; text-align: left; }
+  .submenu {
+    position: static;
+    display: none;
+    width: min(86vw, 340px);
+    margin-left: auto;
+    background: rgba(255,255,255,0.94);
+  }
+  .nav-item.open .submenu { display: flex; }
+}
+
+
+  .navbar-container {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(82vw, 360px) !important;
+    background: linear-gradient(160deg, rgba(255, 252, 246, 0.98), rgba(255, 240, 214, 0.96));
+    border-left: 1px solid rgba(210, 180, 120, 0.35);
+    box-shadow: -12px 0 28px rgba(43, 26, 8, 0.18);
+    padding: 84px 16px 24px !important;
+    gap: 12px !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    transform: translateX(110%);
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: none;
+    transition: transform 0.28s ease;
+  }
+
+  .navbar-container::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 12, 6, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  #check:checked ~ .navbar-container {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  #check:checked ~ .navbar-container::before {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar-container a,
+  .nav-link {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 14px 16px !important;
+    border-radius: 14px !important;
+    font-size: 1rem !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(236, 198, 150, 0.6) !important;
+    color: #4a2a08 !important;
+    box-shadow: 0 8px 20px rgba(56, 34, 10, 0.08) !important;
+  }
+
+  .navbar-container a:hover,
+  .nav-link:hover {
+    background: #fff2dc !important;
+    transform: translateX(-2px);
+  }
+
+  .submenu {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border: 1px solid rgba(236, 198, 150, 0.55) !important;
+    box-shadow: 0 10px 18px rgba(62, 36, 10, 0.1) !important;
+  }
+}
+

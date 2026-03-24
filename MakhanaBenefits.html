@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
   <meta property="og:title" content="Health Benefits of Makhana | Makhanabazar Blog">
   <meta property="og:description" content="Understand why makhana is considered a premium healthy snack in modern diets.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://www.makhanabazar.com/MakhanaBenefits.html">
+  <meta property="og:url" content="https://www.makhanabazar.com/MakhanaBenefits">
   <meta property="og:image" content="https://www.makhanabazar.com/image/THealthy.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Health Benefits of Makhana | Makhanabazar Blog">
@@ -21,27 +21,84 @@
   <meta name="twitter:image" content="https://www.makhanabazar.com/image/THealthy.jpg">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/blog.css">
+
+<script type="application/ld+json">
+{
+  \"@context\": \"https://schema.org\",
+  \"@type\": \"Article\",
+  \"headline\": \"Health Benefits of Makhana | Makhanabazar Blog\",
+  \"description\": \"Discover evidence-backed health benefits of makhana including weight management support, heart wellness, digestive comfort, and smart snacking nutrition.\",
+  \"mainEntityOfPage\": \"https://www.makhanabazar.com/MakhanaBenefits\",
+  \"author\": { \"@type\": \"Organization\", \"name\": \"Makhanabazar Editorial Team\" },
+  \"publisher\": { \"@type\": \"Organization\", \"name\": \"Makhanabazar\", \"logo\": { \"@type\": \"ImageObject\", \"url\": \"https://www.makhanabazar.com/image/fevi.png\" } },
+  \"image\": \"https://www.makhanabazar.com/image/coverimage.jpg\"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Makhanabazar",
+  "url": "https://www.makhanabazar.com",
+  "logo": "https://www.makhanabazar.com/image/fevi.png",
+  "description": "Premium Makhana exporter and manufacturer from Bihar, India. Bulk supply and export worldwide.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9211959766",
+    "contactType": "sales",
+    "areaServed": ["IN", "US", "AE", "UK", "AU", "CA"],
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2nd floor, housing complex, Plot no 337, Nishat Park, Sector 15 Dwarka, Kakrola",
+    "addressLocality": "New Delhi",
+    "addressRegion": "Delhi",
+    "postalCode": "110078",
+    "addressCountry": "IN"
+  }
+}
+</script>
 </head>
 <body>
   <header>
     <nav class="navbar" id="navbar">
       <div class="nav-left">
-        <a href="/index.html" class="logo"><img src="/image/logomakhahna.png" alt="Makhanabazar Logo" loading="lazy" width="140" height="40" /></a>
+        <a href="/" class="logo"><img src="/image/logomakhahna.png" alt="Makhanabazar Logo" loading="lazy" width="140" height="40" /></a>
       </div>
       <input type="checkbox" id="check" aria-hidden="false" />
       <label for="check" class="checkbtn" role="button" aria-controls="navbarContainer" aria-expanded="false" tabindex="0" aria-label="Toggle navigation">&#9776;</label>
-      <div class="navbar-container" id="navbarContainer">
+                  <div class="navbar-container" id="navbarContainer">
         <a href="/index.html#home" onclick="closeNavbar()">Home</a>
-        <a href="/index.html#product" onclick="closeNavbar()">Product</a>
-        <a href="/index.html#IncotermCalculator1" onclick="closeNavbar()">Price Calculator</a>
-        <a href="/index.html#gallery-section" onclick="closeNavbar()">Gallery</a>
+
+        <div class="nav-item has-submenu">
+          <button class="nav-link" type="button" aria-expanded="false">Products</button>
+          <div class="submenu">
+            <a href="/index.html#product" onclick="closeNavbar()">Product</a>
+            <a href="/index.html#IncotermCalculator1" onclick="closeNavbar()">Price Calculator</a>
+            <a href="/index.html#gallery-section" onclick="closeNavbar()">Gallery</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <button class="nav-link" type="button" aria-expanded="false">Export</button>
+          <div class="submenu">
+            <a href="/export-wholesale-makhana-india.html" onclick="closeNavbar()">Export Hub</a>
+            <a href="/import-makhana-query.html" onclick="closeNavbar()">Import Query</a>
+            <a href="/private-label-makhana-manufacturer.html" onclick="closeNavbar()">Private Label</a>
+          </div>
+        </div>
+
+        <div class="nav-item has-submenu">
+          <button class="nav-link" type="button" aria-expanded="false">Markets</button>
+          <div class="submenu">
+            <a href="/makhana-foxnut-supplier-usa.html" onclick="closeNavbar()">USA</a>
+            <a href="/makhana-wholesale-supplier-uae-dubai.html" onclick="closeNavbar()">UAE</a>
+          </div>
+        </div>
+
         <a href="/blog.html" onclick="closeNavbar()">Blogs</a>
         <a href="/faq.html" onclick="closeNavbar()">FAQ</a>
-        <a href="/export-wholesale-makhana-india.html" onclick="closeNavbar()">Export Hub</a>
-        <a href="/import-makhana-query.html" onclick="closeNavbar()">Import Query</a>
-        <a href="/makhana-foxnut-supplier-usa.html" onclick="closeNavbar()">USA</a>
-        <a href="/makhana-wholesale-supplier-uae-dubai.html" onclick="closeNavbar()">UAE</a>
-        <a href="/private-label-makhana-manufacturer.html" onclick="closeNavbar()">Private Label</a>
         <a href="#contact" onclick="closeNavbar()">Contact Us</a>
       </div>
     </nav>
@@ -89,8 +146,15 @@
         <p>One of the biggest advantages of makhana is its versatility. You can roast it with a little ghee and a sprinkle of salt, or get creative with different spices and seasonings. It can be eaten as a standalone snack, added to curries, or even ground into flour for baking. This makes it easy to incorporate into any diet.</p>
 
         <p>With its impressive array of health benefits, from supporting heart health to aiding in weight management, makhana is more than just a snack. It's a versatile and nutritious food that can be a valuable addition to a healthy, balanced diet. For distributors and buyers, the growing consumer awareness of these benefits makes makhana a high-demand product in the premium healthy snacking category.</p>
-        <a class="article-cta" href="/index.html#product">Explore Product Categories</a>
-      </div>
+        <a class="article-cta" href="/#product">Explore Product Categories</a>
+      <div class="article-cta-block">
+  <p>Ready to source export-grade makhana? Explore options below:</p>
+  <a href="/export-wholesale-makhana-india.html" class="article-cta">Explore Export Hub</a>
+  <a href="/bulk-makhana-supplier-india.html" class="article-cta secondary">Bulk Supplier in India</a>
+  <a href="/TermCalculator.html" class="article-cta secondary">FOB/CIF Price Calculator</a>
+  <a href="/import-makhana-query.html" class="article-cta secondary">Submit Import Query</a>
+</div>
+</div>
     </article>
   </main>
 
@@ -110,7 +174,7 @@
     <div class="footer-section">
       <h3>Learn</h3>
       <ul class="footer-links">
-        <li><a href="/index.html#home">Our Story</a></li>
+        <li><a href="/#home">Our Story</a></li>
         <li><a href="/blog.html">Makhana Recipes</a></li>
         <li><a href="/MakhanaBenefit.html">Nutrition Facts</a></li>
         <li><a href="/MakhanaBenefits.html">Health Benefits</a></li>
@@ -181,8 +245,20 @@
     (function(){ const chk=document.getElementById('check'); const toggle=document.querySelector('label.checkbtn'); const nav=document.getElementById('navbarContainer'); if(!chk||!toggle||!nav) return; function sync(){ const e=!!chk.checked; toggle.setAttribute('aria-expanded', e); nav.setAttribute('aria-hidden', !e);} sync(); chk.addEventListener('change', sync); toggle.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); chk.checked=!chk.checked; chk.dispatchEvent(new Event('change')); }}); nav.addEventListener('click', (e)=>{ if(e.target.tagName==='A'){ chk.checked=false; chk.dispatchEvent(new Event('change')); }}); })();
   </script>
   <script src="/whatsapp.js"></script>
+  <script src="/scripts.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

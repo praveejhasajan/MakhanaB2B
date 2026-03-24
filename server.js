@@ -7,6 +7,49 @@ const PORT = process.env.PORT || 3000;
 const DATA_PATH = path.join(__dirname, 'data', 'leads.json');
 
 app.use(express.json());
+
+// Canonical URL redirects (.html -> clean, /index.html -> /)
+app.use((req, res, next) => {
+  const url = req.originalUrl || '';
+  if (url === '/index.html' || url.startsWith('/index.html?')) {
+    const qs = url.includes('?') ? url.slice(url.indexOf('?')) : '';
+    return res.redirect(301, '/' + qs);
+  }
+  if (req.path.endsWith('.html')) {
+    const cleanPath = req.path.replace(/\.html$/, '');
+    const qs = url.includes('?') ? url.slice(url.indexOf('?')) : '';
+    return res.redirect(301, cleanPath + qs);
+  }
+  return next();
+});
+
+// Clean URL routes -> HTML files
+const cleanRoutes = {
+  '/': 'index.html',
+  '/blog': 'blog.html',
+  '/bulk-makhana-supplier-india': 'bulk-makhana-supplier-india.html',
+  '/export-wholesale-makhana-india': 'export-wholesale-makhana-india.html',
+  '/faq': 'faq.html',
+  '/foxnut-manufacturer-india': 'foxnut-manufacturer-india.html',
+  '/import-makhana-query': 'import-makhana-query.html',
+  '/makhana-foxnut-supplier-usa': 'makhana-foxnut-supplier-usa.html',
+  '/makhana-manufacturer-in-bihar': 'makhana-manufacturer-in-bihar.html',
+  '/makhana-wholesale-supplier-uae-dubai': 'makhana-wholesale-supplier-uae-dubai.html',
+  '/MakhanaBenefit': 'MakhanaBenefit.html',
+  '/MakhanaBenefits': 'MakhanaBenefits.html',
+  '/MakhanaBoard': 'MakhanaBoard.html',
+  '/MakhanaFarming': 'MakhanaFarming.html',
+  '/private-label-makhana-manufacturer': 'private-label-makhana-manufacturer.html',
+  '/TermCalculator': 'TermCalculator.html',
+  '/chatbot': 'chatbot.html'
+};
+
+Object.entries(cleanRoutes).forEach(([route, file]) => {
+  app.get(route, (req, res) => {
+    res.sendFile(path.join(__dirname, file));
+  });
+});
+
 app.use(express.static(__dirname));
 
 function safeReadLeads() {

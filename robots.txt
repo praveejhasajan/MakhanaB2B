@@ -1,4 +1,17 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api
+Disallow: /api/
+Disallow: /data
+Disallow: /data/
+Disallow: /server.js
+Disallow: /chatbot
+Disallow: /chatbot.html
+Disallow: /chatbot.js
+Disallow: /chatbot.css
+
 Sitemap: https://www.makhanabazar.com/sitemap.xml
+
