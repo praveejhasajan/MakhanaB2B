@@ -661,35 +661,64 @@ select:focus-visible {
         width: 80%;
     }
 }
-/* hero */
-/* ===== HERO SLIDE MOBILE FIX ===== */
-@media (max-width: 768px) {
-  .hero-carousel {
-    width: 100%;
-    overflow: hidden;
+/* ===== HERO CAROUSEL ===== */
+.hero-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-carousel .hero-slide {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: background-image .3s ease, opacity .3s ease;
+}
+
+/* Optional overlay */
+.hero-carousel .hero-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Hide slide text/content */
+.hero-carousel .container{
+  display:none !important;
+}
+
+/* ===== Tablet ===== */
+@media (max-width:768px){
+
+  .hero-carousel .hero-slide{
+      height:55vw;
+      min-height:220px;
+      max-height:350px;
+
+      background-size:cover;
+      background-position:center center;
   }
 
-  .hero-carousel .hero-slide {
-    height: 55vw;          /* scales with screen width — always proportional */
-    min-height: 200px;     /* never too tiny */
-    max-height: 320px;     /* never too tall on large phones */
-    background-size: cover !important;        /* fills the area completely */
-    background-position: center center !important; /* centres the image */
-    background-repeat: no-repeat !important;
-    width: 100%;
+  .hero-carousel .hero-slide::before{
+      background:transparent;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-carousel .hero-slide {
-    height: 60vw;
-    min-height: 180px;
-    max-height: 260px;
-    background-size: cover !important;
-    background-position: center top !important; /* shows top of image (usually the product) */
+/* ===== Small Mobile ===== */
+@media (max-width:480px){
+
+  .hero-carousel .hero-slide{
+      height:65vw;
+      min-height:200px;
+      max-height:280px;
+
+      background-size:cover;
+      background-position:center top;
   }
 }
-
 
 /* ============================================================
    CERTIFICATIONS
