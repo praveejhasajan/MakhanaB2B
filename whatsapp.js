@@ -47,7 +47,7 @@
     const style = document.createElement("style");
     style.id = "whatsapp-button-style";
     style.textContent = "/* Floating WhatsApp button */\n" +
-      ".whatsapp-button{position:fixed;right:20px;bottom:20px;z-index:1100;width:58px;height:58px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#25d366,#1fb95a);border:2px solid rgba(255,255,255,0.86);box-shadow:0 10px 24px rgba(18,92,46,0.35);transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;}" +
+      ".whatsapp-button{position:fixed;right:20px;bottom:20px;z-index:100000;width:58px;height:58px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#25d366,#1fb95a);border:2px solid rgba(255,255,255,0.86);box-shadow:0 10px 24px rgba(18,92,46,0.35);transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;}" +
       ".whatsapp-button img{width:30px;height:30px;border-radius:50%;}" +
       ".whatsapp-button:hover{transform:translateY(-2px) scale(1.04);filter:brightness(1.03);box-shadow:0 14px 28px rgba(18,92,46,0.42);}" +
       ".whatsapp-button:focus-visible{outline:3px solid rgba(37,211,102,0.42);outline-offset:2px;}" +
@@ -57,6 +57,7 @@
 
   function ensureButton() {
     if (document.querySelector(".whatsapp-button")) return;
+    document.querySelectorAll(".sticky-whatsapp, .whatsapp-float-button").forEach((button) => button.remove());
 
     const message = getMessage();
     const a = document.createElement("a");
