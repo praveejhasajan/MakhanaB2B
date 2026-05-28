@@ -3421,6 +3421,68 @@ ul {
 
 .related-links a:hover { text-decoration: underline; }
 
+.site-footer-index {
+  width: min(1180px, 92vw);
+  margin: 22px auto 0;
+  padding: 20px;
+  border: 1px solid rgba(212, 164, 55, 0.24);
+  border-radius: 14px;
+  background: rgba(255, 250, 242, 0.82);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.site-footer-index h3 {
+  margin: 0 0 10px;
+  color: #0d1b2a;
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.site-footer-index ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+}
+
+.site-footer-index .footer-country-list {
+  columns: 2;
+  column-gap: 18px;
+  display: block;
+}
+
+.site-footer-index .footer-country-list li {
+  break-inside: avoid;
+  margin: 0 0 7px;
+}
+
+.site-footer-index a {
+  color: #234a77;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.site-footer-index a:hover {
+  color: #8a4b00;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .site-footer-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .site-footer-index {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .site-footer-index .footer-country-list { columns: 1; }
+}
+
 /* ===============================
    CRO Lead Capture System
    =============================== */

@@ -3,6 +3,20 @@
   const STORAGE_KEY = 'makhanaginie_chat_v1';
   const WHATSAPP_URL = 'https://wa.me/919591533598?text=I%20want%20to%20order%20makhana';
   const AUTO_MESSAGE = 'Hi, looking for best quality Makhana?';
+  const BLOCKING_EXTENSION_SELECTOR = '#blackbox-toggle, button#blackbox-toggle, img[src^="chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/"]';
+
+  function removeBlockingExtensionToggle() {
+    document.querySelectorAll(BLOCKING_EXTENSION_SELECTOR).forEach((element) => {
+      const target = element.id === 'blackbox-toggle' ? element : element.closest('button') || element;
+      target.remove();
+    });
+  }
+
+  removeBlockingExtensionToggle();
+  new MutationObserver(removeBlockingExtensionToggle).observe(document.documentElement, {
+    childList: true,
+    subtree: true
+  });
 
   const state = loadState();
   state.previewShown = state.previewShown || false;

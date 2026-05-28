@@ -16,6 +16,15 @@
   font-family: 'Work Sans', 'Segoe UI', Arial, sans-serif;
 }
 
+#blackbox-toggle,
+button#blackbox-toggle,
+img[src^="chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
 .mk-chatbot-launcher {
   display: grid !important;
   position: fixed !important;

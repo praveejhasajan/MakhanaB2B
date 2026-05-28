@@ -40,6 +40,7 @@ const cleanRoutes = {
   '/MakhanaBoard': 'MakhanaBoard.html',
   '/MakhanaFarming': 'MakhanaFarming.html',
   '/private-label-makhana-manufacturer': 'private-label-makhana-manufacturer.html',
+  '/sitemap': 'sitemap.html',
   '/TermCalculator': 'TermCalculator.html',
   '/chatbot': 'chatbot.html'
 };
@@ -48,6 +49,17 @@ Object.entries(cleanRoutes).forEach(([route, file]) => {
   app.get(route, (req, res) => {
     res.sendFile(path.join(__dirname, file));
   });
+});
+
+app.get('/private-label-makhana-:countrySlug', (req, res, next) => {
+  const countrySlug = String(req.params.countrySlug || '').toLowerCase();
+  if (!/^[a-z0-9-]+$/.test(countrySlug)) return next();
+
+  const file = `private-label-makhana-${countrySlug}.html`;
+  const filePath = path.join(__dirname, file);
+  if (!fs.existsSync(filePath)) return next();
+
+  return res.sendFile(filePath);
 });
 
 app.use(express.static(__dirname));
