@@ -87,6 +87,7 @@ nav {
   color: var(--earth);
 }
 .logo span { color: var(--saffron); }
+.logo img { height: 38px; display: block; }
 .nav-links { display: flex; gap: 28px; align-items: center; }
 .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--saffron); }
@@ -99,6 +100,73 @@ nav {
   transition: background 0.2s !important;
 }
 .nav-cta:hover { background: var(--saffron-deep) !important; }
+
+/* Mobile hamburger */
+.nav-toggle { display: none; }
+.hamburger { display: none; width: 40px; height: 40px; border-radius: 8px; background: rgba(0,0,0,0.06); place-items: center; cursor: pointer; position: relative; z-index: 102; flex-shrink: 0; }
+.hamburger::before { content: '\2630'; font-size: 20px; font-weight: 700; color: var(--earth); line-height: 1; }
+.nav-toggle:checked + .hamburger::before { content: '\2715'; font-size: 18px; }
+
+/* Mobile slide-in drawer */
+.mobile-drawer {
+  display: none;
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(78vw, 300px);
+  background: var(--white);
+  z-index: 101;
+  padding: 72px 20px 32px;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.15);
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.25s ease, visibility 0.25s ease;
+  overflow-y: auto;
+}
+.nav-toggle:checked ~ .mobile-drawer {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.mobile-drawer a {
+  display: block;
+  color: var(--earth);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-drawer a:last-child { border-bottom: none; }
+.mobile-drawer .nav-cta {
+  display: inline-block;
+  background: var(--saffron);
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Backdrop */
+.nav-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.nav-toggle:checked ~ .nav-backdrop { opacity: 1; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: grid; }
+  .mobile-drawer { display: block; }
+  .nav-backdrop { display: block; }
+}
 
 /* -- HERO -- */
 .hero {
@@ -602,7 +670,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Makhana<span>Bazar</span></div>
+  <a href="https://www.makhanabazar.com" class="logo" id="toplogo"><img src="/image/logomakhahna.png" alt="Makhanabazar Logo" loading="lazy" width="140" height="40" /></a>
   <div class="nav-links">
     <a href="/#home">Home</a>
     <a href="/#product">Product</a>
@@ -618,6 +686,24 @@ footer {
     <a href="#contact">Contact Us</a>
     <a href="https://wa.me/9211959766" class="nav-cta">Get Quote -></a>
   </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="hamburger" aria-label="Toggle menu"></label>
+  <div class="mobile-drawer">
+    <a href="/#home">Home</a>
+    <a href="/#product">Product</a>
+    <a href="/#IncotermCalculator1">Price Calculator</a>
+    <a href="/#gallery-section">Gallery</a>
+    <a href="/blog.html">Blogs</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/export-wholesale-makhana-india.html">Export Hub</a>
+    <a href="/import-makhana-query.html">Import Query</a>
+    <a href="/makhana-foxnut-supplier-usa.html">USA</a>
+    <a href="/makhana-wholesale-supplier-uae-dubai.html">UAE</a>
+    <a href="/private-label-makhana-manufacturer.html">Private Label</a>
+    <a href="#contact">Contact Us</a>
+    <a href="https://wa.me/9211959766" class="nav-cta">Get Quote -></a>
+  </div>
+  <label for="nav-toggle" class="nav-backdrop"></label>
 </nav>
 
 <!-- HERO -->
@@ -1057,7 +1143,7 @@ footer {
     <span>Makhana � Foxnut � Lotus Seeds � Phool Makhana � Euryale Ferox</span>
   </div>
 <!-- Footer page index -->
-  <div class="site-footer-index" aria-label="Makhanabazar page index">
+  <div class="site-footer-index" aria-label="Makhanabazar page index" style="display:none;">
     <div>
       <h3>Main Pages</h3>
       <ul>

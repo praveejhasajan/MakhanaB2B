@@ -51,9 +51,77 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
 nav { background: var(--navy); padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
 .logo { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
 .logo span { color: #FFB86C; }
+.logo img { height: 38px; display: block; }
 .nav-right { display: flex; align-items: center; gap: 20px; }
 .nav-right a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
 .nav-cta { background: var(--red) !important; color: #fff !important; padding: 9px 20px; border-radius: 8px; font-weight: 600 !important; }
+
+/* Mobile hamburger */
+.nav-toggle { display: none; }
+.hamburger { display: none; width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.08); place-items: center; cursor: pointer; position: relative; z-index: 102; flex-shrink: 0; }
+.hamburger::before { content: '\2630'; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
+.nav-toggle:checked + .hamburger::before { content: '\2715'; font-size: 18px; }
+
+/* Mobile slide-in drawer */
+.mobile-drawer {
+  display: none;
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(78vw, 300px);
+  background: var(--navy);
+  z-index: 101;
+  padding: 72px 20px 32px;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.3);
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.25s ease, visibility 0.25s ease;
+  overflow-y: auto;
+}
+.nav-toggle:checked ~ .mobile-drawer {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.mobile-drawer a {
+  display: block;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-drawer a:last-child { border-bottom: none; }
+.mobile-drawer .nav-cta {
+  display: inline-block;
+  background: var(--red) !important;
+  color: #fff !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Backdrop */
+.nav-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.nav-toggle:checked ~ .nav-backdrop { opacity: 1; }
+
+@media (max-width: 900px) {
+  .nav-right { display: none; }
+  .hamburger { display: grid; }
+  .mobile-drawer { display: block; }
+  .nav-backdrop { display: block; }
+}
 
 /* FLAG HERO */
 .hero {
@@ -265,7 +333,7 @@ footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); p
 <body>
 
 <nav>
-  <div class="logo">Makhana<span>Bazar</span></div>
+  <a href="https://www.makhanabazar.com" class="logo" id="toplogo"><img src="/image/logomakhahna.png" alt="Makhanabazar Logo" loading="lazy" width="140" height="40" /></a>
   <div class="nav-right">
     <a href="/#home">Home</a>
     <a href="/#product">Product</a>
@@ -281,6 +349,24 @@ footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); p
     <a href="#contact">Contact Us</a>
     <a href="https://wa.me/9211959766" class="nav-cta">Get USA Quote -></a>
   </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="hamburger" aria-label="Toggle menu"></label>
+  <div class="mobile-drawer">
+    <a href="/#home">Home</a>
+    <a href="/#product">Product</a>
+    <a href="/#IncotermCalculator1">Price Calculator</a>
+    <a href="/#gallery-section">Gallery</a>
+    <a href="/blog.html">Blogs</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/export-wholesale-makhana-india.html">Export Hub</a>
+    <a href="/import-makhana-query.html">Import Query</a>
+    <a href="/makhana-foxnut-supplier-usa.html">USA</a>
+    <a href="/makhana-wholesale-supplier-uae-dubai.html">UAE</a>
+    <a href="/private-label-makhana-manufacturer.html">Private Label</a>
+    <a href="#contact">Contact Us</a>
+    <a href="https://wa.me/9211959766" class="nav-cta">Get USA Quote -></a>
+  </div>
+  <label for="nav-toggle" class="nav-backdrop"></label>
 </nav>
 
 <section class="hero">
@@ -494,7 +580,7 @@ footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); p
     <a href="#contact">Contact Us</a>  </div>
   <div class="footer-r">� 2025 Krishipurna Organic Pvt. Ltd. | +91 92119 59766 | info@makhanabazar.com</div>
 <!-- Footer page index -->
-  <div class="site-footer-index" aria-label="Makhanabazar page index">
+  <div class="site-footer-index" aria-label="Makhanabazar page index" style="display:none;">
     <div>
       <h3>Main Pages</h3>
       <ul>

@@ -15,6 +15,12 @@
     # Remove trailing slashes from non-directory URLs
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+    # Redirect extension-less country/market pages to .html
+    RewriteRule ^private-label-makhana-usa$ /private-label-makhana-usa.html [L,R=301]
+    RewriteRule ^private-label-makhana-uk$ /private-label-makhana-uk.html [L,R=301]
+    RewriteRule ^private-label-makhana-uae$ /private-label-makhana-uae.html [L,R=301]
+    RewriteRule ^MakhanaBoard$ /MakhanaBoard.html [L,R=301]
 </IfModule>
 
 # Security & SEO Headers

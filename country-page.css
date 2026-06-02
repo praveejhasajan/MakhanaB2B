@@ -226,6 +226,8 @@
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 34px; }
 .country-product img {
   width: 100%;
+  max-width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 14px;
@@ -381,19 +383,33 @@
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-grid,
   .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .country-hero { min-height: auto; }
+  .country-hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
+  .country-cta-row { gap: 10px; }
+  .country-btn { padding: 11px 16px; font-size: 0.9rem; }
 }
 
 @media (max-width: 640px) {
-  .country-hero { min-height: auto; padding-top: 50px; }
-  .country-hero-panel { padding: 18px; }
+  .country-shell { width: min(100%, 94vw); padding: 0 3vw; }
+  .country-hero { min-height: auto; padding-top: 40px; padding-bottom: 32px; }
+  .country-hero h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); line-height: 1.1; }
+  .country-hero p { font-size: 0.95rem; }
+  .country-hero-panel { padding: 16px; }
   .country-metric-grid,
   .country-form-grid,
   .country-card-grid,
   .product-grid,
   .service-grid,
   .cert-grid { grid-template-columns: 1fr; }
-  .country-btn { width: 100%; }
+  .country-section { padding: clamp(36px, 6vw, 60px) 0; }
+  .country-btn { width: 100%; min-height: 48px; padding: 14px 20px; }
+  .country-cta-row { flex-direction: column; gap: 10px; }
+  .country-trust-strip { gap: 6px; padding: 0 4px; }
+  .country-trust-strip span { font-size: 0.75rem; padding: 6px 10px; }
   .mobile-sticky-cta { display: grid; }
-  .country-page { padding-bottom: 70px; }
+  .country-page { padding-bottom: 80px; }
   .country-page .premium-footer .country-footer-links { columns: 1; }
+  .country-title { font-size: clamp(1.3rem, 5vw, 1.9rem); }
+  .country-sub { font-size: 0.95rem; }
+  .country-badge { font-size: 0.7rem; padding: 6px 12px; }
 }
