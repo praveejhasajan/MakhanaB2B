@@ -13,7 +13,7 @@
   <meta name="author" content="Krishipurna Organic Pvt. Ltd.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="keywords" content="private label makhana manufacturer, white label foxnut brand India, custom makhana packaging, private label lotus seeds, foxnut OEM manufacturer India, custom brand makhana export, makhana FMCG manufacturer, OEM foxnut snack India">
-<link rel="canonical" href="https://www.makhanabazar.com/private-label-makhana-manufacturer.html.html">
+<link rel="canonical" href="https://www.makhanabazar.com/private-label-makhana-manufacturer.html">
 <meta property="og:title" content="Private Label Makhana Manufacturer India | White Label Foxnut Brand">
 <meta property="og:description" content="Launch your own makhana / foxnut snack brand with India's leading private label manufacturer. Custom packaging, 8 flavours, FDA/FSA-compliant labels. MOQ 200kg.">
 <meta property="og:url" content="https://www.makhanabazar.com/private-label-makhana-manufacturer.html">
@@ -50,9 +50,77 @@ body { font-family: 'Lora', Georgia, serif; background: var(--cream); color: var
 nav { background: var(--ink); padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
 .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
 .logo em { color: var(--lime); font-style: normal; }
+.logo img { height: 38px; display: block; }
 .nav-r { display: flex; align-items: center; gap: 20px; }
 .nav-r a { color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 600; text-decoration: none; font-family: 'Syne', sans-serif; }
 .nav-r .cta { background: var(--lime); color: var(--ink) !important; padding: 9px 20px; border-radius: 8px; font-weight: 800 !important; }
+
+/* Mobile hamburger */
+.nav-toggle { display: none; }
+.hamburger { display: none; width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.08); place-items: center; cursor: pointer; position: relative; z-index: 102; flex-shrink: 0; }
+.hamburger::before { content: '\2630'; font-size: 20px; font-weight: 700; color: #fff; line-height: 1; }
+.nav-toggle:checked + .hamburger::before { content: '\2715'; font-size: 18px; }
+
+/* Mobile slide-in drawer */
+.mobile-drawer {
+  display: none;
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(78vw, 300px);
+  background: var(--ink);
+  z-index: 101;
+  padding: 72px 20px 32px;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.3);
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.25s ease, visibility 0.25s ease;
+  overflow-y: auto;
+}
+.nav-toggle:checked ~ .mobile-drawer {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.mobile-drawer a {
+  display: block;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-drawer a:last-child { border-bottom: none; }
+.mobile-drawer .cta {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--ink) !important;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 800;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Backdrop */
+.nav-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.nav-toggle:checked ~ .nav-backdrop { opacity: 1; }
+
+@media (max-width: 900px) {
+  .nav-r { display: none; }
+  .hamburger { display: grid; }
+  .mobile-drawer { display: block; }
+  .nav-backdrop { display: block; }
+}
 
 /* HERO � editorial style */
 .hero {
@@ -243,7 +311,7 @@ footer { background: var(--ink); padding: 24px 48px; display: flex; justify-cont
 <body>
 
 <nav>
-  <div class="logo">Makhana<em>Bazar</em></div>
+  <a href="https://www.makhanabazar.com" class="logo" id="toplogo"><img src="/image/logomakhahna.png" alt="Makhanabazar Logo" loading="lazy" width="140" height="40" /></a>
   <div class="nav-r">
     <a href="/#home">Home</a>
     <a href="/#product">Product</a>
@@ -259,6 +327,24 @@ footer { background: var(--ink); padding: 24px 48px; display: flex; justify-cont
     <a href="#contact">Contact Us</a>
     <a href="https://wa.me/9211959766" class="cta">Start Your Brand -></a>
   </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+  <label for="nav-toggle" class="hamburger" aria-label="Toggle menu"></label>
+  <div class="mobile-drawer">
+    <a href="/#home">Home</a>
+    <a href="/#product">Product</a>
+    <a href="/#IncotermCalculator1">Price Calculator</a>
+    <a href="/#gallery-section">Gallery</a>
+    <a href="/blog.html">Blogs</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/export-wholesale-makhana-india.html">Export Hub</a>
+    <a href="/import-makhana-query.html">Import Query</a>
+    <a href="/makhana-foxnut-supplier-usa.html">USA</a>
+    <a href="/makhana-wholesale-supplier-uae-dubai.html">UAE</a>
+    <a href="/private-label-makhana-manufacturer.html">Private Label</a>
+    <a href="#contact">Contact Us</a>
+    <a href="https://wa.me/9211959766" class="cta">Start Your Brand -></a>
+  </div>
+  <label for="nav-toggle" class="nav-backdrop"></label>
 </nav>
 
 <section class="hero">
@@ -521,7 +607,7 @@ footer { background: var(--ink); padding: 24px 48px; display: flex; justify-cont
     <a href="#contact">Contact Us</a>  </div>
   <div class="fr">� 2025 Krishipurna Organic Pvt. Ltd. | +91 92119 59766 | info@makhanabazar.com</div>
 <!-- Footer page index -->
-  <div class="site-footer-index" aria-label="Makhanabazar page index">
+  <div class="site-footer-index" aria-label="Makhanabazar page index" style="display:none;">
     <div>
       <h3>Main Pages</h3>
       <ul>
